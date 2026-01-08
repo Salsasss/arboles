@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ especie.nombre_comun }}{% endblock titulo %}
+{% block contenido %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-6 fw-bold text-primary opacity-100">
+                <i class="fas fa-tree me-2"></i> {{ especie.nombre_comun }}
+            </h1>
+            <p class="lead mb-0 text-dark"> {{ especie.nombre_cientifico }}
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div>
+        <h2>{{ especie.nombre_comun }}</h2>
+        <h3>{{ especie.nombre_cientifico }}</h3>
+        <div>
+            {% for imagen in especie.imagenes.all %}
+                <p>{{ imagen.titulo }} - {{ imagen.especie }}</p>
+                <div><img src="{{ imagen.imagen.url }}" alt="titulo" style="width: 500px;"></div>
+                <em>{{ imagen.get_tipo_display }} Subida por: {{ imagen.autor.get_full_name | default:imagen.autor.username }} {{ imagen.fecha_creacion }}</em>
+            {% endfor %}
+        </div>
+        <p>{{ especie.get_tipo_display }}</p>
+        <p>{{ especie.get_estado_conservacion_display }}</p>
+        <p>{{ especie.diametro_maximo }} cm</p>
+        <p>{{ especie.altura_maxima }} m</p>
+        {{ especie.descripcion | safe}}
+    </div>
+    <div>
+        <h2>Taxonomía</h2>
+        <p><strong>Reino: </strong>{{ especie.taxonomia.reino }}</p>
+        <p><strong>División: </strong>{{ especie.taxonomia.division }}</p>
+        <p><strong>Clase: </strong>{{ especie.taxonomia.clase }}</p>
+        <p><strong>Subclase: </strong>{{ especie.taxonomia.subclase }}</p>
+        <p><strong>Orden: </strong>{{ especie.taxonomia.orden }}</p>
+        <p><strong>Familia: </strong>{{ especie.taxonomia.familia }}</p>
+        <p><strong>Genero: </strong>{{ especie.taxonomia.genero }}</p>
+        <p><strong>Especie: </strong>{{ especie.nombre_cientifico }}</p>
+    </div>
+    <div>
+        <h2>Descripción Detallada</h2>
+        <p><strong>Corteza: </strong>{{ especie.detalle.corteza | safe}}</p> <!-- Imagen de Corteza si la hay -->
+        <p><strong>Hojas: </strong>{{ especie.detalle.hojas | safe}}</p> <!-- Imagen de Hojas si la hay -->
+        <p><strong>Flores: </strong>{{ especie.detalle.flores | safe}}</p> <!-- Imagen de Flores si la hay -->
+        <p><strong>Frutos: </strong>{{ especie.detalle.frutos | safe}}</p> <!-- Imagen de Frutos si la hay -->
+        <p><strong>Semillas y Cultivo: </strong>{{ especie.detalle.semillas | safe}}</p> <!-- Imagen de Semillas si la hay -->
+        <p><strong>Biogeografía (Origen, distribución, hábitat y condiciones ambientales): </strong>{{ especie.detalle.biogeografia | safe}}</p> <!-- Imagen de Semillas si la hay -->
+        <p><strong>Importancia: </strong>{{ especie.detalle.importancia | safe}}</p> <!-- Imagen de Semillas si la hay -->
+    </div>
+    <div>
+        <h2>Enlaces de Interes</h2>
+        {% for url in especie.urls.all %}
+            <p>{{ url.get_tipo_display }}</p>
+            <a href="{{ url.url }}" target="_blank" rel="noopener noreferrer">{{ url.url }}</a>
+            {% empty %}
+                <p>Aun no hay enlaces para mostrar</p>
+        {% endfor %}
+    </div>
+{% endblock contenido %}

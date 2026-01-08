@@ -1,0 +1,36 @@
+<div class="card-body">
+    <form method="get" class="row align-items-center">
+        <div class="col-md-3">
+            <select name="tipo" class="form-select text-dark">
+                <option value="" disabled {% if not tipo %}selected{% endif %} hidden>
+                    Tipo
+                </option>
+                {% for key, valor_tipo in TIPO_CHOICES %}
+                    <option value="{{ key }}" {% if key == tipo %}selected{% endif %}>
+                        {{ valor_tipo }}
+                    </option>
+                {% endfor %}|
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="estado" class="form-select text-dark">
+                <option value="" disabled {% if not estado %}selected{% endif %} hidden>
+                    Estado Conservación
+                </option>
+                {% for key, valor_estado in ESTADO_CONSERVACION_CHOICES %}
+                    <option value="{{ key }}" {% if key == estado %}selected{% endif %}>
+                        {{ key }} - {{ valor_estado }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2 text-end d-flex align-items-center">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>            
+        </div>
+        <div class="col-md-2 text-end d-flex align-items-center">
+            {% if query or tipo or estado %}
+                <a href="{{ request.path }}" class="btn btn-sm btn-outline-secondary w-100 p-2">Limpiar</a>
+            {% endif %}
+        </div>
+    </form>
+</div>

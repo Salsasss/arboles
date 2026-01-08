@@ -1,0 +1,20 @@
+# Entorno Virtual
+.venv
+
+# Archivos de python compilados
+__pycache__/
+/__pycache__/
+*$py.class
+
+# Variables de Entorno
+*.env
+
+# Dump de la DB
+data.json
+
+# Archivos de logs
+*.log
+
+# Archivos de Django migrations cache
+**/migrations/__pycache__/
+*.pyc

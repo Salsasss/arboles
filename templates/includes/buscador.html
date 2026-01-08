@@ -1,0 +1,15 @@
+<form class="search-box input-group mx-auto" method="GET" style="max-width: 600px;">
+    <span class="input-group-text bg-light border-end-0 rounded-start-pill ps-3 text-muted">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </span>
+
+    <input
+        type="text"
+        class="form-control bg-light border-start-0 shadow-none text-dark"
+        placeholder="Buscar por nombre, especie, familia, género..."
+        name="query"
+        value="{{ query | default:'' }}"
+    />
+
+    <button type="submit" class="btn btn-primary rounded-end-pill px-4 fw-bold">Buscar</button>
+</form>

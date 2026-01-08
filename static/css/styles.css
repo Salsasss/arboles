@@ -1,0 +1,14 @@
+.main {
+    scrollbar-gutter: stable !important;
+}
+
+.nav-pills .nav-link {
+    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco semitransparente */
+    transform: translateX(2px); /* Pequeño desplazamiento a la derecha */
+    color: #fff !important;
+}

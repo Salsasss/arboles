@@ -1,0 +1,60 @@
+{% load static %}
+
+<div class="d-flex flex-column flex-shrink-0 p-2 text-white bg-dark sidebar-container" style="width: 200px; height: 100vh; position: sticky; top: 0;">
+    <a href="{% url 'home' %}" class="d-flex text-decoration-none justify-content-center">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" style="width: 80px; height: auto;" class="img-fluid">
+    </a>
+
+    <hr class="text-primary"> <!-- Menu Principal -->
+
+    <ul class="nav nav-pills flex-column gap-3">
+        <li class="nav-item">
+            <a href="{% url 'public:catalogo_especies' %}" class="nav-link text-white d-flex align-items-center gap-3" aria-current="page">
+                <i class="fa-solid fa-tree fa-lg w-25 text-center"></i> <span>Especies</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'public:galeria' %}" class="nav-link text-white d-flex align-items-center gap-3">
+                <i class="fa-solid fa-images fa-lg w-25 text-center"></i> <span>Galería</span>
+            </a>
+        </li>        
+        <li class="nav-item">
+            <a href="#" class="nav-link text-white d-flex align-items-center gap-3">
+                <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Mapa</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link text-white d-flex align-items-center gap-3">
+                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Mapa Satelital</span>
+            </a>
+        </li>
+    </ul>
+
+    <hr class="text-primary"> <!-- Menu de Opciones -->    
+
+    <div class="mt-auto">
+        <ul class="nav nav-pills flex-column gap-3">
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center gap-3 hover-light">
+                    <i class="fa-solid fa-user w-25 text-center"></i> <span>Perfil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center gap-3 hover-light">
+                    <i class="fa-solid fa-circle-question w-25 text-center"></i> <span>Soporte</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center gap-3 hover-light">
+                    <i class="fa-solid fa-gear w-25 text-center"></i> <span>Configuración</span>
+                </a>
+            </li>
+        </ul>        
+
+        <hr class="text-primary my-2">
+
+        <div class="text-center">
+            <small class="opacity-50" style="font-size: 0.7rem;">© 2026 Catálogo de Árboles</small>
+        </div>
+    </div>
+</div>
