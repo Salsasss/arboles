@@ -1,18 +1,23 @@
 <div class="card-body">
-    <form method="get" class="row align-items-center">
-        <div class="col-md-3">
+    <form method="get" class="row align-items-center" id="buscarForm">        
+        <div class="col-xl-2">
             <select name="tipo" class="form-select text-dark">
-                <option value="" disabled {% if not tipo %}selected{% endif %} hidden>
-                    Tipo
+                 <option value="" disabled {% if not tipo %}selected{% endif %} hidden>
+                    Tipo Especie
                 </option>
                 {% for key, valor_tipo in TIPO_CHOICES %}
                     <option value="{{ key }}" {% if key == tipo %}selected{% endif %}>
                         {{ valor_tipo }}
                     </option>
-                {% endfor %}|
+                {% endfor %}
             </select>
         </div>
-        <div class="col-md-3">
+
+        {% if request.path == '/especies/galeria' %}
+            {% include "includes/filtros_galeria.html" %}
+        {% endif %}
+
+        <div class="col-xl-3">
             <select name="estado" class="form-select text-dark">
                 <option value="" disabled {% if not estado %}selected{% endif %} hidden>
                     Estado Conservación
@@ -24,11 +29,12 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="col-md-2 text-end d-flex align-items-center">
+
+        <div class="col-xl-1 text-end d-flex align-items-center">
             <button type="submit" class="btn btn-primary w-100">Filtrar</button>            
         </div>
-        <div class="col-md-2 text-end d-flex align-items-center">
-            {% if query or tipo or estado %}
+        <div class="col-xl-1 text-end d-flex align-items-center">
+            {% if query or tipo or especie_buscar or categoria or estado %}
                 <a href="{{ request.path }}" class="btn btn-sm btn-outline-secondary w-100 p-2">Limpiar</a>
             {% endif %}
         </div>

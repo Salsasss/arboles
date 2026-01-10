@@ -9,34 +9,50 @@
 
     <ul class="nav nav-pills flex-column gap-3">
         <li class="nav-item">
-            <a href="{% url 'public:catalogo_especies' %}" class="nav-link text-white d-flex align-items-center gap-3" aria-current="page">
+            <a href="{% url 'public:catalogo_especies' %}"
+                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:catalogo_especies' %}active{% endif %}">
                 <i class="fa-solid fa-tree fa-lg w-25 text-center"></i> <span>Especies</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{% url 'public:galeria' %}" class="nav-link text-white d-flex align-items-center gap-3">
+            <a href="{% url 'public:galeria' %}"
+                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:galeria' %}active{% endif %}">
                 <i class="fa-solid fa-images fa-lg w-25 text-center"></i> <span>Galería</span>
             </a>
         </li>        
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center gap-3">
+            <a href="#"
+                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == '' %}active{% endif %}">
                 <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Mapa</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center gap-3">
-                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Mapa Satelital</span>
+            <a href="#"
+                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == '' %}active{% endif %}">
+                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Evolución Masa Arbórea</span>
             </a>
         </li>
     </ul>
 
     <hr class="text-primary"> <!-- Menu de Opciones -->    
 
-    <div class="mt-auto">
-        <ul class="nav nav-pills flex-column gap-3">
+    <ul class="nav nav-pills flex-column gap-3">
+        {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN" %}
             <li class="nav-item">
-                <a href="#" class="nav-link text-white d-flex align-items-center gap-3 hover-light">
-                    <i class="fa-solid fa-user w-25 text-center"></i> <span>Perfil</span>
+                <a href="{% url 'panel:mis_especies' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mis_especies' %}active{% endif %}">
+                    <i class="fa-solid fa-tree fa-lg w-25 text-center"></i> <span>Mis Especies</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+    <div class="mt-auto">
+        <ul class="nav nav-pills flex-column gap-3 hover-light">
+            <li class="nav-item">
+                <a href="{% if not request.user.is_authenticated %} {% url 'login' %} {% else %} {% endif %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
+                    <i class="fa-solid fa-user w-25 text-center"></i> <span> {% if not request.user.is_authenticated %} Iniciar Sesión {% else %} {{ request.user.get_full_name | default:request.user.username }} {% endif %} </span>
                 </a>
             </li>
             <li class="nav-item">
@@ -49,9 +65,20 @@
                     <i class="fa-solid fa-gear w-25 text-center"></i> <span>Configuración</span>
                 </a>
             </li>
-        </ul>        
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <form action="{% url 'logout' %}" method="POST" class="w-100">
+                        {% csrf_token %}
+                        <button type="submit"
+                            class="nav-link text-white d-flex align-items-center gap-3 w-100 text-nowrap">
+                            <i class="fa-solid fa-gear w-25 text-center"></i> <span>Cerrar Sesión</span>
+                        </button>
+                    </form>
+                </li>
+            {% endif %}
+        </ul>
 
-        <hr class="text-primary my-2">
+        <hr class="text-primary my-3">
 
         <div class="text-center">
             <small class="opacity-50" style="font-size: 0.7rem;">© 2026 Catálogo de Árboles</small>

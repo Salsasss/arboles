@@ -1,0 +1,25 @@
+<div class="col-xl-2">
+    <select name="especie_buscar" class="form-select text-dark">
+        <option value="" disabled {% if not especie_buscar %}selected{% endif %} hidden>
+            Especie
+        </option>
+        {% for key, valor_especie in ESPECIE_BUSCAR_CHOICES %}
+            <option value="{{ key }}" {% if key == especie_buscar %}selected{% endif %}>
+                {{ valor_especie }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="col-xl-2">
+    <select name="categoria" class="form-select text-dark">
+        <option value="" disabled {% if not categoria %}selected{% endif %} hidden>
+            Categoría Imagen
+        </option>
+        {% for key, valor_categoria in CATEGORIAS_CHOICES %}
+            <option value="{{ key }}" {% if key == categoria %}selected{% endif %}>
+                {{ valor_categoria }}
+            </option>
+        {% endfor %}
+    </select>
+</div>

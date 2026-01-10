@@ -1,4 +1,9 @@
 import os
+from django.db.models import Aggregate, Count
+
+from .models import Especie
+
+# Especie
 
 TIPO_CHOICES = [
     ('ARBOL', 'Árbol'),
@@ -17,7 +22,26 @@ ESTADO_CONSERVACION_CHOICES = [
     ('EX', 'Extinto (EX)'),
 ]
 
+# Galeria
+
+CATEGORIAS_CHOICES = [
+    ('GENERAL', 'Vista General'),
+    ('CORTEZA', 'Corteza'),
+    ('HOJAS', 'Hoja / Folíolo'),
+    ('FLORES', 'Flor / Pétalos'),
+    ('FRUTO', 'Fruto / Piña'),
+    ('SEMILLA', 'Semilla'),
+    ('OTRO', 'Otro'),
+]
+
 def ruta_galeria(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = f"{instance.tipo}_{filename}"
-    return os.path.join('galeria', instance.especie.slug, filename)
+    # 1. Recuperamos la extensión original del archivo (ej: .jpg)
+    base, extension = os.path.splitext(filename)
+    
+    Galeria = instance.__class__
+    query = Galeria.objects.filter(especie=instance.especie, categoria=instance.categoria)
+    total = query.count()
+    
+    img = f"{str(instance.categoria).lower()}_{total + 1}{extension}"
+    
+    return os.path.join('galeria', instance.especie.slug, img)

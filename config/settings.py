@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'apps.especies',
     'apps.mapa',
     'apps.perfiles',
@@ -117,14 +119,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
@@ -134,7 +135,15 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"    
 ]
 
-###
+#LOGIN Y LOGOUT
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'public:catalogo_especies'
+
+# Session
+SESSION_COOKIE_AGE = 3600 # La conseción durará 1 hora, el default es 2 semanas
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False # La sesión morirá al cerrar el navegador
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Para el Usuario 
 AUTH_USER_MODEL = 'perfiles.Usuario'
@@ -152,3 +161,7 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+
+# Crispy Forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

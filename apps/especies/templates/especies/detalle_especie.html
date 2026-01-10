@@ -1,62 +1,287 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block titulo %}{{ especie.nombre_comun }}{% endblock titulo %}
+{% block titulo %}{{ especie.nombre_comun }} - Ficha Técnica {% endblock titulo %}
+
 {% block contenido %}
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="display-6 fw-bold text-primary opacity-100">
-                <i class="fas fa-tree me-2"></i> {{ especie.nombre_comun }}
-            </h1>
-            <p class="lead mb-0 text-dark"> {{ especie.nombre_cientifico }}
+    <div class="border-bottom pb-3 mb-4">
+        <div class="d-flex justify-content-between align-items-start flex-wrap">
+            <div>
+                <h1 class="display-5 fw-bold text-primary mb-0">
+                    <i class="fas fa-tree me-2"></i>{{ especie.nombre_comun }}
+                </h1>
+                <p class="fs-4 fst-italic mb-2">{{ especie.nombre_cientifico }}</p>
+                
+                <div class="d-flex gap-2">
+                    <span class="badge bg-success rounded-pill px-3">
+                        {{ especie.get_tipo_display }}
+                    </span>
+                    <span class="badge bg-info text-dark rounded-pill px-3">
+                        <i class="fas fa-globe-americas me-1"></i>
+                        {{ especie.get_estado_conservacion_display }}
+                    </span>
+                </div>
+            </div>
+
+            <a href="{% url 'public:catalogo_especies' %}" class="btn btn-outline-secondary mt-3 mt-md-0">
+                <i class="fas fa-arrow-left me-2"></i>Volver al Catálogo
+            </a>
         </div>
     </div>
 
-    <hr class="my-4">
+    <div class="row">
+        
+        <div class="col-lg-8">
+            
+            {% if especie.imagenes.exists %}
+            <div id="carouselEspecie" class="carousel slide mb-4 shadow rounded overflow-hidden" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for imagen in especie.imagenes.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ imagen.imagen.url }}" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="{{ imagen.titulo }}">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                                <p class="mb-0 small">{{ imagen.get_categoria_display }} - Foto por: {{ imagen.autor.get_full_name | default:imagen.autor.username }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boton Regresar -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselEspecie" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <!-- Boton Avanzar -->
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselEspecie" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+            {% endif %}
 
-    <div>
-        <h2>{{ especie.nombre_comun }}</h2>
-        <h3>{{ especie.nombre_cientifico }}</h3>
-        <div>
-            {% for imagen in especie.imagenes.all %}
-                <p>{{ imagen.titulo }} - {{ imagen.especie }}</p>
-                <div><img src="{{ imagen.imagen.url }}" alt="titulo" style="width: 500px;"></div>
-                <em>{{ imagen.get_tipo_display }} Subida por: {{ imagen.autor.get_full_name | default:imagen.autor.username }} {{ imagen.fecha_creacion }}</em>
-            {% endfor %}
+            <div class="card shadow-sm mb-4 border-0">
+                <div class="card-body">
+                    <h3 class="card-title h4 text-primary mb-3"> <i class="fas fa-align-left me-2"></i> Descripción General</h3>
+                    <div class="card-text text-dark">
+                        {{ especie.descripcion | safe }}
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="h4 text-primary mb-3">Morfología y Características</h3>
+
+            <div class="card mb-3 border-0 shadow-sm bg-light">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title text-success"><i class="fas fa-layer-group me-2"></i>Corteza</h5>
+                            <div class="card-text text-dark">{{ especie.detalle.corteza | safe | default:"No hay información disponible." }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 h-100">
+                        {% if imagen_corteza %}
+                            <img src="{{ imagen_corteza.imagen.url }}" 
+                                alt="Corteza de {{ especie.nombre_comun }}" 
+                                class="w-100 h-100 rounded-end" 
+                                style="object-fit: cover; min-height: 150px; display: block;">
+                        {% else %}
+                            <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
+                                <i class="fas fa-image fa-2x"></i>
+                                <span class="ms-2 small">Foto de Corteza</span>
+                            </div>
+                        {% endif %}                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0 shadow-sm bg-light">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title text-success"><i class="fas fa-leaf me-2"></i>Hojas</h5>
+                            <div class="card-text text-dark">{{ especie.detalle.hojas | safe | default:"No hay información disponible." }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 h-100">
+                        {% if imagen_hojas %}
+                            <img src="{{ imagen_hojas.imagen.url }}" 
+                                alt="Corteza de {{ especie.nombre_comun }}" 
+                                class="w-100 h-100 rounded-end" 
+                                style="object-fit: cover; min-height: 150px; display: block;">
+                        {% else %}
+                            <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
+                                <i class="fas fa-image fa-2x"></i>
+                                <span class="ms-2 small">Foto de Hojas</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0 shadow-sm bg-light">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title text-success"><i class="fas fa-spa me-2"></i>Flores</h5>
+                            <div class="card-text text-dark">{{ especie.detalle.flores | safe | default:"No hay información disponible." }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 h-100">
+                        {% if imagen_flores %}
+                            <img src="{{ imagen_flores.imagen.url }}"
+                                alt="Corteza de {{ especie.nombre_comun }}" 
+                                class="w-100 h-100 rounded-end" 
+                                style="object-fit: cover; min-height: 150px; display: block;">
+                        {% else %}
+                            <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
+                                <i class="fas fa-image fa-2x"></i>
+                                <span class="ms-2 small">Foto de Flores</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0 shadow-sm bg-light">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title text-success"><i class="fas fa-apple-alt me-2"></i>Frutos</h5>
+                            <div class="card-text text-dark">{{ especie.detalle.frutos | safe | default:"No hay información disponible." }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 h-100">
+                        {% if imagen_fruto %}
+                            <img src="{{ imagen_fruto.imagen.url }}" 
+                                alt="Corteza de {{ especie.nombre_comun }}" 
+                                class="w-100 h-100 rounded-end" 
+                                style="object-fit: cover; min-height: 150px; display: block;">
+                        {% else %}
+                            <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
+                                <i class="fas fa-image fa-2x"></i>
+                                <span class="ms-2 small">Foto de Frutos</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3 border-0 shadow-sm bg-light">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title text-success"><i class="fas fa-seedling me-2"></i>Semillas y Cultivo</h5>
+                            <div class="card-text text-dark">{{ especie.detalle.semillas | safe | default:"No hay información disponible." }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 h-100">
+                        {% if imagen_semilla %}
+                            <img src="{{ imagen_semilla.imagen.url }}" 
+                                alt="Corteza de {{ especie.nombre_comun }}" 
+                                class="w-100 h-100 rounded-end" 
+                                style="object-fit: cover; min-height: 150px; display: block;">
+                        {% else %}
+                            <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
+                                <i class="fas fa-image fa-2x"></i>
+                                <span class="ms-2 small">Foto de Semillas</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-4 shadow-sm border-0" role="alert">
+                <h4 class="alert-heading"><i class="fas fa-map-marked-alt me-2"></i>Biogeografía y Hábitat</h4>
+                <hr>
+                <div class="mb-0 text-dark">{{ especie.detalle.biogeografia | safe }}</div>
+            </div>
+            
+            <div class="card border-primary mb-3 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-star me-2"></i> <span class="fw-bold">Importancia Ecológica y Económica</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-text text-dark">{{ especie.detalle.importancia | safe }}</div>
+                </div>
+            </div>
+
+        </div> <div class="col-lg-4">
+            
+            <div class="card mb-4 shadow border-0">
+                <div class="card-header bg-white fw-bold text-primary border-bottom-0 pt-3">
+                    <i class="fas fa-ruler-combined me-2"></i> <span class="fw-bold">Dimensiones Máximas</span>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="row text-center mt-2">
+                        <div class="col-6 border-end">
+                            <h3 class="text-dark mb-0">{{ especie.altura_maxima | default:'?' }} <small class="fs-6">m</small></h3>
+                            <small class="text-uppercase" style="font-size: 0.75rem;">Altura</small>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="text-dark mb-0">{{ especie.diametro_maximo | default:'?' }} <small class="fs-6">cm</small></h3>
+                            <small class="text-uppercase" style="font-size: 0.75rem;">Diámetro</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow border-0">
+                <div class="card-header bg-success text-white">
+                    <i class="fw-bold fas fa-sitemap me-2"></i> <span class="fw-bold">Clasificación Taxonómica</span>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-dark small">Reino</span>
+                        <span>{{ especie.taxonomia.reino }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-dark small">División</span>
+                        <span>{{ especie.taxonomia.division }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-dark small">Clase</span>
+                        <span>{{ especie.taxonomia.clase }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-dark small">Orden</span>
+                        <span>{{ especie.taxonomia.orden }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-dark small">Familia</span>
+                        <span class="fst-italic">{{ especie.taxonomia.familia }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-dark small">Género</span>
+                        <span class="fst-italic">{{ especie.taxonomia.genero }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                        <span class="fw-bold text-success small">Especie</span>
+                        <span class="fw-bold text-dark">{{ especie.nombre_cientifico }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card mb-4 shadow-sm border-0">
+                <div class="card-header bg-white">
+                    <i class="fas fa-link me-2 text-dark"></i> <span class="text-dark fw-bold">Enlaces de Interés</span>
+                </div>
+                <div class="list-group list-group-flush">
+                    {% for url in especie.urls.all %} <a href="{{ url.url }}" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong class="d-block text-primary">{{ url.get_tipo_display }}</strong>
+                                <small class="text-dark">{{ url.url }}</small>
+                            </div>
+                            <i class="fas fa-external-link-alt text-dark small"></i>
+                        </a>
+                    {% empty %}
+                        <div class="p-3 text-center text-dark">
+                            No hay referencias registradas.
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="card-body text-end">
+                <a href="{% url 'public:galeria' %}?especie_buscar={{ especie.id }}" class="btn btn-secondary">
+                    <i class="fas fa-images me-1"></i> Ver Galería
+                </a>
+            </div>
         </div>
-        <p>{{ especie.get_tipo_display }}</p>
-        <p>{{ especie.get_estado_conservacion_display }}</p>
-        <p>{{ especie.diametro_maximo }} cm</p>
-        <p>{{ especie.altura_maxima }} m</p>
-        {{ especie.descripcion | safe}}
-    </div>
-    <div>
-        <h2>Taxonomía</h2>
-        <p><strong>Reino: </strong>{{ especie.taxonomia.reino }}</p>
-        <p><strong>División: </strong>{{ especie.taxonomia.division }}</p>
-        <p><strong>Clase: </strong>{{ especie.taxonomia.clase }}</p>
-        <p><strong>Subclase: </strong>{{ especie.taxonomia.subclase }}</p>
-        <p><strong>Orden: </strong>{{ especie.taxonomia.orden }}</p>
-        <p><strong>Familia: </strong>{{ especie.taxonomia.familia }}</p>
-        <p><strong>Genero: </strong>{{ especie.taxonomia.genero }}</p>
-        <p><strong>Especie: </strong>{{ especie.nombre_cientifico }}</p>
-    </div>
-    <div>
-        <h2>Descripción Detallada</h2>
-        <p><strong>Corteza: </strong>{{ especie.detalle.corteza | safe}}</p> <!-- Imagen de Corteza si la hay -->
-        <p><strong>Hojas: </strong>{{ especie.detalle.hojas | safe}}</p> <!-- Imagen de Hojas si la hay -->
-        <p><strong>Flores: </strong>{{ especie.detalle.flores | safe}}</p> <!-- Imagen de Flores si la hay -->
-        <p><strong>Frutos: </strong>{{ especie.detalle.frutos | safe}}</p> <!-- Imagen de Frutos si la hay -->
-        <p><strong>Semillas y Cultivo: </strong>{{ especie.detalle.semillas | safe}}</p> <!-- Imagen de Semillas si la hay -->
-        <p><strong>Biogeografía (Origen, distribución, hábitat y condiciones ambientales): </strong>{{ especie.detalle.biogeografia | safe}}</p> <!-- Imagen de Semillas si la hay -->
-        <p><strong>Importancia: </strong>{{ especie.detalle.importancia | safe}}</p> <!-- Imagen de Semillas si la hay -->
-    </div>
-    <div>
-        <h2>Enlaces de Interes</h2>
-        {% for url in especie.urls.all %}
-            <p>{{ url.get_tipo_display }}</p>
-            <a href="{{ url.url }}" target="_blank" rel="noopener noreferrer">{{ url.url }}</a>
-            {% empty %}
-                <p>Aun no hay enlaces para mostrar</p>
-        {% endfor %}
     </div>
 {% endblock contenido %}

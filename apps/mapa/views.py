@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+# Historial Masa Arborea
+class HistorialListView(ListView):
+    pass

@@ -1,20 +1,12 @@
 from django.db import models
 
 from ..models import Especie
-from ..utils import ruta_galeria
+from ..utils import ruta_galeria, CATEGORIAS_CHOICES
 from apps.perfiles.models import Usuario
 
-TIPO_CHOICES = [
-    ('GENERAL', 'Vista General'),
-    ('TRONCO', 'Tronco'),
-    ('CORTEZA', 'Corteza'),
-    ('HOJA', 'Hoja / Folíolo'),
-    ('RAMAS', 'Ramas'),
-    ('FOLLAJE', 'Follaje (Copa)'),
-    ('FRUTO', 'Fruto / Piña'),
-    ('SEMILLA', 'Semilla'),
-    ('OTRO', 'Otro'),
-]
+class GaleriaManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(especie__is_active=True)
 
 class Galeria(models.Model):
     especie = models.ForeignKey(
@@ -44,9 +36,9 @@ class Galeria(models.Model):
         blank=True
     )
     
-    tipo = models.CharField(
+    categoria = models.CharField(
         max_length=20,
-        choices=TIPO_CHOICES,
+        choices=CATEGORIAS_CHOICES,
         default='GENERAL',
         verbose_name="Categoría de la imagen"
     )
@@ -54,6 +46,10 @@ class Galeria(models.Model):
     fecha_creacion = models.DateTimeField(
         auto_now=True
     )
+    
+    # Para que solo entrege las imagenes de especies activas
+    objects = GaleriaManager()
+    all_objects = models.Manager()
     
     class Meta:
         verbose_name = "Galería"

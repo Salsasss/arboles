@@ -2,14 +2,13 @@
 
 {% load static %}
 
-{% block titulo %}Catálogo de Especies{% endblock titulo %}
+{% block titulo %}Mis Especies{% endblock titulo %}
 {% block contenido %}
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-between align-items-center">
         <div>
             <h1 class="display-6 fw-bold text-primary opacity-100">
-                <i class="fas fa-tree me-2"></i>Catálogo de Especies
+                <i class="fas fa-tree me-2"></i>Mis Especies
             </h1>
-            <p class="lead mb-0 text-dark">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
         </div>
     </div>
 
@@ -20,13 +19,15 @@
 
     <hr class="my-4">
 
+    <a href="{% url 'panel:crear_especie' %}" class="btn btn-primary mb-4">Registrar Nueva Especie</a>
+    
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {% for especie in especies %}
             <div class="col">
                 <div class="card h-100 shadow border-0 hover-shadow transition-300">
                     <div class="position-relative">
                         {% if especie.imagenes.first %}
-                            <img src="{{ especie.imagenes.first.imagen.url }}" 
+                            <img src="{{ especie.imagenes.first.imagen.url }}"
                                  class="card-img-top" 
                                  alt="{{ especie.nombre_comun }}" 
                                  style="height: 220px; object-fit: cover;">
@@ -46,17 +47,16 @@
                     </div>
 
                     <div class="card-body d-flex flex-column">
-                        <a href="{% url 'public:detalle_especie' slug=especie.slug %}" class="text-decoration-none flex-grow-1">
-                            <h5 class="card-title fw-bold text-dark mb-1">
-                                {{ especie.nombre_comun }}
-                            </h5>
-                            <h6 class="card-subtitle fst-italic mb-3 border-bottom pb-2">
-                                {{ especie.nombre_cientifico }}
-                            </h6>
-                            <div class="text-dark">
-                                {{ especie.descripcion | safe | truncatewords:15 }}
-                            </div>
-                        </a>
+                        <h5 class="card-title fw-bold text-dark mb-1">
+                            {{ especie.nombre_comun }}
+                        </h5>
+                        <h6 class="card-subtitle fst-italic mb-3 border-bottom pb-2">
+                            {{ especie.nombre_cientifico }}
+                        </h6>
+
+                        <div class="text-primary flex-grow-1 text-dark">
+                            {{ especie.descripcion | safe | truncatewords:15 }}
+                        </div>
 
                         <div class="bg-light rounded p-2 mb-3 d-flex justify-content-around small">
                             <div title="Altura Máxima">
@@ -68,9 +68,13 @@
                                 <strong class="text-dark">{{ especie.diametro_maximo | default:'?' }} cm</strong>
                             </div>
                         </div>
+
                         <div class="d-flex flex-column flex-xl-row gap-2">
-                            <a href="{% url 'public:galeria' %}?especie_buscar={{ especie.id }}" class="btn btn-outline-secondary btn-sm flex-fill">
-                                <i class="fas fa-images me-1"></i> Ver Galería
+                            <a href="{% url 'panel:editar_especie' slug=especie.slug %}" class="btn btn-primary btn-sm flex-fill">
+                                <i class="fas fa-eye me-1"></i> Editar
+                            </a>
+                            <a href="{% url 'panel:eliminar_especie' slug=especie.slug %}" class="btn btn-secondary btn-sm flex-fill">
+                                <i class="fas fa-images me-1"></i> Eliminar
                             </a>
                         </div>
                     </div>

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LoginView, LogoutView
 
 from apps.perfiles.views import redirect_home
 
@@ -25,6 +26,9 @@ urlpatterns = [
     path('', redirect_home, name="home"),
     path('admin/', admin.site.urls),
     path('especies/', include('apps.especies.urls.public')),
+    path('panel/', include('apps.especies.urls.panel')),
+    path('login/', LoginView.as_view(), name="login"),
+    path('logout/', LogoutView.as_view(), name="logout"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

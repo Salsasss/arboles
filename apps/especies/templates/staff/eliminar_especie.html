@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %} {% block titulo %}Eliminar Especie{% endblock titulo %}
+
+{% block contenido %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-danger text-white text-center py-4">
+                    <h3 class="fw-bold mb-0">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Atención
+                    </h3>
+                </div>
+
+                <div class="card-body p-5 text-center">
+                    <div class="mb-4 text-danger">
+                        <i class="fas fa-trash-alt fa-4x"></i>
+                    </div>
+
+                    <h4 class="mb-3">¿Eliminar Especie?</h4>
+                    
+                    <p>Estás a punto de eliminar permanentemente la especie:</p>
+                    <h5 class="fw-bold text-dark mb-4">{{ especie }}</h5>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-danger btn-lg rounded-pill shadow-sm">
+                                <i class="fas fa-trash-alt me-2"></i> Sí, eliminar definitivamente
+                            </button>
+                            
+                            <a href="{% url 'panel:mis_especies' %}" class="btn btn-outline-secondary btn-lg rounded-pill border-0">
+                                <i class="fas fa-times me-2"></i> No, cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

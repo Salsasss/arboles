@@ -19,11 +19,15 @@ class UrlInline(admin.TabularInline):
 
 @admin.register(Especie)
 class EspecieAdmin(admin.ModelAdmin):
-    list_display = ('nombre_comun', 'nombre_cientifico', 'tipo', 'estado_conservacion', 'diametro_maximo', 'altura_maxima', 'slug')
-    list_filter = ('tipo', 'estado_conservacion')
+    list_display = ('nombre_comun', 'nombre_cientifico', 'tipo', 'estado_conservacion', 'diametro_maximo', 'altura_maxima', 'slug', 'is_active')
+    list_filter = ('tipo', 'estado_conservacion', 'is_active')
     search_fields = ('nombre_comun', 'nombre_cientifico')
     ordering = ('nombre_cientifico', )
+    #list_editable = ['is_active']
     inlines = [TaxonomiaInline, EspecieDetalleInline, UrlInline]
+    
+    def get_queryset(self, request): # Traer todas Activas e Inactivas
+        return self.model.all_objects.get_queryset()
     
 @admin.register(EspecieDetalle)
 class EspecieDetalleAdmin(admin.ModelAdmin):
@@ -41,10 +45,13 @@ class TaxonomiaAdmin(admin.ModelAdmin):
             
 @admin.register(Galeria)
 class GaleriaAdmin(admin.ModelAdmin):
-    list_display = ('especie', 'autor', 'imagen', 'titulo', 'tipo', 'fecha_creacion')
-    list_filter = ('especie', 'autor', 'tipo')
+    list_display = ('especie', 'autor', 'imagen', 'titulo', 'categoria', 'fecha_creacion')
+    list_filter = ('especie', 'autor', 'categoria')
     search_fields = ('titulo', )
     ordering = ('fecha_creacion', )
+    
+    def get_queryset(self, request): # Traer todas Activas e Inactivas
+        return self.model.all_objects.get_queryset()
     
 @admin.register(Url)
 class UrlAdmin(admin.ModelAdmin):

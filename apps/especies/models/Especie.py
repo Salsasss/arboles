@@ -21,6 +21,10 @@ ESTADO_CONSERVACION_CHOICES = [
     ('EX', 'Extinto (EX)'),
 ]
 
+class EspecieManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
 class Especie(models.Model):
     nombre_comun = models.CharField(
         max_length=150,
@@ -90,6 +94,15 @@ class Especie(models.Model):
         verbose_name="Autor"
     )
     
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="Activa",
+    )
+    
+    # Para que solo entrege las especies activas
+    objects = EspecieManager()
+    all_objects = models.Manager()
+    
     class Meta:
         verbose_name = "Especie"
         verbose_name_plural = "Especies"
@@ -98,8 +111,13 @@ class Especie(models.Model):
     def __str__(self):
         return f'{self.nombre_cientifico} - {self.nombre_comun}'
     
-    # Método para autogenerar el slug si no se escribe manual
+    # Generar el slug automáticamente
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.nombre_cientifico)
         super().save(*args, **kwargs)
+    
+    # No se elimina solo se desactiva la especie
+    def soft_delete(self):
+        self.is_active = False
+        self.save()
