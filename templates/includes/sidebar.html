@@ -23,13 +23,13 @@
         <li class="nav-item">
             <a href="#"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == '' %}active{% endif %}">
-                <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Mapa</span>
+                <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Mapa Masa Arbórea</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#"
-                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == '' %}active{% endif %}">
-                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Evolución Masa Arbórea</span>
+            <a href="{% url 'historial' %}"
+                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'historial' %}active{% endif %}">
+                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Historia Masa Arbórea</span>
             </a>
         </li>
     </ul>

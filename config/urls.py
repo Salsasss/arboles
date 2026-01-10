@@ -26,6 +26,7 @@ urlpatterns = [
     path('', redirect_home, name="home"),
     path('admin/', admin.site.urls),
     path('especies/', include('apps.especies.urls.public')),
+    path('historial/', include('apps.mapa.urls')),
     path('panel/', include('apps.especies.urls.panel')),
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),

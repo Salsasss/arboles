@@ -17,3 +17,16 @@
 .form-control, .form-select {
     color: black !important;
 }
+
+/* Slider del Historial de la masa arborea (thumb y track) */
+.custom-range::-webkit-slider-thumb {
+    background: #198754; /* Verde Success de Bootstrap */
+}
+
+.custom-range::-moz-range-thumb {
+    background: #198754;
+}
+
+.custom-range::-webkit-slider-runnable-track {
+    background-color: #d1e7dd; /* Verde clarito */
+}

@@ -1,10 +1,6 @@
 import os
-from django.db.models import Aggregate, Count
-
-from .models import Especie
 
 # Especie
-
 TIPO_CHOICES = [
     ('ARBOL', 'Árbol'),
     ('PALMERA', 'Palmera'),
@@ -23,7 +19,6 @@ ESTADO_CONSERVACION_CHOICES = [
 ]
 
 # Galeria
-
 CATEGORIAS_CHOICES = [
     ('GENERAL', 'Vista General'),
     ('CORTEZA', 'Corteza'),

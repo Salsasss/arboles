@@ -45,7 +45,7 @@ class TaxonomiaAdmin(admin.ModelAdmin):
             
 @admin.register(Galeria)
 class GaleriaAdmin(admin.ModelAdmin):
-    list_display = ('especie', 'autor', 'imagen', 'titulo', 'categoria', 'fecha_creacion')
+    list_display = ('especie', 'imagen', 'titulo', 'categoria', 'fecha_creacion', 'autor')
     list_filter = ('especie', 'autor', 'categoria')
     search_fields = ('titulo', )
     ordering = ('fecha_creacion', )

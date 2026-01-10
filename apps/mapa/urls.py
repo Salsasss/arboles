@@ -1,6 +1,8 @@
 from django.urls import path
 
+from .views import HistorialListView
+
 urlpatterns = [
     # Historial
-    #path('historial', public.GaleriaListView.as_view(), name="historial"),
+    path('historial', HistorialListView.as_view(), name="historial"),
 ]
