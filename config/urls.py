@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 
 from apps.perfiles.views import redirect_home
+from apps.perfiles.views import RegisterCreateView
 
 urlpatterns = [
     path('', redirect_home, name="home"),
@@ -30,6 +31,7 @@ urlpatterns = [
     path('panel/', include('apps.especies.urls.panel')),
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
+    path('registrar/', RegisterCreateView.as_view(), name="registrar"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

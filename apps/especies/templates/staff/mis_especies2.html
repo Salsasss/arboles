@@ -71,41 +71,19 @@
                             </div>
                         </div>
 
-                        <div class="dropdown"> <!-- Menú Desplegable -->
-                            <button class="btn btn-sm btn-outline-primary w-100 dropdown-toggle d-flex justify-content-between align-items-center" 
-                                    type="button" 
-                                    data-bs-toggle="dropdown" 
-                                    aria-expanded="false">
-                                <span><i class="fas fa-bolt me-2"></i>Acciones</span>
-                            </button>
-                            <ul class="dropdown-menu w-100 shadow border-0">                            
-                                {% if not especie.is_active %}
-                                    <li>
-                                        <a class="dropdown-item py-2 text-success fw-bold" href="{% url 'panel:activar_especie' slug=especie.slug %}">
-                                            <i class="fas fa-circle-check me-2"></i> Activar Especie
-                                        </a>
-                                    </li>
-                                {% else %}
-                                    <li>
-                                        <a class="dropdown-item py-2" href="#"> 
-                                            <i class="fas fa-link me-2 text-primary"></i> Ver Enlaces
-                                        </a>
-                                    </li>
-                                    
-                                    <li><hr class="dropdown-divider"></li>
-
-                                    <li>
-                                        <a class="dropdown-item py-2" href="{% url 'panel:editar_especie' slug=especie.slug %}">
-                                            <i class="fas fa-pen-to-square me-2"></i> Editar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item py-2 text-danger fw-bold" href="{% url 'panel:eliminar_especie' slug=especie.slug %}">
-                                            <i class="fas fa-trash-alt me-2"></i> Desactivar
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
+                        <div class="d-flex flex-column flex-xl-row gap-2">
+                            {% if not especie.is_active %} <!-- Si esta Inactiva -> Boton Activar -->
+                                <a href="{% url 'panel:activar_especie' slug=especie.slug %}" class="btn btn-primary btn-sm flex-fill">
+                                    <i class="fas fa-circle-check me-1"></i> Activar
+                                </a>
+                            {% else %} <!-- Si esta Activa -> Botones Editar y Eliminar -->
+                                <a href="{% url 'panel:editar_especie' slug=especie.slug %}" class="btn btn-primary btn-sm flex-fill">
+                                    <i class="fas fa-pen-to-square me-1"></i> Editar
+                                </a>
+                                <a href="{% url 'panel:eliminar_especie' slug=especie.slug %}" class="btn btn-secondary btn-sm flex-fill">
+                                    <i class="fas fa-trash-alt me-1"></i> Desactivar
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

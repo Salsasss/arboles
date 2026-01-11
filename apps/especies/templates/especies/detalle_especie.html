@@ -38,7 +38,10 @@
                 <div class="carousel-inner">
                     {% for imagen in especie.imagenes.all %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{ imagen.imagen.url }}" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="{{ imagen.titulo }}">
+                            <a href="{{ imagen.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                                <img src="{{ imagen.imagen.url }}" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;" alt="{{ imagen.titulo }}">
+                            </a>
+                            
                             <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
                                 <p class="mb-0 small">{{ imagen.get_categoria_display }} - Foto por: {{ imagen.autor.get_full_name | default:imagen.autor.username }}</p>
                             </div>

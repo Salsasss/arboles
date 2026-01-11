@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock custom_styles %}
+
+{% block titulo %}Registrarse{% endblock titulo %}
+{% block contenido %}
+    <form method="POST" class="login-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-submit">Guardar</button>
+    </form>
+    <p class="form-footer">¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia Sesión aqui</a></p>
+{% endblock contenido %}

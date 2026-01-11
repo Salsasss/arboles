@@ -18,6 +18,11 @@ ESTADO_CONSERVACION_CHOICES = [
     ('EX', 'Extinto (EX)'),
 ]
 
+ESTADO_ESPECIE = [
+    ('1', "Activo"),
+    ('0', "Inactivo"),
+]
+
 # Galeria
 CATEGORIAS_CHOICES = [
     ('GENERAL', 'Vista General'),

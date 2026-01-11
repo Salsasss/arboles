@@ -45,7 +45,7 @@ class Especie(models.Model):
         max_length=10,
         choices=TIPO_CHOICES,
         default='ARBOL',
-        verbose_name="Tipo de Ejemplar"
+        verbose_name="Tipo de Especie"
     )
     
     estado_conservacion = models.CharField(
@@ -99,9 +99,8 @@ class Especie(models.Model):
         verbose_name="Activa",
     )
     
-    # Para que solo entrege las especies activas
-    objects = EspecieManager()
-    all_objects = models.Manager()
+    objects = EspecieManager() # Solo entrega Especies activas -> Respeta el EspecieManager
+    all_objects = models.Manager() # Entrega Especies activas e inactivas
     
     class Meta:
         verbose_name = "Especie"

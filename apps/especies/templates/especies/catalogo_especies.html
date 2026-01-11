@@ -26,10 +26,12 @@
                 <div class="card h-100 shadow border-0 hover-shadow transition-300">
                     <div class="position-relative">
                         {% if especie.imagenes.first %}
-                            <img src="{{ especie.imagenes.first.imagen.url }}" 
-                                 class="card-img-top" 
+                            <a href="{{ especie.imagenes.first.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                                <img src="{{ especie.imagenes.first.imagen.url }}" 
+                                 class="card-img-top img-fluid" 
                                  alt="{{ especie.nombre_comun }}" 
                                  style="height: 220px; object-fit: cover;">
+                            </a>
                         {% else %}
                             <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
                                 <i class="fas fa-image fa-3x"></i>

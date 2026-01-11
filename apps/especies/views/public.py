@@ -129,7 +129,7 @@ class GaleriaListView(ListView):
         
         # Filtros
         context['TIPO_CHOICES'] = TIPO_CHOICES
-        context['ESPECIE_BUSCAR_CHOICES'] = Especie.objects.values_list('id', 'nombre_comun').order_by('nombre_comun') # HAcemos la consulta al momento para que no se desactualize
+        context['ESPECIE_BUSCAR_CHOICES'] = Especie.objects.values_list('id', 'nombre_comun').order_by('nombre_comun') # Hacemos la consulta al momento para que no se desactualize
         context['ESTADO_CONSERVACION_CHOICES'] = ESTADO_CONSERVACION_CHOICES
         context['CATEGORIAS_CHOICES'] = CATEGORIAS_CHOICES
         

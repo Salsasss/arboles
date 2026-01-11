@@ -13,7 +13,7 @@
             </select>
         </div>
 
-        {% if request.path == '/especies/galeria' %}
+        {% if request.resolver_match.view_name == 'public:galeria' or request.resolver_match.view_name == 'panel:mi_galeria' %}
             {% include "includes/filtros_galeria.html" %}
         {% endif %}
 
@@ -30,11 +30,26 @@
             </select>
         </div>
 
+        {% if request.resolver_match.view_name == 'panel:mis_especies' %}
+            <div class="col-xl-3">
+                <select name="estado_especie" class="form-select text-dark">
+                    <option value="" disabled {% if not estado_especie %}selected{% endif %} hidden>
+                        Estado
+                    </option>
+                    {% for key, valor_estado_especie in ESTADO_ESPECIE %}
+                        <option value="{{ key }}" {% if key == estado_especie %}selected{% endif %}>
+                            {{ valor_estado_especie }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+
         <div class="col-xl-1 text-end d-flex align-items-center">
             <button type="submit" class="btn btn-primary w-100">Filtrar</button>            
         </div>
         <div class="col-xl-1 text-end d-flex align-items-center">
-            {% if query or tipo or especie_buscar or categoria or estado %}
+            {% if query or tipo or especie_buscar or categoria or estado or estado_especie %}
                 <a href="{{ request.path }}" class="btn btn-sm btn-outline-secondary w-100 p-2">Limpiar</a>
             {% endif %}
         </div>

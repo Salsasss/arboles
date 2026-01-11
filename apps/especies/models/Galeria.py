@@ -29,13 +29,6 @@ class Galeria(models.Model):
         help_text="Sube una imagen de alta calidad."
     )
     
-    titulo = models.CharField(
-        max_length=255,
-        verbose_name="Titulo de la Imagen",
-        help_text="Nombra tu imagen.",
-        blank=True
-    )
-    
     categoria = models.CharField(
         max_length=20,
         choices=CATEGORIAS_CHOICES,
@@ -47,10 +40,12 @@ class Galeria(models.Model):
         auto_now=True
     )
     
-    # Para que solo entrege las imagenes de especies activas
-    objects = GaleriaManager()
-    all_objects = models.Manager()
+    objects = GaleriaManager() # Solo entrega imagenes de Especies activas -> Respeta el GaleriaManager
+    all_objects = models.Manager() # Entrega imagenes de Especies activas e inactivas
     
     class Meta:
         verbose_name = "Galería"
         verbose_name_plural = "Galería"
+        
+    def __str__(self):
+        return f'{self.categoria} de {self.especie}'

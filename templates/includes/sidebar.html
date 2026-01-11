@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="d-flex flex-column flex-shrink-0 p-2 text-white bg-dark sidebar-container" style="width: 200px; height: 100vh; position: sticky; top: 0;">
+<div class="d-flex flex-column flex-shrink-0 p-2 text-white bg-dark sidebar-container" style="width: 230px; height: 100vh; position: sticky; top: 0;">
     <a href="{% url 'home' %}" class="d-flex text-decoration-none justify-content-center">
         <img src="{% static 'images/logo.png' %}" alt="Logo" style="width: 80px; height: auto;" class="img-fluid">
     </a>
@@ -29,7 +29,7 @@
         <li class="nav-item">
             <a href="{% url 'historial' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'historial' %}active{% endif %}">
-                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Historia Masa Arbórea</span>
+                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Historial Masa Arbórea</span>
             </a>
         </li>
     </ul>
@@ -42,6 +42,12 @@
                 <a href="{% url 'panel:mis_especies' %}"
                     class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mis_especies' %}active{% endif %}">
                     <i class="fa-solid fa-tree fa-lg w-25 text-center"></i> <span>Mis Especies</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'panel:mi_galeria' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mi_galeria' %}active{% endif %}">
+                    <i class="fa-solid fa-images fa-lg w-25 text-center"></i> <span>Mi Galería</span>
                 </a>
             </li>
         {% endif %}
