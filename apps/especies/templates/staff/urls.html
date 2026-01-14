@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block titulo %}Gestionar Enlaces - {{ especie }}{% endblock titulo %}
+
+{% block contenido %}
+    <div class="d-flex justify-content-between align-items-start flex-wrap border-bottom pb-3 mb-4">
+        <div>
+            <h1 class="display-6 fw-bold text-primary">
+                <i class="fas fa-tree me-2"></i>Enlaces Externos
+            </h1>
+            <p class="lead mb-0 text-dark">Recursos para la especie: <strong>{{ especie }}</strong></p>
+        </div>
+        <a href="{% url 'panel:mis_especies' %}" class="btn btn-outline-secondary mt-3 mt-md-0">
+            <i class="fas fa-arrow-left me-1"></i> Atras
+        </a>
+    </div>
+
+    <div class="container py-2">
+        <div class="card shadow border-0 rounded-4 overflow-hidden">
+            <div class="card-header bg-light py-3 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-uppercase text-dark small mb-0 ls-1">Listado de URLs</h6>
+                <a href="{% url 'panel:crear_url' slug=especie.slug %}" class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm">
+                    <i class="fas fa-plus me-1"></i> Nueva URL
+                </a>
+            </div>
+
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                    {% for url in urls %}
+                        <li class="list-group-item p-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
+                            <div class="d-flex align-items-center mb-2 mb-md-0 overflow-hidden w-100">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                
+                                <div class="min-w-0">
+                                    <strong class="d-block text-dark mb-0">{{ url.get_tipo_display }}</strong>
+                                    <p class="d-block small text-truncate m-0">{{ url.url }}</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <a href="{{ url.url }}" target="_blank" class="btn btn-light btn-sm text-primary border" title="Probar enlace">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'panel:editar_url' slug=especie.slug pk=url.id %}" class="btn btn-outline-primary btn-sm" title="Editar">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="{% url 'panel:eliminar_url' slug=especie.slug pk=url.id %}" class="btn btn-outline-danger btn-sm" title="Eliminar">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item p-5 text-center text-muted">
+                            <div class="mb-3 opacity-50">
+                                <i class="fas fa-link-slash fa-3x"></i>
+                            </div>
+                            <h5>No hay enlaces registrados</h5>
+                            <p class="small mb-3">Agrega videos, artículos de Wikipedia o documentos PDF para enriquecer la información.</p>
+                            <a href="{% url 'panel:crear_url' slug=especie.slug %}" class="btn btn-sm btn-outline-primary">
+                                Registrar el primero
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock contenido %}

@@ -4,14 +4,18 @@
 
 {% block titulo %}Catálogo de Especies{% endblock titulo %}
 {% block contenido %}
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <div>
-            <h1 class="display-6 fw-bold text-primary opacity-100">
+    <h1 class="display-6 fw-bold text-primary opacity-100">
+        {% if request.resolver_match.view_name == 'panel:mis_especies' %}
+            {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
+                <i class="fas fa-tree me-2"></i>Mis Especies
+            {% endif  %}
+            {% else %}
                 <i class="fas fa-tree me-2"></i>Catálogo de Especies
-            </h1>
-            <p class="lead mb-0 text-dark">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
-        </div>
-    </div>
+        {% endif  %}
+    </h1>
+    {% if request.resolver_match.view_name == 'public:catalogo_especies' %}
+        <p class="lead mb-0 text-dark mb-3">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
+    {% endif %}
 
     <div class="d-flex flex-row align-items-center gap-3">
         {% include "includes/buscador.html" %}
@@ -19,6 +23,13 @@
     </div>
 
     <hr class="my-4">
+
+    <!-- Botón solo para "mis_especies" -> STAFF o ADMIN -->
+    {% if request.resolver_match.view_name == 'panel:mis_especies' %}
+        {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
+            <a href="{% url 'panel:crear_especie' %}" class="btn btn-primary mb-4">Registrar Nueva Especie</a>
+        {% endif %}
+    {% endif  %}
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {% for especie in especies %}
@@ -47,8 +58,8 @@
                         </span>
                     </div>
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="{% url 'public:detalle_especie' slug=especie.slug %}" class="text-decoration-none flex-grow-1">
+                    <div class="card-body d-flex flex-column">                        
+                        <a {% if request.resolver_match.view_name == 'public:catalogo_especies' %} href="{% url 'public:detalle_especie' slug=especie.slug %}" {% endif %} class="text-decoration-none flex-grow-1">
                             <h5 class="card-title fw-bold text-dark mb-1">
                                 {{ especie.nombre_comun }}
                             </h5>
@@ -70,11 +81,54 @@
                                 <strong class="text-dark">{{ especie.diametro_maximo | default:'?' }} cm</strong>
                             </div>
                         </div>
-                        <div class="d-flex flex-column flex-xl-row gap-2">
-                            <a href="{% url 'public:galeria' %}?especie_buscar={{ especie.id }}" class="btn btn-outline-secondary btn-sm flex-fill">
-                                <i class="fas fa-images me-1"></i> Ver Galería
-                            </a>
-                        </div>
+
+                        <!-- Botones solo para "mis_especies" -> STAFF o ADMIN -->
+                        {% if request.resolver_match.view_name == 'panel:mis_especies' %}
+                            {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
+                                <div class="dropdown"> <!-- Menú Desplegable -->
+                                    <button class="btn btn-sm btn-outline-primary w-100 dropdown-toggle d-flex justify-content-between align-items-center" 
+                                            type="button" 
+                                            data-bs-toggle="dropdown" 
+                                            aria-expanded="false">
+                                        <span><i class="fas fa-bolt me-2"></i>Acciones</span>
+                                    </button>
+                                    <ul class="dropdown-menu w-100 shadow border-0">                            
+                                        <li>
+                                            <a class="dropdown-item py-2" href="{% url 'panel:urls' slug=especie.slug %}">
+                                                <i class="fas fa-link me-2 text-primary"></i> Ver Enlaces
+                                            </a>
+                                        </li>
+                                        
+                                        <li><hr class="dropdown-divider"></li>
+
+                                        <li>
+                                            <a class="dropdown-item py-2" href="{% url 'panel:editar_especie' slug=especie.slug %}">
+                                                <i class="fas fa-pen-to-square me-2"></i> Editar
+                                            </a>
+                                        </li>
+                                        {% if not especie.is_active %}
+                                            <li>
+                                                <a class="dropdown-item py-2 text-success fw-bold" href="{% url 'panel:activar_especie' slug=especie.slug %}">
+                                                    <i class="fas fa-circle-check me-2"></i> Activar Especie
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a class="dropdown-item py-2 text-danger fw-bold" href="{% url 'panel:eliminar_especie' slug=especie.slug %}">
+                                                    <i class="fas fa-trash-alt me-2"></i> Desactivar
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% else %}
+                                <div class="d-flex flex-column flex-xl-row gap-2">
+                                    <a href="{% url 'public:galeria' %}?especie_buscar={{ especie.id }}" class="btn btn-outline-secondary btn-sm flex-fill">
+                                        <i class="fas fa-images me-1"></i> Ver Galería
+                                    </a>
+                                </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

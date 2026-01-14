@@ -20,8 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 
-from apps.perfiles.views import redirect_home
-from apps.perfiles.views import RegisterCreateView
+from apps.perfiles.views import redirect_home, RegisterCreateView, CustomPasswordChangeView
 
 urlpatterns = [
     path('', redirect_home, name="home"),
@@ -32,6 +31,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
     path('registrar/', RegisterCreateView.as_view(), name="registrar"),
+    path('settings/password', CustomPasswordChangeView.as_view(), name="cambiar_password"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

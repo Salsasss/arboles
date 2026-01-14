@@ -17,5 +17,8 @@ urlpatterns = [
     path('galeria/editar/<int:pk>', panel.GaleriaUpdateView.as_view(), name="editar_imagen"),
     path('galeria/eliminar/<int:pk>', panel.GaleriaDeleteView.as_view(), name="eliminar_imagen"),
     # Urls
-    # path('urls/<slug:slug>', )
+    path('urls/<slug:slug>', panel.UrlListView.as_view(), name="urls"),
+    path('urls/<slug:slug>/crear', panel.UrlCreateView.as_view(), name="crear_url"),
+    path('urls/<slug:slug>/editar/<int:pk>', panel.UrlUpdateView.as_view(), name="editar_url"),
+    path('urls/<slug:slug>/eliminar/<int:pk>', panel.UrlDeleteView.as_view(), name="eliminar_url"),
 ]

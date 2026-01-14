@@ -38,4 +38,4 @@ class Url(models.Model):
         verbose_name_plural = "URLs"
 
     def __str__(self):
-        return f"URL: {self.especie.nombre_cientifico}"
+        return f"URL - {self.tipo}: {self.especie}"

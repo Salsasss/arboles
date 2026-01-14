@@ -60,18 +60,14 @@
                     class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
                     <i class="fa-solid fa-user w-25 text-center"></i> <span> {% if not request.user.is_authenticated %} Iniciar Sesión {% else %} {{ request.user.get_full_name | default:request.user.username }} {% endif %} </span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-white d-flex align-items-center gap-3 hover-light">
-                    <i class="fa-solid fa-circle-question w-25 text-center"></i> <span>Soporte</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-white d-flex align-items-center gap-3 hover-light">
-                    <i class="fa-solid fa-gear w-25 text-center"></i> <span>Configuración</span>
-                </a>
-            </li>
+            </li>            
             {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'cambiar_password' %}"
+                        class="nav-link text-white d-flex align-items-center gap-3 hover-light {% if request.resolver_match.view_name == 'cambiar_password' %}active{% endif %}">
+                        <i class="fa-solid fa-gear w-25 text-center"></i> <span>Configuración</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <form action="{% url 'logout' %}" method="POST" class="w-100">
                         {% csrf_token %}

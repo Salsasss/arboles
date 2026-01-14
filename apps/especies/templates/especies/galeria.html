@@ -4,14 +4,18 @@
 
 {% block titulo %}Galería{% endblock titulo %}
 {% block contenido %}
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <div>
-            <h1 class="display-6 fw-bold text-primary opacity-100">
+    <h1 class="display-6 fw-bold text-primary opacity-100">
+        {% if request.resolver_match.view_name == 'panel:mi_galeria' %}
+            {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
+                <i class="fas fa-images me-2"></i>Mi Galería
+            {% endif  %}
+            {% else %}
                 <i class="fas fa-images me-2"></i>Galería
-            </h1>
-            <p class="lead mb-0 text-dark">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
-        </div>
-    </div>
+        {% endif  %}
+    </h1>
+    {% if request.resolver_match.view_name == 'public:galeria' %}
+        <p class="lead mb-0 text-dark mb-3">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
+    {% endif  %}
 
     <div class="d-flex flex-row align-items-center gap-3">
         {% include "includes/buscador.html" %}

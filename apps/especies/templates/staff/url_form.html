@@ -3,13 +3,13 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block contenido %}3n3n3n3n3n3n3n3n3n
+{% block contenido %}
 <div class="container mt-4 mb-5">
     <h2 class="text-primary fw-bold mb-4 border-bottom pb-2">
         <i class="fas fa-edit me-2"></i>
-        {% if form.instance.pk %}Editar Imagen{% else %}Subir Nueva Imagen{% endif %}
+        {% if form.instance.pk %}Editar URL{% else %}Crear Nueva URL{% endif %}
     </h2>
-
+    
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
     
@@ -26,7 +26,7 @@
                 {{ form | crispy }}
 
                 <div class="d-flex gap-2 justify-content-end">
-                    <a href="{% url 'panel:mi_galeria' %}" class="btn btn-outline-secondary px-4 rounded-pill">
+                    <a href="{% url 'panel:urls' slug=slug %}" class="btn btn-outline-secondary px-4 rounded-pill">
                         Cancelar
                     </a>
                     <button type="submit" class="btn btn-success px-5 fw-bold rounded-pill">

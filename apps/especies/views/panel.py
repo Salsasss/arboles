@@ -5,14 +5,14 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.db.models import Prefetch
+from django.shortcuts import get_object_or_404
 from django.db import transaction
 
-from ..forms import GaleriaForm
-from apps.perfiles.models import Usuario
-from apps.perfiles.forms import EspecieForm, TaxonomiaForm, EspecieDetalleForm
+from ..models import Especie, Galeria, Url
+from ..forms import EspecieForm, TaxonomiaForm, EspecieDetalleForm, GaleriaForm, UrlForm
 from ..utils import TIPO_CHOICES, CATEGORIAS_CHOICES, ESTADO_CONSERVACION_CHOICES, ESTADO_ESPECIE
 
-from ..models import Especie, Galeria
+from apps.perfiles.models import Usuario
 
 class StaffRequireMixin(LoginRequiredMixin, UserPassesTestMixin):
     def test_func(self):
@@ -21,7 +21,7 @@ class StaffRequireMixin(LoginRequiredMixin, UserPassesTestMixin):
 # Listar Especies
 class EspecieListView(StaffRequireMixin, ListView):
     model = Especie
-    template_name = "staff/mis_especies.html"
+    template_name = "especies/catalogo_especies.html"
     context_object_name = "especies"
     paginate_by = 8
     
@@ -136,7 +136,7 @@ class EspecieUpdateView(StaffRequireMixin, UpdateView):
     
     # Solo si el usuario es ADMIN o STAFF y creador de la especie
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = self.model.all_objects.get_queryset()
         if self.request.user.rol == Usuario.Rol.ADMIN:
             return queryset
         if self.request.user.rol == Usuario.Rol.STAFF:
@@ -212,6 +212,7 @@ class EspecieDeleteView(StaffRequireMixin, DeleteView):
         context = super().get_context_data(**kwargs)
         context['clase'] = "Especie"
         context['accion'] = "Desactivar"
+        context['success_url'] = reverse_lazy('panel:mis_especies')
         return context
         
     def form_valid(self, form):
@@ -305,7 +306,6 @@ class GaleriaListView(StaffRequireMixin, ListView):
         context['estado'] = self.estado
         context['especie_buscar'] = self.especie_buscar
         context['categoria'] = self.categoria
-        
         return context
 
 # Crear Imagen
@@ -334,9 +334,8 @@ class GaleriaUpdateView(StaffRequireMixin, UpdateView):
     template_name = "staff/imagen_form.html"
     success_url = reverse_lazy('panel:mi_galeria')
     
-    # Solo si el usuario es ADMIN o STAFF y creador de la especie
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = self.model.all_objects.get_queryset()
         if self.request.user.rol == Usuario.Rol.ADMIN:
             return queryset
         if self.request.user.rol == Usuario.Rol.STAFF:
@@ -351,7 +350,7 @@ class GaleriaDeleteView(StaffRequireMixin, DeleteView):
     
     # Solo si el usuario es ADMIN o STAFF y autor de la Imagen
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = self.model.all_objects.get_queryset()
         if self.request.user.rol == Usuario.Rol.ADMIN:
             return queryset
         if self.request.user.rol == Usuario.Rol.STAFF:
@@ -362,4 +361,93 @@ class GaleriaDeleteView(StaffRequireMixin, DeleteView):
         context = super().get_context_data(**kwargs)
         context['clase'] = "Imagen"
         context['accion'] = "Eliminar"
+        context['success_url'] = reverse_lazy('panel:mi_galeria')
         return context
+
+# Listar URLs
+class UrlListView(StaffRequireMixin, ListView):
+    model = Url
+    template_name = "staff/urls.html"
+    context_object_name = "urls"
+    
+    def get_queryset(self):
+        self.especie = get_object_or_404(Especie.all_objects, slug=self.kwargs['slug'])
+        return self.especie.urls.all()
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['especie'] = self.especie
+        return context
+
+# Crear URL
+class UrlCreateView(StaffRequireMixin, CreateView):
+    model = Url
+    form_class = UrlForm
+    template_name = "staff/url_form.html"
+    
+    def form_valid(self, form):
+        especie = get_object_or_404(Especie.all_objects, slug=self.kwargs['slug'])
+        
+        if form.is_valid():
+            # Guardamos el autor
+            self.object = form.save(commit=False)
+            self.object.especie = especie
+            self.object.save()
+            
+            return super().form_valid(form)
+        else:
+            # Si alguno falla, volvemos a renderizar la página con los errores
+            return self.render_to_response(self.get_context_data(form=form))
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context
+        
+    def get_success_url(self):
+        return reverse_lazy('panel:urls', args=[self.kwargs['slug']])
+
+# Editar URL
+class UrlUpdateView(StaffRequireMixin, UpdateView):
+    model = Url
+    form_class = UrlForm
+    template_name = "staff/url_form.html"
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.request.user.rol == Usuario.Rol.ADMIN:
+            return queryset
+        if self.request.user.rol == Usuario.Rol.STAFF:
+            return queryset.filter(especie__creador=self.request.user)
+        return queryset.none() # Si no es ni ADMIN ni STAFF
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context
+    
+    def get_success_url(self):
+        return reverse_lazy('panel:urls', args=[self.kwargs['slug']])
+
+# Eliminar URL
+class UrlDeleteView(StaffRequireMixin, DeleteView):
+    model = Url
+    template_name = "staff/eliminar_objeto.html"
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.request.user.rol == Usuario.Rol.ADMIN:
+            return queryset
+        if self.request.user.rol == Usuario.Rol.STAFF:
+            return queryset.filter(especie__creador=self.request.user)
+        return queryset.none()
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['clase'] = "URL"
+        context['accion'] = "Eliminar"
+        context['success_url'] = self.get_success_url()
+        return context
+    
+    def get_success_url(self):
+        return reverse_lazy('panel:urls', args=[self.kwargs['slug']])

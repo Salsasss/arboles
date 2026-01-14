@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %} {% block titulo %}Iniciar Sesión{% endblock titulo %}
+{% load crispy_forms_tags %}
+
+{% block titulo %} {{ titulo | default:"Iniciar Sesión" }} {% endblock titulo %}
 
 {% block contenido %}
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="col-xl-7">
             <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
                 <div class="card-header bg-primary text-white text-center py-4">
-                    <h3 class="fw-bold mb-0"><i class="fas fa-leaf me-2"></i>Bienvenido</h3>
-                    <p class="mb-0">Ingresa tu cuenta de Miembro</p>
+                    <h3 class="fw-bold mb-0"><i class="fas fa-leaf me-2"></i>{{ titulo | default:"Bienvenido" }}</h3>
+                    <p class="mb-0">{{ texto1 | default:"Ingresa tu cuenta de Miembro" }} </p>
                 </div>
 
                 <div class="card-body p-5">
@@ -23,19 +25,23 @@
                         </div>
                     {% endif %}
 
-                    <form method="POST" class="login-form">
+                    <form method="POST" class="login-form text-dark">
                         {% csrf_token %}
                         {{ form | crispy }}
                         <div class="d-grid gap-2 mt-4">
                             <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow-sm hover-scale">
-                                Iniciar Sesión <i class="fas fa-sign-in-alt ms-2"></i>
+                                {{ titulo | default:"Iniciar Sesión" }} <i class="fas fa-sign-in-alt ms-2"></i>
                             </button>
                         </div>
                     </form>
                 </div>
                 
                 <div class="card-footer bg-light text-center py-2 border-0">
-                    <small class="text-dark">¿Aún no tienes cuenta? <a href="{% url 'registrar' %}" class="text-primary fw-bold text-decoration-none">Registrarse</a></small>
+                    <p class="text-dark m-0">{{ texto2 | default:"¿Aún no tienes cuenta?" }}
+                        <a href="{% if url_back %} {{ url_back }} {% else %} {% url 'registrar' %} {% endif %}" class="text-primary fw-bold text-decoration-none">
+                            {% if titulo %}Inicia Sesión aqui {% else %}Registrarse aqui{% endif %}
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
