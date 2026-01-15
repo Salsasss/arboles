@@ -3,17 +3,19 @@
 {% block titulo %}Gestionar Enlaces - {{ especie }}{% endblock titulo %}
 
 {% block contenido %}
-    <div class="d-flex justify-content-between align-items-start flex-wrap border-bottom pb-3 mb-4">
+    <div class="d-flex justify-content-between align-items-start flex-wrap">
         <div>
             <h1 class="display-6 fw-bold text-primary">
                 <i class="fas fa-tree me-2"></i>Enlaces Externos
             </h1>
             <p class="lead mb-0 text-dark">Recursos para la especie: <strong>{{ especie }}</strong></p>
         </div>
-        <a href="{% url 'panel:mis_especies' %}" class="btn btn-outline-secondary mt-3 mt-md-0">
+        <a href="{% url 'panel:mis_especies' %}" class="btn btn-outline-secondary btn-sm mt-3 mt-md-0">
             <i class="fas fa-arrow-left me-1"></i> Atras
         </a>
     </div>
+
+    <hr class="my-3">
 
     <div class="container py-2">
         <div class="card shadow border-0 rounded-4 overflow-hidden">

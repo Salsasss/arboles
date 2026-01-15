@@ -21,7 +21,7 @@ class StaffRequireMixin(LoginRequiredMixin, UserPassesTestMixin):
 # Listar Especies
 class EspecieListView(StaffRequireMixin, ListView):
     model = Especie
-    template_name = "especies/catalogo_especies.html"
+    template_name = "especies/listar_especies.html"
     context_object_name = "especies"
     paginate_by = 8
     

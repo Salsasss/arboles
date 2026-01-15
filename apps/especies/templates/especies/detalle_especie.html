@@ -268,7 +268,7 @@
                 <div class="list-group list-group-flush">
                     {% for url in especie.urls.all %}
                         <a href="{{ url.url }}" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <div>
+                            <div class="text-truncate">
                                 <strong class="d-block text-primary">{{ url.get_tipo_display }}</strong>
                                 <small class="text-dark">{{ url.url }}</small>
                             </div>

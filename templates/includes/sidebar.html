@@ -5,9 +5,9 @@
         <img src="{% static 'images/logo.png' %}" alt="Logo" style="width: 80px; height: auto;" class="img-fluid">
     </a>
 
-    <hr class="text-primary"> <!-- Menu Principal -->
+    <hr class="text-primary my-2 my-xxl-3"> <!-- Menu Principal -->
 
-    <ul class="nav nav-pills flex-column gap-3">
+    <ul class="nav nav-pills flex-column gap-1 gap-xxl-3">
         <li class="nav-item">
             <a href="{% url 'public:catalogo_especies' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:catalogo_especies' %}active{% endif %}">
@@ -34,9 +34,9 @@
         </li>
     </ul>
 
-    <hr class="text-primary"> <!-- Menu de Opciones -->    
+    <hr class="text-primary my-2 my-xxl-3"> <!-- Menu de Opciones -->    
 
-    <ul class="nav nav-pills flex-column gap-3">
+    <ul class="nav nav-pills flex-column gap-1 gap-xxl-3">
         {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN" %}
             <li class="nav-item">
                 <a href="{% url 'panel:mis_especies' %}"
@@ -54,18 +54,20 @@
     </ul>
 
     <div class="mt-auto">
-        <ul class="nav nav-pills flex-column gap-3 hover-light">
+        <ul class="nav nav-pills flex-column gap-1 gap-xxl-3">
             <li class="nav-item">
-                <a href="{% if not request.user.is_authenticated %} {% url 'login' %} {% else %} {% endif %}"
-                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
-                    <i class="fa-solid fa-user w-25 text-center"></i> <span> {% if not request.user.is_authenticated %} Iniciar Sesión {% else %} {{ request.user.get_full_name | default:request.user.username }} {% endif %} </span>
-                </a>
+                {% if not request.user.is_authenticated %}
+                    <a href="{% url 'login' %}"
+                        class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
+                        <i class="fa-solid fa-user fa-lg w-25 text-center"></i> <span> {% if not request.user.is_authenticated %} Iniciar Sesión {% else %} {{ request.user.get_full_name | default:request.user.username }} {% endif %} </span>
+                    </a>
+                {% endif %}
             </li>            
             {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{% url 'cambiar_password' %}"
                         class="nav-link text-white d-flex align-items-center gap-3 hover-light {% if request.resolver_match.view_name == 'cambiar_password' %}active{% endif %}">
-                        <i class="fa-solid fa-gear w-25 text-center"></i> <span>Configuración</span>
+                        <i class="fa-solid fa-gear fa-lg w-25 text-center"></i> <span>Configuración</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -73,14 +75,14 @@
                         {% csrf_token %}
                         <button type="submit"
                             class="nav-link text-white d-flex align-items-center gap-3 w-100 text-nowrap">
-                            <i class="fa-solid fa-gear w-25 text-center"></i> <span>Cerrar Sesión</span>
+                            <i class="fa-solid fa-solid fa-right-from-bracket fa-lg w-25 text-center"></i> <span>Cerrar Sesión</span>
                         </button>
                     </form>
                 </li>
             {% endif %}
         </ul>
 
-        <hr class="text-primary my-3">
+        <hr class="text-primary my-2 my-xxl-3">
 
         <div class="text-center">
             <small class="opacity-50" style="font-size: 0.7rem;">© 2026 Catálogo de Árboles</small>

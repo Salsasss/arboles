@@ -12,7 +12,7 @@
             <a class="page-link" 
                href="{% if page_obj.has_previous %} ?query={{ query }}&tipo={{ tipo }}&estado={{ estado }}&especie_buscar={{ especie_buscar }}&categoria={{ categoria }}&estado_especie={{ estado_especie }}&page={{ page_obj.previous_page_number }} {% else %}#{% endif %}" 
                aria-label="Anterior">
-                <i class="fas fa-angle-left me-1"></i> Anterior
+                <i class="fas fa-angle-left me-1"></i> <span class="d-none d-md-inline">Anterior</span>
             </a>
         </li>
 
@@ -26,7 +26,7 @@
             <a class="page-link" 
                href="{% if page_obj.has_next %} ?query={{ query }}&tipo={{ tipo }}&estado={{ estado }}&especie_buscar={{ especie_buscar }}&categoria={{ categoria }}&estado_especie={{ estado_especie }}&page={{ page_obj.next_page_number }} {% else %}#{% endif %}" 
                aria-label="Siguiente">
-                Siguiente <i class="fas fa-angle-right ms-1"></i>
+                <span class="d-none d-md-inline">Siguiente</span> <i class="fas fa-angle-right ms-1"></i>
             </a>
         </li>
 

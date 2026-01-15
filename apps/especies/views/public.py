@@ -7,7 +7,7 @@ from ..models import Especie, Galeria
 # Listar Especies
 class EspecieListView(ListView):
     model = Especie
-    template_name = "especies/catalogo_especies.html"
+    template_name = "especies/listar_especies.html"
     context_object_name = "especies"
     paginate_by = 8
     

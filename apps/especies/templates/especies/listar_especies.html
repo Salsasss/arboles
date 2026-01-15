@@ -17,21 +17,23 @@
         <p class="lead mb-0 text-dark mb-3">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
     {% endif %}
 
-    <div class="d-flex flex-row align-items-center gap-3">
+    <div class="d-flex flex-column flex-xxl-row xxl-align-items-center gap-3">
         {% include "includes/buscador.html" %}
         {% include "includes/filtros_especie.html" %}
     </div>
 
-    <hr class="my-4">
+    <hr class="my-3">
 
     <!-- Botón solo para "mis_especies" -> STAFF o ADMIN -->
     {% if request.resolver_match.view_name == 'panel:mis_especies' %}
         {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
-            <a href="{% url 'panel:crear_especie' %}" class="btn btn-primary mb-4">Registrar Nueva Especie</a>
+            <a href="{% url 'panel:crear_especie' %}" class="btn btn-primary btn-sm rounded-pill px-3 mb-3 shadow-sm">
+                <i class="fas fa-plus me-1"></i> Nueva Especie
+            </a>
         {% endif %}
     {% endif  %}
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 g-xxl-4">
         {% for especie in especies %}
             <div class="col">
                 <div class="card h-100 shadow border-0 hover-shadow transition-300">
@@ -66,12 +68,12 @@
                             <h6 class="card-subtitle fst-italic mb-3 border-bottom pb-2">
                                 {{ especie.nombre_cientifico }}
                             </h6>
-                            <div class="text-dark">
+                            <div class="text-dark mb-2 hijos-sin-margin">
                                 {{ especie.descripcion | safe | truncatewords:15 }}
                             </div>
                         </a>
 
-                        <div class="bg-light rounded p-2 mb-3 d-flex justify-content-around small">
+                        <div class="bg-light rounded p-2 mb-2 d-flex justify-content-around small">
                             <div title="Altura Máxima">
                                 <i class="fas fa-ruler-vertical me-1 text-primary"></i>
                                 <strong class="text-dark">{{ especie.altura_maxima | default:'?' }} m</strong>
@@ -94,28 +96,28 @@
                                     </button>
                                     <ul class="dropdown-menu w-100 shadow border-0">                            
                                         <li>
-                                            <a class="dropdown-item py-2" href="{% url 'panel:urls' slug=especie.slug %}">
-                                                <i class="fas fa-link me-2 text-primary"></i> Ver Enlaces
+                                            <a class="dropdown-item py-2 btn-hover" href="{% url 'panel:urls' slug=especie.slug %}">
+                                                <i class="fas fa-link me-2"></i> Ver Enlaces
                                             </a>
                                         </li>
                                         
                                         <li><hr class="dropdown-divider"></li>
 
                                         <li>
-                                            <a class="dropdown-item py-2" href="{% url 'panel:editar_especie' slug=especie.slug %}">
+                                            <a class="dropdown-item py-2 btn-hover" href="{% url 'panel:editar_especie' slug=especie.slug %}">
                                                 <i class="fas fa-pen-to-square me-2"></i> Editar
                                             </a>
                                         </li>
                                         {% if not especie.is_active %}
                                             <li>
-                                                <a class="dropdown-item py-2 text-success fw-bold" href="{% url 'panel:activar_especie' slug=especie.slug %}">
+                                                <a class="dropdown-item py-2 text-success btn-hover-activate fw-bold" href="{% url 'panel:activar_especie' slug=especie.slug %}">
                                                     <i class="fas fa-circle-check me-2"></i> Activar Especie
                                                 </a>
                                             </li>
                                         {% else %}
                                             <li>
-                                                <a class="dropdown-item py-2 text-danger fw-bold" href="{% url 'panel:eliminar_especie' slug=especie.slug %}">
-                                                    <i class="fas fa-trash-alt me-2"></i> Desactivar
+                                                <a class="dropdown-item py-2 text-danger btn-hover-danger fw-bold" href="{% url 'panel:eliminar_especie' slug=especie.slug %}">
+                                                    <i class="fas fa-eye-slash me-2"></i> Desactivar
                                                 </a>
                                             </li>
                                         {% endif %}
@@ -123,8 +125,8 @@
                                 </div>
                             {% endif %}
                             {% else %}
-                                <div class="d-flex flex-column flex-xl-row gap-2">
-                                    <a href="{% url 'public:galeria' %}?especie_buscar={{ especie.id }}" class="btn btn-outline-secondary btn-sm flex-fill">
+                                <div class="d-flex">
+                                    <a href="{% url 'public:galeria' %}?especie_buscar={{ especie.id }}" class="flex-fill fw-bold text-end small text-decoration-none">
                                         <i class="fas fa-images me-1"></i> Ver Galería
                                     </a>
                                 </div>

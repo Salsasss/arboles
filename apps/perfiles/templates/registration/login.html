@@ -5,7 +5,7 @@
 {% block titulo %} {{ titulo | default:"Iniciar Sesión" }} {% endblock titulo %}
 
 {% block contenido %}
-<div class="container py-5">
+<div class="container py-1 py-xxl-5">
     <div class="row justify-content-center">
         <div class="col-xl-7">
             <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
@@ -39,7 +39,7 @@
                 <div class="card-footer bg-light text-center py-2 border-0">
                     <p class="text-dark m-0">{{ texto2 | default:"¿Aún no tienes cuenta?" }}
                         <a href="{% if url_back %} {{ url_back }} {% else %} {% url 'registrar' %} {% endif %}" class="text-primary fw-bold text-decoration-none">
-                            {% if titulo %}Inicia Sesión aqui {% else %}Registrarse aqui{% endif %}
+                            {% if titulo %}Inicia Sesión aquí {% else %}Registrarse aquí{% endif %}
                         </a>
                     </p>
                 </div>
