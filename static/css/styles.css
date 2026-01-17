@@ -18,7 +18,7 @@
     color: black !important;
 }
 
-/* Slider del Historial de la masa arborea (thumb y track) */
+/* Slider del Historial de la masa Forestal (thumb y track) */
 .custom-range::-webkit-slider-thumb {
     background: #198754; /* Verde Success de Bootstrap */
 }
@@ -62,4 +62,72 @@
     background-color: rgba(102, 187, 159, 0.1) !important;
     color: #58a68e !important;
     transition: all 0.2s ease-in-out;
+}
+
+/* Mapa SVG */
+
+
+/* 1. El Wrapper: Define el límite del sándwich */
+.map-wrapper {
+    position: relative; /* CRUCIAL: Es el ancla para las capas internas */
+    width: 100%;        /* Ocupa todo el ancho disponible */
+    overflow: hidden;   /* Evita desbordamientos si la imagen es muy grande */
+    line-height: 0;     /* Elimina espacios fantasma debajo de la imagen */
+}
+
+/* 2. Capa Inferior: La Imagen */
+#map-background-layer {
+    width: 100%;        /* Responsive: se adapta al ancho de la pantalla */
+    height: auto;       /* Mantiene su proporción original */
+    display: block;
+    transition: filter 0.3s ease; /* Suavidad si quieres efectos visuales */
+}
+
+/* 3. Capa Superior: El SVG */
+.map-svg-layer {
+    width: 100%;        /* Se estira para cubrir exactamente a la imagen */
+    height: 100%;
+}
+
+/* 4. Interactividad de las Zonas (Los Paths dentro del SVG) */
+.map-svg-layer path, 
+.map-svg-layer polygon {
+    fill: transparent;         /* Por defecto invisible (solo el esqueleto) */
+    stroke: none;              /* Sin bordes por defecto */
+    cursor: pointer;           /* Manita al pasar el mouse */
+    transition: all 0.3s ease; /* Animación suave al hacer hover */
+    pointer-events: all;       /* Asegura que el mouse detecte la forma */
+}
+
+/* Efecto Hover: Cuando el usuario toca una zona */
+.map-svg-layer path:hover, 
+.map-svg-layer polygon:hover {
+    fill: rgba(40, 167, 69, 0.4); /* Verde semitransparente (ajusta a tu gusto) */
+    stroke: #ffffff;              /* Borde blanco para resaltar */
+    stroke-width: 2px;
+}
+
+/* 5. Controles Flotantes */
+.map-controls {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Clase para todas tus zonas en el SVG */
+.zona-interactiva {
+    fill: transparent;         /* Invisible por defecto */
+    stroke: none;              /* Sin borde */
+    cursor: pointer;           /* Manita al pasar el mouse */
+    transition: fill 0.3s ease; /* Transición suave */
+    
+    /* VITAL: Esto permite que el mouse interactúe con el SVG aunque esté encima de la imagen */
+    pointer-events: all; 
+}
+
+/* Efecto Hover: Cambia el color aquí a tu gusto */
+.zona-interactiva:hover {
+    fill: rgba(25, 135, 84, 0.5); /* Verde Success de Bootstrap al 50% de opacidad */
+    stroke: #fff;                 /* Un borde blanco finito queda elegante */
+    stroke-width: 2px;
 }

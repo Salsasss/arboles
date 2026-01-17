@@ -12,7 +12,7 @@ class EspecieListView(ListView):
     paginate_by = 8
     
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().order_by('nombre_cientifico')
         
         self.query = self.request.GET.get('query', '') # Buscador
         self.tipo = self.request.GET.get('tipo', '') # Filtro tipo (Arbol, Palmera)

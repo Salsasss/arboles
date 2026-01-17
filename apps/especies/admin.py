@@ -23,7 +23,7 @@ class EspecieAdmin(admin.ModelAdmin):
     list_filter = ('tipo', 'estado_conservacion', 'is_active')
     search_fields = ('nombre_comun', 'nombre_cientifico')
     ordering = ('nombre_cientifico', )
-    #list_editable = ['is_active']
+    # list_editable = ['is_active']
     inlines = [TaxonomiaInline, EspecieDetalleInline, UrlInline]
     
     def get_queryset(self, request): # Traer todas Activas e Inactivas

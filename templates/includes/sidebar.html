@@ -21,15 +21,15 @@
             </a>
         </li>        
         <li class="nav-item">
-            <a href="#"
+            <a href="{% url 'inventario' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == '' %}active{% endif %}">
-                <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Mapa Masa Arbórea</span>
+                <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Inventario Masa Forestal</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="{% url 'historial' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'historial' %}active{% endif %}">
-                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Historial Masa Arbórea</span>
+                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Evolución Masa Forestal</span>
             </a>
         </li>
     </ul>
