@@ -29,4 +29,4 @@ class Historial(models.Model):
     class Meta:
         verbose_name = "Historial"
         verbose_name_plural = "Historial"
-        ordering = ['fecha_creacion']
+        ordering = ['fecha_asociada']

@@ -23,6 +23,7 @@ class InventarioInline(admin.TabularInline):
 @admin.register(Zona)
 class ZonaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'descripcion']
+    exclude = ('slug', )
     inlines = [InventarioInline]
     
     # Sobrescribimos el método que gestiona el guardado de relaciones
@@ -55,4 +56,5 @@ class ZonaAdmin(admin.ModelAdmin):
 class InventarioAdmin(admin.ModelAdmin):
     list_display = ['zona', 'especie', 'cantidad']
     list_filter = ('zona', 'especie')
-    search_fields = ('especie', )
+    search_fields = ('especie__nombre_comun', 'especie__nombre_cientifico')
+    ordering = ('-cantidad', )

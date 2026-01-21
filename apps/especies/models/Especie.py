@@ -106,6 +106,19 @@ class Especie(models.Model):
         verbose_name = "Especie"
         verbose_name_plural = "Especies"
         ordering = ['nombre_cientifico']
+        
+    # Para obtener los colores
+    @property
+    def color_uicn(self):
+        colors = {
+            'NE': '#808080',
+            'DD': '#808080',
+            'LC': "#34cf59",
+            'NT': "#4cab04",
+            'VU': '#ffc107',
+            'EN': '#dc3545',
+        }
+        return colors.get(self.estado_conservacion, '#808080') # Gris por defecto
                 
     def __str__(self):
         return f'{self.nombre_cientifico} - {self.nombre_comun}'

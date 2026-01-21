@@ -51,11 +51,11 @@
                             </div>
                         {% endif %}
 
-                        <span class="badge bg-info position-absolute top-0 start-0 m-2 shadow-sm text-dark">
+                        <span class="badge position-absolute top-0 start-0 m-2 shadow-sm" style="background-color: {{especie.color_uicn}};">
                             <i class="fas fa-globe-americas me-1"></i> <span>{{ especie.estado_conservacion }}</span>
                         </span>
 
-                        <span class="badge bg-success position-absolute top-0 end-0 m-2 shadow-sm">
+                        <span class="badge {%if especie.tipo == "ARBOL" %} bg-success {% else %} bg-danger {% endif %} position-absolute top-0 end-0 m-2 shadow-sm">
                             {{ especie.get_tipo_display }}
                         </span>
                     </div>

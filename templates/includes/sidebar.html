@@ -19,16 +19,16 @@
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:galeria' %}active{% endif %}">
                 <i class="fa-solid fa-images fa-lg w-25 text-center"></i> <span>Galería</span>
             </a>
-        </li>        
+        </li>
         <li class="nav-item">
-            <a href="{% url 'inventario' %}"
-                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == '' %}active{% endif %}">
+            <a href="{% url 'mapa_inventario' %}"
+                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_inventario' %}active{% endif %}">
                 <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Inventario Masa Forestal</span>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{% url 'historial' %}"
-                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'historial' %}active{% endif %}">
+            <a href="{% url 'mapa_historial' %}"
+                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_historial' %}active{% endif %}">
                 <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Evolución Masa Forestal</span>
             </a>
         </li>

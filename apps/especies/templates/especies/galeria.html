@@ -48,7 +48,7 @@
                             <i class="fas fa-globe-americas me-1"></i> <span>{{ imagen.get_categoria_display }}</span>
                         </span>
 
-                        <span class="badge bg-success position-absolute top-0 end-0 m-2 shadow-sm">
+                        <span class="badge {%if imagen.especie.tipo == "ARBOL" %} bg-success {% else %} bg-danger {% endif %} position-absolute top-0 end-0 m-2 shadow-sm">
                             {{ imagen.especie.get_tipo_display }}
                         </span>
                     </div>
@@ -63,7 +63,7 @@
                             </h6>
                         </a>                        
 
-                        <span class="badge bg-info position-absolute top-0 end-0 m-2 shadow-sm text-dark">
+                        <span class="badge position-absolute top-0 end-0 m-2 shadow-sm" style="background-color: {{imagen.especie.color_uicn}};">
                             <i class="fas fa-globe-americas me-1"></i> <span>{{ imagen.especie.estado_conservacion }}</span>
                         </span>
 

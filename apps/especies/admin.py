@@ -23,6 +23,7 @@ class EspecieAdmin(admin.ModelAdmin):
     list_filter = ('tipo', 'estado_conservacion', 'is_active')
     search_fields = ('nombre_comun', 'nombre_cientifico')
     ordering = ('nombre_cientifico', )
+    exclude = ('slug', )
     # list_editable = ['is_active']
     inlines = [TaxonomiaInline, EspecieDetalleInline, UrlInline]
     

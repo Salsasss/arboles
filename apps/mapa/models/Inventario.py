@@ -14,7 +14,7 @@ class Inventario(models.Model):
     especie = models.ForeignKey(
         Especie,
         on_delete=models.CASCADE,
-        related_name='ubicaciones',
+        related_name='inventario',
         verbose_name="Especie"
     )
     
@@ -23,7 +23,7 @@ class Inventario(models.Model):
     class Meta:
         # Evitar duplicados: No puedes tener dos registros de "Roble" en "Zona A"
         unique_together = ('zona', 'especie')
-        ordering = ['-cantidad']
+        ordering = ['-cantidad'] # Ordenamos siempre del mas abundante al menos
         verbose_name_plural = "Inventario Forestal"
 
     def __str__(self):

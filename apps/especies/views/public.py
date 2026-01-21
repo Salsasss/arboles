@@ -56,7 +56,7 @@ class EspecieDetailView(DetailView):
     template_name = "especies/detalle_especie.html"
     context_object_name = "especie"
     
-    def get_queryset(self): # OJO en el futiuro quizas solo enviar imagen general, tronco, hoja, corteza, etc
+    def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.select_related( # select_related -> 1:1
             'detalle',

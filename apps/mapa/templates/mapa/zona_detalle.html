@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Detalle: {{ zona.nombre }} {% endblock titulo %}
+
+{% block contenido %}
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <h1 class="display-5 fw-bold text-dark mb-0">
+            <i class="fas fa-tree me-2 text-primary"></i>Zona {{ zona.nombre }}: {{ zona.descripcion }}
+        </h1>
+        <div class="mt-1 mt-xxl-0">
+            <a href="{% url 'mapa_inventario' %}" class="btn btn-outline-secondary me-2">
+                <i class="fas fa-arrow-left me-2"></i>Volver
+            </a>
+            <a href="{% url 'exportar_inventario' slug=zona.slug %}" class="btn btn-success">
+                <i class="fas fa-file-excel me-2"></i>Exportar Inventario
+            </a>
+        </div>
+    </div>
+
+    <hr class="my-3">
+
+    <div class="border-bottom pb-3 mb-4">
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 border-start border-success border-4 rounded-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-uppercase small fw-bold mb-1">Diversidad</h6>
+                                <h2 class="mb-0 fw-bold text-dark">{{ inventario.count }} <small class="fs-4">Especies</small></h2>
+                            </div>
+                            <div class="bg-info bg-opacity-10 text-info rounded-circle p-3">
+                                <i class="fas fa-dna fa-2x"></i>
+                            </div>
+                        </div>
+                        <small>Distintas variedades registradas</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 border-start border-info border-4 rounded-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-uppercase small fw-bold mb-1">Total de Ejemplares</h6>
+                                <h2 class="mb-0 fw-bold text-dark">{{ zona.total_arboles }}</h2>
+                            </div>
+                            <div class="bg-success bg-opacity-10 text-success rounded-circle p-3">
+                                <i class="fas fa-tree fa-2x"></i>
+                            </div>
+                        </div>
+                        <small class="text-success fw-bold"><i class="fas fa-check-circle me-1"></i>Conteo actualizado</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 border-start border-warning border-4 rounded-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-uppercase small fw-bold mb-1">Especie Dominante</h6>
+                                <h4 class="mb-0 fw-bold text-dark text-truncate">
+                                    {{ dominante.especie.nombre_comun | default:"N/A" }}
+                                </h4>
+                            </div>
+                            <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-3">
+                                <i class="fas fa-crown fa-2x"></i>
+                            </div>
+                        </div>
+                        {% if dominante %}
+                            <small>{{ dominante.cantidad }} ejemplares registrados</small>
+                        {% else %}
+                            <small>Sin datos</small=>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden ">
+                    <div class="card-header bg-primary border-0">
+                        <h5 class="mb-0 fw-bold text-white">Inventario Detallado</h5>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light small text-uppercase">
+                                <tr>
+                                    <th class="ps-4">Nombre Común</th>
+                                    <th>Nombre Científico</th>
+                                    <th class="text-center">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in inventario %}
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm bg-success bg-opacity-25 text-success rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 35px; height: 35px;">
+                                                <i class="fas fa-leaf"></i>
+                                            </div>
+                                            <div>
+                                                <a href="{% url 'public:detalle_especie' slug=item.especie.slug %}" class="text-dark fw-bold text-decoration-none">
+                                                    {{ item.especie.nombre_comun }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="fst-italic">{{ item.especie.nombre_cientifico }}</td>
+                                    <td class="text-center">
+                                        <span class="badge bg-light text-dark border px-3 py-2 rounded-pill">
+                                            {{ item.cantidad }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="4" class="text-center py-5">
+                                            <i class="fas fa-clipboard-list fa-3x mb-3 opacity-50"></i>
+                                            <p>Aún no se ha realizado el conteo en esta zona.</p>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="card bg-dark text-white border-0 shadow-sm rounded-4 overflow-hidden p-4" 
+                    style="background: linear-gradient(45deg, #1e4d2b, #28a745);">
+                    <h6 class="fw-bold mb-3">Top 5 Especies Más Abundantes</h6>
+                    {% for item in zona.top_especies|slice:":5" %}
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-end mb-1">
+                                    <span class="text-white fw-semibold small">{{ item.especie.nombre_comun }}</span>
+                                    <span class="small fw-bold text-white">{{ item.cantidad }}</span>
+                                </div>
+                                <div class="progress" style="height: 9px;">
+                                    <div class="progress-bar bg-info rounded-pill"
+                                        role="progressbar"
+                                        style="width: {% widthratio item.cantidad zona.total_arboles 100 %}%;" 
+                                        aria-valuenow="{{ item.cantidad }}"
+                                        aria-valuemin="0"
+                                        aria-valuemax="{{ zona.total_arboles }}">
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p class="small">No hay datos suficientes para generar estadísticas.</p>
+                        {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock contenido %}
