@@ -62,9 +62,11 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="text-uppercase small fw-bold mb-1">Especie Dominante</h6>
-                                <h4 class="mb-0 fw-bold text-dark text-truncate">
-                                    {{ dominante.especie.nombre_comun | default:"N/A" }}
-                                </h4>
+                                <a {% if dominante.especie.is_active %} href="{% url 'public:detalle_especie' slug=dominante.especie.slug %}" {% endif %} class="text-decoration-none">
+                                    <h4 class="mb-0 fw-bold text-dark text-truncate">
+                                        {{ dominante.especie.nombre_comun | default:"N/A" }}
+                                    </h4>
+                                </a>
                             </div>
                             <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-3">
                                 <i class="fas fa-crown fa-2x"></i>
@@ -105,7 +107,7 @@
                                                 <i class="fas fa-leaf"></i>
                                             </div>
                                             <div>
-                                                <a href="{% url 'public:detalle_especie' slug=item.especie.slug %}" class="text-dark fw-bold text-decoration-none">
+                                                <a {% if item.especie.is_active %} href="{% url 'public:detalle_especie' slug=item.especie.slug %}" {% endif %} class="text-dark fw-bold text-decoration-none">
                                                     {{ item.especie.nombre_comun }}
                                                 </a>
                                             </div>
