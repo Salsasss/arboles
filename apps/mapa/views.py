@@ -1,12 +1,13 @@
 import csv
 import codecs
 from django.db.models import Sum
+from django.db.models import OuterRef, Subquery
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 
-from apps.especies.models import Especie
+from apps.especies.models import Especie, Galeria
 from .models import Historial, Zona
 
 # Listar Imágenes del Historial de la Masa Forestal
@@ -21,12 +22,18 @@ def mapa_inventario(request):
     })
 
 def inventario_completo(request):
+    subquery = Galeria.all_objects.filter(
+        especie_id=OuterRef('id'), # Valor de afuera
+        categoria='GENERAL'
+    ).values('imagen')[:1]
+    
     inventario = Especie.all_objects.annotate(
-        cantidad=Sum('inventario__cantidad')
+        cantidad=Sum('inventario__cantidad'),
+        imagen_principal=Subquery(subquery)
     ).order_by('-cantidad')
 
     # Para compatibilidad del template
-    # El template espera {{ item.especie.nombre_comun }} -> Hacemos que el objeto item se apunte a sí mismo.
+    # El template espera {{ item.especie }} -> Hacemos que el objeto item se apunte a sí mismo.
     
     for item in inventario:
         item.especie = item
@@ -83,8 +90,16 @@ class ZonaDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         
         context['dominante'] = self.object.inventario.first # Esta ordenado -> First es el mas abundante
+        
+        subquery = Galeria.all_objects.filter(
+            especie=OuterRef('especie'), # Valor de afuera
+            categoria='GENERAL'
+        ).values('imagen')[:1]
+
         context['inventario'] = self.object.inventario.filter(
             cantidad__gt=0
-        ).select_related('especie').order_by('-cantidad')
+        ).select_related('especie').annotate(
+            imagen_principal=Subquery(subquery)
+        ).order_by('-cantidad')
         
         return context

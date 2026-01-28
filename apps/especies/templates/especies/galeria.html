@@ -5,17 +5,9 @@
 {% block titulo %}Galería{% endblock titulo %}
 {% block contenido %}
     <h1 class="display-6 fw-bold text-primary opacity-100">
-        {% if request.resolver_match.view_name == 'panel:mi_galeria' %}
-            {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
-                <i class="fas fa-images me-2"></i>Mi Galería
-            {% endif  %}
-            {% else %}
-                <i class="fas fa-images me-2"></i>Galería
-        {% endif  %}
+        <i class="fas fa-images me-2"></i>Galería
     </h1>
-    {% if request.resolver_match.view_name == 'public:galeria' %}
-        <p class="lead mb-0 text-dark mb-3">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
-    {% endif  %}
+    <p class="lead mb-0 text-dark mb-3">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
 
     <div class="d-flex flex-column flex-xxl-row xxl-align-items-center gap-3">
         {% include "includes/buscador.html" %}
@@ -23,17 +15,8 @@
     </div>
 
     <hr class="my-3">
-
-    <!-- Botón solo para STAFF o ADMIN -->
-    {% if request.resolver_match.view_name == 'panel:mi_galeria' %}
-        {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
-            <a href="{% url 'panel:crear_imagen' %}" class="btn btn-primary btn-sm rounded-pill px-3 mb-3 shadow-sm">
-                <i class="fas fa-plus me-1"></i> Nueva Imagen
-            </a>
-        {% endif %}
-    {% endif  %}
     
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 g-xxl-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2">
         {% for imagen in imagenes %}
             <div class="col">
                 <div class="card h-100 shadow border-0 hover-shadow transition-300">
@@ -44,20 +27,20 @@
                                 alt="{{ imagen.especie }}"
                                 style="height: 220px; object-fit: cover;">
                         </a>
-                        <span class="badge bg-info position-absolute top-0 start-0 m-2 bg-dark bg-opacity-50">
+                        <span class="badge bg-info position-absolute top-0 start-0 m-1 bg-dark bg-opacity-50">
                             <i class="fas fa-globe-americas me-1"></i> <span>{{ imagen.get_categoria_display }}</span>
                         </span>
 
-                        <span class="badge {%if imagen.especie.tipo == "ARBOL" %} bg-success {% else %} bg-danger {% endif %} position-absolute top-0 end-0 m-2 shadow-sm">
+                        <span class="badge {%if imagen.especie.tipo == "ARBOL" %} bg-success {% else %} bg-danger {% endif %} position-absolute top-0 end-0 m-1 shadow-sm">
                             {{ imagen.especie.get_tipo_display }}
                         </span>
                     </div>
 
                     <div class="card-body d-flex flex-column position-relative p-2">
                         <a {% if imagen.especie.is_active %} href="{% url 'public:detalle_especie' slug=imagen.especie.slug %}" {% endif %} class="text-decoration-none">
-                            <h5 class="card-title fw-bold text-dark mb-1">
+                            <h6 class="card-title fw-bold text-dark mb-1">
                                 {{ imagen.especie.nombre_comun }}
-                            </h5>
+                            </h6>
                             <h6 class="card-subtitle fst-italic">
                                 {{ imagen.especie.nombre_cientifico }}
                             </h6>
@@ -66,31 +49,6 @@
                         <span class="badge position-absolute top-0 end-0 m-2 shadow-sm" style="background-color: {{imagen.especie.color_uicn}};">
                             <i class="fas fa-globe-americas me-1"></i> <span>{{ imagen.especie.estado_conservacion }}</span>
                         </span>
-
-                        {% if request.resolver_match.view_name == 'panel:mi_galeria' %} <!-- Botones solo para STAFF o ADMIN -->
-                            {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN"%}
-                                <div class="dropdown mt-2"> <!-- Menú Desplegable -->
-                                    <button class="btn btn-sm btn-outline-primary w-100 dropdown-toggle d-flex justify-content-between align-items-center" 
-                                            type="button" 
-                                            data-bs-toggle="dropdown" 
-                                            aria-expanded="false">
-                                        <span><i class="fas fa-bolt me-2"></i>Acciones</span>
-                                    </button>
-                                    <ul class="dropdown-menu w-100 shadow border-0">                            
-                                        <li>
-                                            <a class="dropdown-item btn-hover py-2" href="{% url 'panel:editar_imagen' pk=imagen.id %}">
-                                                <i class="fas fa-pen-to-square me-2"></i> Editar
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item py-2 text-danger btn-hover-danger fw-bold" href="{% url 'panel:eliminar_imagen' pk=imagen.id %}">
-                                                <i class="fas fa-trash-alt me-2"></i> Eliminar
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            {% endif %}
-                        {% endif %}
                     </div>                                        
                 </div>
             </div>

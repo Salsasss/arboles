@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}Galería{% endblock titulo %}
+{% block contenido %}
+    <h1 class="display-6 fw-bold text-primary opacity-100">
+        <i class="fas fa-tree me-2"></i>Usuarios
+    </h1>
+
+    <div class="d-flex flex-column flex-xxl-row xxl-align-items-center gap-3">
+        {% include "includes/buscador.html" %}
+        {% include "includes/filtros_usuarios.html" %}
+    </div>
+
+    <hr class="my-3">
+
+    <a href="{% url 'crear_usuario' %}" class="btn btn-primary btn-sm rounded-pill px-3 mb-3 shadow-sm">
+        <i class="fas fa-plus me-1"></i> Nuevo Usuario
+    </a>
+
+    <div class="card border-0 shadow-sm overflow-hidden mx-auto col-xxl-10">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light text-uppercase small">
+                    <tr>
+                        <th class="text-start ps-4">Usuario</th>
+                        <th class="text-center">Rol</th>
+                        <th class="text-center">Último acceso</th>
+                        <th class="text-center">Estado</th>
+                        <th class="text-end pe-4">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td class="text-start ps-4">
+                                <div class="fw-bold text-dark">{{ usuario.username }}</div>
+                                <div class="small text-muted fst-italic">{{ usuario.email }}</div>
+                            </td>
+
+                            <td class="text-center">
+                                 <span class="badge" style="background-color: #808080;">
+                                    {{ usuario.get_rol_display }}
+                                </span>
+                            </td>
+
+                             <td class="text-center">
+                                <span>
+                                    {{ usuario.last_login | default:"Nunca" }}
+                                </span>
+                            </td>
+
+                            <td class="text-center">
+                                {% if usuario.is_active %}
+                                    <span class="badge bg-success bg-opacity-10 text-success border border-success rounded-pill px-3">
+                                        <i class="fas fa-circle-check me-2"></i>Activo
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary rounded-pill px-3">
+                                        <i class="fas fa-eye-slash me-2"></i>Inactivo
+                                    </span>
+                                {% endif %}
+                            </td>
+
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm shadow-sm" role="group">
+                                    <a href="{% url 'editar_usuario' id_publico=usuario.id_publico %}" class="btn btn-light text-primary" data-bs-toggle="tooltip" title="Editar">
+                                        <i class="fas fa-pen-to-square"></i>
+                                    </a>
+                                    {% if usuario.is_active %}
+                                        {% if request.user != usuario %}
+                                            <a href="{% url 'eliminar_usuario' id_publico=usuario.id_publico %}" class="btn btn-light text-danger" title="Desactivar">
+                                                <i class="fas fa-eye-slash"></i>
+                                            </a>
+                                        {% endif %}
+                                    {% else %}
+                                        <a href="{% url 'activar_usuario' id_publico=usuario.id_publico %}" class="btn btn-light text-success" title="Activar">
+                                            <i class="fas fa-circle-check"></i>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-start py-4">
+                                <div class="col-12 text-center mx-auto">
+                                    <div class="mb-3">
+                                        <i class="fas fa-leaf fa-4x"></i>
+                                    </div>
+                                    <h3 class="fw-light">No encontramos usuarios.</h3>
+                                    <p>Intenta ajustar tus filtros de búsqueda.</p>
+                                    <a href="{{ request.path }}" class="btn btn-primary mt-2">Limpiar Filtros</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% include "includes/paginador.html" %}
+{% endblock contenido %}

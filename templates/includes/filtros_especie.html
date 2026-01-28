@@ -17,7 +17,7 @@
             {% include "includes/filtros_galeria.html" %}
         {% endif %}
 
-        <div class="col-2">
+        <div class="col-3">
             <select name="estado" class="form-select text-dark">
                 <option value="" disabled {% if not estado %}selected{% endif %} hidden>
                     Estado Conservación
@@ -48,12 +48,13 @@
         <div class="col-2">
             <button type="submit" class="btn btn-primary w-100">Filtrar</button>            
         </div>
+        
         <div class="col-1 d-flex">
-    {% if query or tipo or especie_buscar or categoria or estado or estado_especie %}
-        <a href="{{ request.path }}" class="btn btn-secondary">
-            <i class="fas fa-circle-xmark"></i>
-        </a>
-    {% endif %}
-</div>
+            {% if query or tipo or especie_buscar or categoria or estado or estado_especie %}
+                <a href="{{ request.path }}" class="btn btn-secondary">
+                    <i class="fas fa-circle-xmark"></i>
+                </a>
+            {% endif %}
+        </div>
     </form>
 </div>

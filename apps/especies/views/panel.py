@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, UpdateView, CreateView, DeleteView
+from django.db.models import OuterRef, Subquery
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -21,9 +22,9 @@ class StaffRequireMixin(LoginRequiredMixin, UserPassesTestMixin):
 # Listar Especies
 class EspecieListView(StaffRequireMixin, ListView):
     model = Especie
-    template_name = "especies/listar_especies.html"
+    template_name = "staff/mis_especies.html"
     context_object_name = "especies"
-    paginate_by = 8
+    paginate_by = 12
     
     def get_queryset(self):
         queryset = self.model.all_objects.get_queryset() # Trae todas las especies incluso las inactivas
@@ -52,7 +53,7 @@ class EspecieListView(StaffRequireMixin, ListView):
                 Q(taxonomia__genero__icontains=self.query)
             )
             
-        #Filtros
+        # Filtros
         if self.tipo:
             queryset = queryset.filter(tipo=self.tipo)
             
@@ -195,7 +196,7 @@ class EspecieUpdateView(StaffRequireMixin, UpdateView):
 # Eliminar Especie
 class EspecieDeleteView(StaffRequireMixin, DeleteView):
     model = Especie
-    template_name = "staff/eliminar_objeto.html"
+    template_name = "eliminar_objeto.html"
     context_object_name = "especie"
     success_url = reverse_lazy('panel:mis_especies')
     
@@ -224,7 +225,7 @@ class EspecieDeleteView(StaffRequireMixin, DeleteView):
 class EspecieActivarView(StaffRequireMixin, UpdateView):
     model = Especie
     fields = []
-    template_name = "staff/activar_especie.html"
+    template_name = "activar_objeto.html"
     success_url = reverse_lazy('panel:mis_especies')
     
     # Solo si el usuario es ADMIN o STAFF y creador de la especie
@@ -236,19 +237,32 @@ class EspecieActivarView(StaffRequireMixin, UpdateView):
             return queryset.filter(creador=self.request.user)
         return queryset.none() # Si no es ni ADMIN ni STAFF
         
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['clase'] = "Especie"
+        context['success_url'] = reverse_lazy('panel:mis_especies')
+        return context
+    
     def form_valid(self, form):
-        self.object.is_active = True
+        self.object.activar()
         return super().form_valid(form)
     
 # Listar Imagenes
 class GaleriaListView(StaffRequireMixin, ListView):
     model = Galeria
-    template_name = "especies/galeria.html"
+    template_name = "staff/mi_galeria.html"
     context_object_name = "imagenes"
     paginate_by = 16
     
     def get_queryset(self):
-        queryset = self.model.all_objects.get_queryset()
+        subquery = Galeria.all_objects.filter(
+            especie=OuterRef('especie'), # Valor de afuera
+            categoria='GENERAL'
+        ).values('imagen')[:1]
+        
+        queryset = self.model.all_objects.get_queryset().select_related('especie').annotate(
+            imagen_principal=Subquery(subquery)
+        )
         
         # Solo muestra las imagenes que yo subí
         if self.request.user.rol == Usuario.Rol.STAFF:
@@ -345,7 +359,7 @@ class GaleriaUpdateView(StaffRequireMixin, UpdateView):
 # Eliminar Imagen
 class GaleriaDeleteView(StaffRequireMixin, DeleteView):
     model = Galeria
-    template_name = "staff/eliminar_objeto.html"
+    template_name = "eliminar_objeto.html"
     success_url = reverse_lazy('panel:mi_galeria')
     
     # Solo si el usuario es ADMIN o STAFF y autor de la Imagen
@@ -432,7 +446,7 @@ class UrlUpdateView(StaffRequireMixin, UpdateView):
 # Eliminar URL
 class UrlDeleteView(StaffRequireMixin, DeleteView):
     model = Url
-    template_name = "staff/eliminar_objeto.html"
+    template_name = "eliminar_objeto.html"
     
     def get_queryset(self):
         queryset = super().get_queryset()

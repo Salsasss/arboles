@@ -7,59 +7,65 @@
 
     <hr class="text-primary my-2 my-xxl-3"> <!-- Menu Principal -->
 
-    <ul class="nav nav-pills flex-column gap-1 gap-xxl-3">
+    <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
         <li class="nav-item">
             <a href="{% url 'public:catalogo_especies' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:catalogo_especies' %}active{% endif %}">
-                <i class="fa-solid fa-tree fa-lg w-25 text-center"></i> <span>Especies</span>
+                <i class="fa-solid fa-tree fa-lg w-15 text-center"></i> <span>Especies</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="{% url 'public:galeria' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:galeria' %}active{% endif %}">
-                <i class="fa-solid fa-images fa-lg w-25 text-center"></i> <span>Galería</span>
+                <i class="fa-solid fa-images fa-lg w-15 text-center"></i> <span>Galería</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="{% url 'mapa_inventario' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_inventario' %}active{% endif %}">
-                <i class="fa-solid fa-map-location-dot fa-lg w-25 text-center"></i> <span>Inventario Masa Forestal</span>
+                <i class="fa-solid fa-map-location-dot fa-lg w-15 text-center"></i> <span>Inventario Forestal</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="{% url 'mapa_historial' %}"
                 class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_historial' %}active{% endif %}">
-                <i class="fa-solid fa-satellite fa-lg w-25 text-center"></i> <span>Evolución Masa Forestal</span>
+                <i class="fa-solid fa-satellite fa-lg w-15 text-center"></i> <span>Evolución Forestal</span>
             </a>
         </li>
     </ul>
 
-    <hr class="text-primary my-2 my-xxl-3"> <!-- Menu de Opciones -->    
+    <hr class="text-primary my-2 my-xxl-3"> <!-- Menu para Administradores -->    
 
-    <ul class="nav nav-pills flex-column gap-1 gap-xxl-3">
+    <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
         {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN" %}
             <li class="nav-item">
                 <a href="{% url 'panel:mis_especies' %}"
                     class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mis_especies' %}active{% endif %}">
-                    <i class="fa-solid fa-tree fa-lg w-25 text-center"></i> <span>Mis Especies</span>
+                    <i class="fa-solid fa-tree fa-lg w-15 text-center"></i> <span>Mis Especies</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{% url 'panel:mi_galeria' %}"
                     class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mi_galeria' %}active{% endif %}">
-                    <i class="fa-solid fa-images fa-lg w-25 text-center"></i> <span>Mi Galería</span>
+                    <i class="fa-solid fa-images fa-lg w-15 text-center"></i> <span>Mi Galería</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'panel' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel' %}active{% endif %}">
+                    <i class="fa-solid fa-users fa-lg w-15 text-center"></i> <span>Usuarios</span>
                 </a>
             </li>
         {% endif %}
     </ul>
 
     <div class="mt-auto">
-        <ul class="nav nav-pills flex-column gap-1 gap-xxl-3">
+        <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
             <li class="nav-item">
                 {% if not request.user.is_authenticated %}
                     <a href="{% url 'login' %}"
                         class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
-                        <i class="fa-solid fa-user fa-lg w-25 text-center"></i> <span> {% if not request.user.is_authenticated %} Iniciar Sesión {% else %} {{ request.user.get_full_name | default:request.user.username }} {% endif %} </span>
+                        <i class="fa-solid fa-user fa-lg w-15 text-center"></i> <span> {% if not request.user.is_authenticated %} Iniciar Sesión {% else %} {{ request.user.get_full_name | default:request.user.username }} {% endif %} </span>
                     </a>
                 {% endif %}
             </li>            
@@ -67,7 +73,7 @@
                 <li class="nav-item">
                     <a href="{% url 'cambiar_password' %}"
                         class="nav-link text-white d-flex align-items-center gap-3 hover-light {% if request.resolver_match.view_name == 'cambiar_password' %}active{% endif %}">
-                        <i class="fa-solid fa-gear fa-lg w-25 text-center"></i> <span>Configuración</span>
+                        <i class="fa-solid fa-gear fa-lg w-15 text-center"></i> <span>Configuración</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -75,17 +81,11 @@
                         {% csrf_token %}
                         <button type="submit"
                             class="nav-link text-white d-flex align-items-center gap-3 w-100 text-nowrap">
-                            <i class="fa-solid fa-solid fa-right-from-bracket fa-lg w-25 text-center"></i> <span>Cerrar Sesión</span>
+                            <i class="fa-solid fa-solid fa-right-from-bracket fa-lg w-15 text-center"></i> <span>Cerrar Sesión</span>
                         </button>
                     </form>
                 </li>
             {% endif %}
         </ul>
-
-        <hr class="text-primary my-2 my-xxl-3">
-
-        <div class="text-center">
-            <small class="opacity-50" style="font-size: 0.7rem;">© 2026 Catálogo de Árboles</small>
-        </div>
     </div>
 </div>

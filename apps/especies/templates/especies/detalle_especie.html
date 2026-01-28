@@ -69,18 +69,20 @@
 
             <div class="card mb-3 border-0 shadow-sm bg-light">
                 <div class="row g-0 align-items-center">
-                    <div class="col-md-8">
+                    <div class="col-md-6 col-xxl-8">
                         <div class="card-body">
                             <h5 class="card-title text-success"><i class="fas fa-layer-group me-2"></i>Corteza</h5>
                             <div class="card-text text-dark">{{ especie.detalle.corteza | safe | default:"No hay información disponible." }}</div>
                         </div>
                     </div>
-                    <div class="col-md-4 h-100">
+                    <div class="col-md-6 col-xxl-4 h-100">
                         {% if imagen_corteza %}
-                            <img src="{{ imagen_corteza.imagen.url }}" 
-                                alt="Corteza de {{ especie.nombre_comun }}" 
-                                class="w-100 h-100 rounded-end" 
-                                style="object-fit: cover; min-height: 150px; display: block;">
+                            <a href="{{ imagen_corteza.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                                <img src="{{ imagen_corteza.imagen.url }}" 
+                                    alt="Corteza de {{ especie.nombre_comun }}" 
+                                    class="w-100 h-100 rounded-end" 
+                                    style="object-fit: cover; min-height: 150px; display: block;">
+                            </a>
                         {% else %}
                             <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
                                 <i class="fas fa-image fa-2x"></i>
@@ -93,18 +95,20 @@
 
             <div class="card mb-3 border-0 shadow-sm bg-light">
                 <div class="row g-0 align-items-center">
-                    <div class="col-md-8">
+                    <div class="col-md-6 col-xxl-8">
                         <div class="card-body">
                             <h5 class="card-title text-success"><i class="fas fa-leaf me-2"></i>Hojas</h5>
                             <div class="card-text text-dark">{{ especie.detalle.hojas | safe | default:"No hay información disponible." }}</div>
                         </div>
                     </div>
-                    <div class="col-md-4 h-100">
+                    <div class="col-md-6 col-xxl-4 h-100">
                         {% if imagen_hojas %}
-                            <img src="{{ imagen_hojas.imagen.url }}" 
-                                alt="Corteza de {{ especie.nombre_comun }}" 
-                                class="w-100 h-100 rounded-end" 
-                                style="object-fit: cover; min-height: 150px; display: block;">
+                            <a href="{{ imagen_hojas.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                                <img src="{{ imagen_hojas.imagen.url }}" 
+                                    alt="Hojas de {{ especie.nombre_comun }}" 
+                                    class="w-100 h-100 rounded-end" 
+                                    style="object-fit: cover; min-height: 150px; display: block;">
+                            </a>
                         {% else %}
                             <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
                                 <i class="fas fa-image fa-2x"></i>
@@ -117,18 +121,20 @@
 
             <div class="card mb-3 border-0 shadow-sm bg-light">
                 <div class="row g-0 align-items-center">
-                    <div class="col-md-8">
+                    <div class="col-md-6 col-xxl-8">
                         <div class="card-body">
                             <h5 class="card-title text-success"><i class="fas fa-spa me-2"></i>Flores</h5>
                             <div class="card-text text-dark">{{ especie.detalle.flores | safe | default:"No hay información disponible." }}</div>
                         </div>
                     </div>
-                    <div class="col-md-4 h-100">
+                    <div class="col-md-6 col-xxl-4 h-100">
                         {% if imagen_flores %}
-                            <img src="{{ imagen_flores.imagen.url }}"
-                                alt="Corteza de {{ especie.nombre_comun }}" 
-                                class="w-100 h-100 rounded-end" 
-                                style="object-fit: cover; min-height: 150px; display: block;">
+                            <a href="{{ imagen_flores.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                                <img src="{{ imagen_flores.imagen.url }}"
+                                    alt="Flores de {{ especie.nombre_comun }}" 
+                                    class="w-100 h-100 rounded-end" 
+                                    style="object-fit: cover; min-height: 150px; display: block;">
+                            </a>
                         {% else %}
                             <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
                                 <i class="fas fa-image fa-2x"></i>
@@ -141,18 +147,20 @@
 
             <div class="card mb-3 border-0 shadow-sm bg-light">
                 <div class="row g-0 align-items-center">
-                    <div class="col-md-8">
+                    <div class="col-md-6 col-xxl-8">
                         <div class="card-body">
                             <h5 class="card-title text-success"><i class="fas fa-apple-alt me-2"></i>Frutos</h5>
                             <div class="card-text text-dark">{{ especie.detalle.frutos | safe | default:"No hay información disponible." }}</div>
                         </div>
                     </div>
-                    <div class="col-md-4 h-100">
+                    <div class="col-md-6 col-xxl-4 h-100">
                         {% if imagen_fruto %}
-                            <img src="{{ imagen_fruto.imagen.url }}" 
-                                alt="Corteza de {{ especie.nombre_comun }}" 
-                                class="w-100 h-100 rounded-end" 
-                                style="object-fit: cover; min-height: 150px; display: block;">
+                            <a href="{{ imagen_fruto.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                                <img src="{{ imagen_fruto.imagen.url }}" 
+                                    alt="Frutos de {{ especie.nombre_comun }}" 
+                                    class="w-100 h-100 rounded-end" 
+                                    style="object-fit: cover; min-height: 150px; display: block;">
+                            </a>
                         {% else %}
                             <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
                                 <i class="fas fa-image fa-2x"></i>
@@ -165,18 +173,20 @@
 
             <div class="card mb-3 border-0 shadow-sm bg-light">
                 <div class="row g-0 align-items-center">
-                    <div class="col-md-8">
+                    <div class="col-md-6 col-xxl-8">
                         <div class="card-body">
                             <h5 class="card-title text-success"><i class="fas fa-seedling me-2"></i>Semillas y Cultivo</h5>
                             <div class="card-text text-dark">{{ especie.detalle.semillas | safe | default:"No hay información disponible." }}</div>
                         </div>
                     </div>
-                    <div class="col-md-4 h-100">
+                    <div class="col-md-6 col-xxl-4 h-100">
                         {% if imagen_semilla %}
-                            <img src="{{ imagen_semilla.imagen.url }}" 
-                                alt="Corteza de {{ especie.nombre_comun }}" 
-                                class="w-100 h-100 rounded-end" 
-                                style="object-fit: cover; min-height: 150px; display: block;">
+                            <a href="{{ imagen_semilla.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                                <img src="{{ imagen_semilla.imagen.url }}"
+                                    alt="Semillas de {{ especie.nombre_comun }}" 
+                                    class="w-100 h-100 rounded-end" 
+                                    style="object-fit: cover; min-height: 150px; display: block;">
+                            </a>
                         {% else %}
                             <div class="h-100 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="min-height: 150px;">
                                 <i class="fas fa-image fa-2x"></i>

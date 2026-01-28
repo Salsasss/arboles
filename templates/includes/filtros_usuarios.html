@@ -1,0 +1,43 @@
+<div class="card-body">
+    <form method="GET" class="row align-items-center-stretch" id="buscarForm">
+        {% if request.user.rol == "ADMIN" %}
+            <div class="col-2">
+                <select name="rol" class="form-select text-dark">
+                    <option value="" disabled {% if not rol %}selected{% endif %} hidden>
+                        Rol
+                    </option>
+                    {% for key, valor_rol in ROL_CHOICES %}
+                        <option value="{{ key }}" {% if key == rol %}selected{% endif %}>
+                            {{ valor_rol }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+
+        <div class="col-2">
+            <select name="estado" class="form-select text-dark">
+                <option value="" disabled {% if not estado %}selected{% endif %} hidden>
+                    Estado
+                </option>
+                {% for key, valor_estado in ESTADO_CHOICES %}
+                    <option value="{{ key }}" {% if key == estado %}selected{% endif %}>
+                        {{ valor_estado }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>            
+        </div>
+
+        <div class="col-1 d-flex">
+            {% if query or rol or estado %}
+                <a href="{{ request.path }}" class="btn btn-secondary">
+                    <i class="fas fa-circle-xmark"></i>
+                </a>
+            {% endif %}
+        </div>
+    </form>
+</div>

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}Galería{% endblock titulo %}
+{% block contenido %}
+    <h1 class="display-6 fw-bold text-primary opacity-100">
+        <i class="fas fa-images me-2"></i>Mi Galería
+    </h1>
+
+    <div class="d-flex flex-column flex-xxl-row xxl-align-items-center gap-3">
+        {% include "includes/buscador.html" %}
+        {% include "includes/filtros_especie.html" %}
+    </div>
+
+    <hr class="my-3">
+
+    <a href="{% url 'panel:crear_imagen' %}" class="btn btn-primary btn-sm rounded-pill px-3 mb-3 shadow-sm">
+        <i class="fas fa-plus me-1"></i> Nueva Imagen
+    </a>
+
+    <div class="card border-0 shadow-sm overflow-hidden mx-auto col-xxl-10">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light text-uppercase small">
+                    <tr>
+                        <th class="text-start ps-4">Especie</th>
+                        <th class="text-start">Imagen</th>
+                        <th class="text-center">Categoría</th>
+                        <th class="text-center">Subida el</th>
+                        <th class="text-end pe-4">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for imagen in imagenes %}
+                        <tr>
+                            <td class="text-start ps-4">
+                                <div class="d-flex align-items-center">
+                                        <div class="me-3 flex-shrink-0" style="width: 40px; height: 40px; position: relative;">
+                                            {% if imagen.imagen_principal %}
+                                                <img src="/media/{{ imagen.imagen_principal }}"
+                                                    alt="Foto de {{ imagen.especie.nombre_comun }}"
+                                                    class="rounded-circle w-100 h-100 shadow-sm border"
+                                                    style="object-fit: cover;"
+                                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" >
+                                            {% else %}
+                                                <div class="bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center w-100 h-100 border">
+                                                    <i class="fas fa-leaf opacity-75"></i>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <a {% if imagen.especie.is_active %} href="{% url 'public:detalle_especie' slug=imagen.especie.slug %}" {% endif %} class="text-decoration-none">
+                                            <div class="fw-bold text-dark">{{ imagen.especie.nombre_comun }}</div>
+                                            <div class="small text-muted fst-italic">{{ imagen.especie.nombre_cientifico }}</div>
+                                        </a>
+                                </div>
+                            </td>
+
+                            <td class="text-start">
+                                <div class="d-flex align-items-center">
+                                        <div class="me-3 flex-shrink-0" style="width: 40px; height: 40px; position: relative;">
+                                            {% if imagen.imagen %}
+                                                <img src="{{ imagen.imagen.url }}"
+                                                    alt="Foto de {{ imagen.especie.nombre_comun }}"
+                                                    class="rounded-circle w-100 h-100 shadow-sm border"
+                                                    style="object-fit: cover;"
+                                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" >
+                                            {% else %}
+                                                <div class="bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center w-100 h-100 border">
+                                                    <i class="fas fa-leaf opacity-75"></i>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <span>{{ imagen.imagen.url | cut:"media/galeria/" }}</span>
+                                </div>
+                            </td>
+
+                            <td class="text-center">
+                                 <span class="badge" style="background-color: #808080;">
+                                    {{ imagen.get_categoria_display }}
+                                </span>
+                            </td>
+
+                            <td class="text-center">
+                                <span>
+                                    {{ imagen.fecha_creacion }}
+                                </span>
+                            </td>
+
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm shadow-sm" role="group">
+                                    <a href="{% url 'panel:editar_imagen' pk=imagen.id %}" class="btn btn-light text-primary" data-bs-toggle="tooltip" title="Editar información">
+                                        <i class="fas fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="{% url 'panel:eliminar_imagen' pk=imagen.id %}" class="btn btn-light text-danger" title="Activar">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-start py-4">
+                                <div class="col-12 text-center mx-auto">
+                                    <div class="mb-3">
+                                        <i class="fas fa-leaf fa-4x"></i>
+                                    </div>
+                                    <h3 class="fw-light">No encontramos imágenes.</h3>
+                                    <p>Intenta ajustar tus filtros de búsqueda.</p>
+                                    <a href="{{ request.path }}" class="btn btn-primary mt-2">Limpiar Filtros</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% include "includes/paginador.html" %}
+{% endblock contenido %}

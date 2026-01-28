@@ -133,3 +133,7 @@ class Especie(models.Model):
     def soft_delete(self):
         self.is_active = False
         self.save()
+
+    def activar(self):
+        self.is_active = True
+        self.save()

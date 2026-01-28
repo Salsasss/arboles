@@ -7,9 +7,9 @@ from ..models import Especie, Galeria
 # Listar Especies
 class EspecieListView(ListView):
     model = Especie
-    template_name = "especies/listar_especies.html"
+    template_name = "especies/catalogo_especies.html"
     context_object_name = "especies"
-    paginate_by = 8
+    paginate_by = 12
     
     def get_queryset(self):
         queryset = super().get_queryset().order_by('nombre_cientifico')

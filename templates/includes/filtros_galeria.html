@@ -14,7 +14,7 @@
 <div class="col-2">
     <select name="categoria" class="form-select text-dark">
         <option value="" disabled {% if not categoria %}selected{% endif %} hidden>
-            Categoría Imagen
+            Categoría
         </option>
         {% for key, valor_categoria in CATEGORIAS_CHOICES %}
             <option value="{{ key }}" {% if key == categoria %}selected{% endif %}>

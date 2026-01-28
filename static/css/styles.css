@@ -2,6 +2,10 @@
     scrollbar-gutter: stable !important;
 }
 
+.w-15 {
+    width: 10%
+}
+
 .nav-pills .nav-link {
     transition: all 0.2s ease-in-out;
     border-radius: 8px;
