@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% load static %}
-
 {% block titulo %}Catálogo de Especies{% endblock titulo %}
 {% block contenido %}
     <h1 class="display-6 fw-bold text-primary opacity-100">
@@ -93,7 +92,9 @@
                                     <a href="{% url 'panel:urls' slug=especie.slug %}" class="btn btn-light text-muted" data-bs-toggle="tooltip" title="Ver ficha pública">
                                         <i class="fas fa-link"></i>
                                     </a>
-
+                                    <a href="{% url 'panel:mi_galeria' %}?especie_buscar={{ especie.id }}" class="btn btn-light text-muted" data-bs-toggle="tooltip" title="Ver Galería">
+                                        <i class="fas fa-images"></i>
+                                    </a>
                                     <a href="{% url 'panel:editar_especie' slug=especie.slug %}" class="btn btn-light text-primary" data-bs-toggle="tooltip" title="Editar información">
                                         <i class="fas fa-pen-to-square"></i>
                                     </a>

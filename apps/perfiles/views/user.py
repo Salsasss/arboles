@@ -68,8 +68,6 @@ class UsuarioCreateView(StaffRequireMixin, CreateView):
     model = Usuario
     form_class = UsuarioAdminForm
     template_name = "usuario_form.html"
-    slug_field = 'id_publico' # El campo de tu modelo
-    slug_url_kwarg = 'id_publico' # El nombre del parámetro en la URL (urls.py)
     success_url = reverse_lazy('panel')
 
 # Editar Usuario
@@ -81,18 +79,25 @@ class UsuarioUpdateView(StaffRequireMixin, UpdateView):
     slug_url_kwarg = 'id_publico' # El nombre del parámetro en la URL (urls.py)
     success_url = reverse_lazy('panel')
     
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        
+        if self.object == self.request.user: # Si el usuario se está editando a si mismo
+            form.fields['rol'].disabled = True
+                
+        return form
+    
     def form_valid(self, form):
-        usuario_a_editar = self.object
-        usuario_actual = self.request.user
-        
-        # ¿Se está editando a sí mismo?
-        if usuario_a_editar == usuario_actual:
+        if self.object == self.request.user: # Si el usuario se está editando a si mismo
             nuevo_rol = form.cleaned_data.get('rol')
-            if nuevo_rol != "ADMIN" or nuevo_rol:
-                messages.error(self.request, "⚠️ No quitarte permisos de administrador a ti mismo.")
-                return redirect('panel')
+            
+            # Si el dato llegó Y no es ADMIN, bloqueamos.
+            if nuevo_rol and nuevo_rol != "ADMIN":
+                messages.error(self.request, "⚠️ Acción denegada: No puedes dejar de ser Administrador.")
+                return redirect('panel') # O la url que prefieras
         
-        return HttpResponseRedirect(self.get_success_url())
+        # Si todo está bien, guardamos.
+        return super().form_valid(form)
     
 # Desactivar Usuario
 class UsuarioDeleteView(StaffRequireMixin, DeleteView):

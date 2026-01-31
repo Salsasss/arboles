@@ -25,11 +25,9 @@ class UsuarioAdminForm(RegistroForm):
         help_text="Define el rol del usuario."
     )
 
-    field_order = ['username', 'first_name', 'last_name', 'email', 'rol']
-    
-    class Meta:
+    class Meta(RegistroForm.Meta):
         model = Usuario
-        fields = ('username', 'first_name', 'last_name', 'email', 'rol')
+        fields = ('username', 'first_name', 'last_name', 'email', 'rol', 'password1', 'password2')
         
 class UsuarioEditForm(forms.ModelForm):
     class Meta:
