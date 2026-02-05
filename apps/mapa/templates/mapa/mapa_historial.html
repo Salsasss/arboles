@@ -45,7 +45,7 @@
                             
                             <input type="range" class="form-range custom-range color-danger" min="0" max="{{ imagenes.count|add:'-1' }}" value="0" id="timeSlider">
                             
-                            <div class="d-flex justify-content-between small mt-2">
+                            <div class="d-flex justify-content-between small my-1">
                                 <span><i class="fas fa-calendar-days me-1"></i> Primera: {{ imagenes.first.fecha_asociada|date:"Y" }}</span>
                                 <span>Última: {{ imagenes.last.fecha_asociada|date:"Y" }} <i class="fas fa-flag-checkered ms-1"></i></span>
                             </div>
@@ -74,20 +74,16 @@
                                     
                     images.forEach(img => img.classList.add('d-none')); // Ocultar todas las imagenes
                     
-                    // 2. Mostrar solo la imagen seleccionada
                     const activeImg = images[index];
                     if (activeImg) {
                         activeImg.classList.remove('d-none');
                         
-                        // 3. Actualizar la etiqueta de fecha
                         fechaDisplay.textContent = activeImg.getAttribute('data-fecha');
                     }
                 }
-
-                                // Escuchar el evento cuando mueven el slider
+                // Evento del slider
                 slider.addEventListener('input', updateView);
 
-                // Ejecutar una vez al inicio para poner la fecha correcta
                 updateView();
             }
         });

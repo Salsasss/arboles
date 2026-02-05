@@ -10,14 +10,12 @@
    <p class="lead mb-0 text-dark mb-3">Explora la biodiversidad del Instituto Tecnológico de Veracruz.</p>
 
     <hr class="my-2">
-
-   
-   
+    
     <div class="container col-lg-11 py-2">
       <div class="card shadow-lg border-0 rounded-3 map-wrapper">
          <div class="card-header bg-dark text-white py-2 d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Instituto Tecnológico de Veracruz</h5>
-            <a href="{% url 'inventario_completo' %}" class="btn btn-primary btn-sm rounded-pill px-3">
+            <a href="{% url 'inventario_completo' %}" class="btn btn-primary btn-sm text-white rounded-pill px-3">
                Ver Inventario Completo
             </a>
          </div>
@@ -12175,14 +12173,12 @@
 {% block scripts %}
    <script>
       document.addEventListener("DOMContentLoaded", function() {
-         // Seleccionamos todos los elementos que tengan data-bs-toggle="popover"
          const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
          
-         // Los inicializamos uno por uno
          const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
-               html: true,       // Permite usar <br> o <b> dentro del contenido
+               html: true,
                trigger: 'hover',
-               container: 'body' // Importante para evitar conflictos de z-index con el mapa
+               container: 'body' // Evitar conflictos de z-index con el mapa
          }));
       });
    </script>

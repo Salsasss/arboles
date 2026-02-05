@@ -6,6 +6,10 @@ __pycache__/
 /__pycache__/
 *$py.class
 
+# Basura de SASS
+.sass-cache/
+*.css.map
+
 # Variables de Entorno
 *.env
 
