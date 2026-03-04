@@ -1,60 +1,58 @@
-<div class="card-body">
-    <form method="get" class="row align-items-center-stretch" id="buscarForm">        
-        <div class="col-2">
-            <select name="tipo" class="form-select text-dark">
-                 <option value="" disabled {% if not tipo %}selected{% endif %} hidden>
-                    Tipo Especie
+<form method="get" class="row align-items-center gap-2 m-0 w-100" id="buscarForm">
+    <div class="col-12 col-sm-2 p-0">
+        <select name="tipo" class="form-select text-dark">
+                <option value="" disabled {% if not tipo %}selected{% endif %} hidden>
+                Tipo Especie
+            </option>
+            {% for key, valor_tipo in TIPO_CHOICES %}
+                <option value="{{ key }}" {% if key == tipo %}selected{% endif %}>
+                    {{ valor_tipo }}
                 </option>
-                {% for key, valor_tipo in TIPO_CHOICES %}
-                    <option value="{{ key }}" {% if key == tipo %}selected{% endif %}>
-                        {{ valor_tipo }}
+            {% endfor %}
+        </select>
+    </div>
+
+    {% if request.resolver_match.view_name == 'public:galeria' or request.resolver_match.view_name == 'panel:mi_galeria' %}
+        {% include "includes/filtros_galeria.html" %}
+    {% endif %}
+
+    <div class="col-12 col-sm-2 p-0">
+        <select name="estado" class="form-select text-dark">
+            <option value="" disabled {% if not estado %}selected{% endif %} hidden>
+                Estado Conservación
+            </option>
+            {% for key, valor_estado in ESTADO_CONSERVACION_CHOICES %}
+                <option value="{{ key }}" {% if key == estado %}selected{% endif %}>
+                    {{ key }} - {{ valor_estado }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    {% if request.resolver_match.view_name == 'panel:mis_especies' %}
+        <div class="col-12 col-sm-2 p-0">
+            <select name="estado_especie" class="form-select text-dark">
+                <option value="" disabled {% if not estado_especie %}selected{% endif %} hidden>
+                    Estado
+                </option>
+                {% for key, valor_estado_especie in ESTADO_ESPECIE %}
+                    <option value="{{ key }}" {% if key == estado_especie %}selected{% endif %}>
+                        {{ valor_estado_especie }}
                     </option>
                 {% endfor %}
             </select>
         </div>
+    {% endif %}
 
-        {% if request.resolver_match.view_name == 'public:galeria' or request.resolver_match.view_name == 'panel:mi_galeria' %}
-            {% include "includes/filtros_galeria.html" %}
+    <div class="col-12 col-sm-2 p-0">
+        <button type="submit" class="btn btn-primary text-white w-100">Filtrar</button>            
+    </div>
+    
+    <div class="col-12 col-sm-1 p-0">
+        {% if query or tipo or especie_buscar or categoria or estado or estado_especie %}
+            <a href="{{ request.path }}" class="btn btn-outline-secondary w-100 w-sm-auto">
+                <i class="fas fa-circle-xmark"></i>
+            </a>
         {% endif %}
-
-        <div class="col-3">
-            <select name="estado" class="form-select text-dark">
-                <option value="" disabled {% if not estado %}selected{% endif %} hidden>
-                    Estado Conservación
-                </option>
-                {% for key, valor_estado in ESTADO_CONSERVACION_CHOICES %}
-                    <option value="{{ key }}" {% if key == estado %}selected{% endif %}>
-                        {{ key }} - {{ valor_estado }}
-                    </option>
-                {% endfor %}
-            </select>
-        </div>
-
-        {% if request.resolver_match.view_name == 'panel:mis_especies' %}
-            <div class="col-2">
-                <select name="estado_especie" class="form-select text-dark">
-                    <option value="" disabled {% if not estado_especie %}selected{% endif %} hidden>
-                        Estado
-                    </option>
-                    {% for key, valor_estado_especie in ESTADO_ESPECIE %}
-                        <option value="{{ key }}" {% if key == estado_especie %}selected{% endif %}>
-                            {{ valor_estado_especie }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-        {% endif %}
-
-        <div class="col-2">
-            <button type="submit" class="btn btn-primary text-white w-100">Filtrar</button>            
-        </div>
-        
-        <div class="col-1 d-flex">
-            {% if query or tipo or especie_buscar or categoria or estado or estado_especie %}
-                <a href="{{ request.path }}" class="btn btn-outline-secondary me-2">
-                    <i class="fas fa-circle-xmark"></i>
-                </a>
-            {% endif %}
-        </div>
-    </form>
-</div>
+    </div>
+</form>

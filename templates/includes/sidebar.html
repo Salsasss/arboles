@@ -1,91 +1,115 @@
 {% load static %}
 
-<div class="d-flex flex-column flex-shrink-0 p-2 text-white bg-dark sidebar-container" style="width: 230px; height: 100vh; position: sticky; top: 0;">
-    <a href="{% url 'home' %}" class="d-flex text-decoration-none justify-content-center">
-        <img src="{% static 'images/logo.png' %}" alt="Logo" style="width: 80px; height: auto;" class="img-fluid">
+<div class="d-md-none bg-dark d-flex justify-content-between align-items-center p-2 w-100 shadow-sm sticky-top">
+    <a href="{% url 'home' %}" class="text-decoration-none d-flex align-items-center gap-2">
+        <img src="{% static 'images/floratec_logo.svg' %}" alt="Logo FloraTec" style="height: 40px;" class="img-fluid">
+        <span class="fw-bold fs-5">Flora<span class="text-white">Tec</span></span>
     </a>
+    <button class="btn btn-outline-light border-0 mi-boton" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMovil" aria-controls="sidebarMovil">
+        <i class="fa-solid fa-bars fa-xl"></i>
+    </button>
+</div>
 
-    <hr class="text-primary my-2 my-xxl-3"> <!-- Menu Principal -->
+<div class="offcanvas-md offcanvas-start bg-dark text-white sidebar-container flex-shrink-0 vh-100 sticky-pc" 
+     tabindex="-1" id="sidebarMovil" aria-labelledby="sidebarMovilLabel" style="width: 230px;">
 
-    <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
-        <li class="nav-item">
-            <a href="{% url 'public:catalogo_especies' %}"
-                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:catalogo_especies' %}active{% endif %}">
-                <i class="fa-solid fa-tree fa-lg w-15 text-center"></i> <span>Especies</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{% url 'public:galeria' %}"
-                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:galeria' %}active{% endif %}">
-                <i class="fa-solid fa-images fa-lg w-15 text-center"></i> <span>Galería</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{% url 'mapa_inventario' %}"
-                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_inventario' %}active{% endif %}">
-                <i class="fa-solid fa-map-location-dot fa-lg w-15 text-center"></i> <span>Inventario Forestal</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{% url 'mapa_historial' %}"
-                class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_historial' %}active{% endif %}">
-                <i class="fa-solid fa-satellite fa-lg w-15 text-center"></i> <span>Evolución Forestal</span>
-            </a>
-        </li>
-    </ul>
+     <div class="offcanvas-body d-flex flex-column p-2 overflow-y-auto w-100 h-100">
+        
+        <div class="offcanvas-header p-2 pb-0 d-md-none">
+            <h5 class="offcanvas-title d-flex align-items-center gap-2" id="sidebarMovilLabel">
+                <img src="{% static 'images/floratec_logo.svg' %}" alt="Logo FloraTec" style="height: 40px;" class="img-fluid">
+                <span class="fw-bold fs-5 text-primary">Flora<span class="text-white">Tec</span></span>
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMovil" aria-label="Cerrar"></button>
+        </div>
+        
+        <a href="{% url 'home' %}" class="d-none d-md-flex flex-column align-items-center text-decoration-none text-white">
+            <img src="{% static 'images/floratec_logo.svg' %}" alt="Logo" style="width: 60px; height: auto;" class="img-fluid">
+            <span class="fw-bold fs-5 text-primary">Flora<span class="text-white">Tec</span></span>
+        </a>
 
-    <hr class="text-primary my-2 my-xxl-3"> <!-- Menu para Administradores -->    
+        <hr class="text-primary my-2 my-xxl-3">
 
-    <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
-        {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN" %}
-            <li class="nav-item">
-                <a href="{% url 'panel:mis_especies' %}"
-                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mis_especies' %}active{% endif %}">
-                    <i class="fa-solid fa-tree fa-lg w-15 text-center"></i> <span>Mis Especies</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'panel:mi_galeria' %}"
-                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mi_galeria' %}active{% endif %}">
-                    <i class="fa-solid fa-images fa-lg w-15 text-center"></i> <span>Mi Galería</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'panel' %}"
-                    class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel' %}active{% endif %}">
-                    <i class="fa-solid fa-users fa-lg w-15 text-center"></i> <span>Usuarios</span>
-                </a>
-            </li>
-        {% endif %}
-    </ul>
-
-    <div class="mt-auto">
         <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
             <li class="nav-item">
-                {% if not request.user.is_authenticated %}
-                    <a href="{% url 'login' %}"
-                        class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
-                        <i class="fa-solid fa-user fa-lg w-15 text-center"></i> <span> {% if not request.user.is_authenticated %} Iniciar Sesión {% else %} {{ request.user.get_full_name | default:request.user.username }} {% endif %} </span>
-                    </a>
-                {% endif %}
-            </li>            
-            {% if request.user.is_authenticated %}
+                <a href="{% url 'public:catalogo_especies' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:catalogo_especies' %}active{% endif %}">
+                    <i class="fa-solid fa-tree fa-lg w-15 text-center"></i> <span>Especies</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'public:galeria' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'public:galeria' %}active{% endif %}">
+                    <i class="fa-solid fa-images fa-lg w-15 text-center"></i> <span>Galería</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'mapa_inventario' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_inventario' %}active{% endif %}">
+                    <i class="fa-solid fa-map-location-dot fa-lg w-15 text-center"></i> <span>Inventario Forestal</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'mapa_historial' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'mapa_historial' %}active{% endif %}">
+                    <i class="fa-solid fa-satellite fa-lg w-15 text-center"></i> <span>Evolución Forestal</span>
+                </a>
+            </li>
+        </ul>
+
+        <hr class="text-primary my-2 my-xxl-3">   
+
+        <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
+            {% if request.user.rol == "STAFF" or request.user.rol == "ADMIN" %}
                 <li class="nav-item">
-                    <a href="{% url 'cambiar_password' %}"
-                        class="nav-link text-white d-flex align-items-center gap-3 hover-light {% if request.resolver_match.view_name == 'cambiar_password' %}active{% endif %}">
-                        <i class="fa-solid fa-gear fa-lg w-15 text-center"></i> <span>Configuración</span>
+                    <a href="{% url 'panel:mis_especies' %}"
+                        class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mis_especies' %}active{% endif %}">
+                        <i class="fa-solid fa-tree fa-lg w-15 text-center"></i> <span>Mis Especies</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <form action="{% url 'logout' %}" method="POST" class="w-100">
-                        {% csrf_token %}
-                        <button type="submit"
-                            class="nav-link text-white d-flex align-items-center gap-3 w-100 text-nowrap">
-                            <i class="fa-solid fa-solid fa-right-from-bracket fa-lg w-15 text-center"></i> <span>Cerrar Sesión</span>
-                        </button>
-                    </form>
+                    <a href="{% url 'panel:mi_galeria' %}"
+                        class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel:mi_galeria' %}active{% endif %}">
+                        <i class="fa-solid fa-images fa-lg w-15 text-center"></i> <span>Mi Galería</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'panel' %}"
+                        class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'panel' %}active{% endif %}">
+                        <i class="fa-solid fa-users fa-lg w-15 text-center"></i> <span>Usuarios</span>
+                    </a>
                 </li>
             {% endif %}
         </ul>
+
+        <div class="mt-auto">
+            <ul class="nav nav-pills flex-column gap-2 gap-xxl-3">
+                <li class="nav-item">
+                    {% if not request.user.is_authenticated %}
+                        <a href="{% url 'login' %}"
+                            class="nav-link text-white d-flex align-items-center gap-3 text-nowrap {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
+                            <i class="fa-solid fa-user fa-lg w-15 text-center"></i> <span>Iniciar Sesión </span>
+                        </a>
+                    {% endif %}
+                </li>            
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'cambiar_password' %}"
+                            class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'cambiar_password' %}active{% endif %}">
+                            <i class="fa-solid fa-gear fa-lg w-15 text-center"></i> <span>Configuración</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{% url 'logout' %}" method="POST" class="w-100">
+                            {% csrf_token %}
+                            <button type="submit"
+                                class="nav-link text-white d-flex align-items-center gap-3 w-100 text-nowrap">
+                                <i class="fa-solid fa-right-from-bracket fa-lg w-15 text-center"></i> <span class="text-start">Cerrar Sesión</span>
+                            </button>
+                        </form>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </div>

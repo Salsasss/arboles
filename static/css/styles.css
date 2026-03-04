@@ -114,3 +114,18 @@
 .btn-outline-secondary:hover {
     color: white;
 }
+
+/* Sidebar */
+@media (min-width: 768px) {
+    .sticky-pc {
+        position: sticky !important;
+        top: 0;
+    }
+}
+
+/* botones */
+@media (min-width: 576px) {
+    .w-sm-auto { 
+        width: auto !important; 
+    }
+}

@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block titulo %}Inventario{% endblock titulo %}
-
 {% block contenido %}
    <h1 class="display-6 fw-bold text-primary opacity-100">
       <i class="fas fa-images me-2"></i>Inventario de la Masa Forestal
@@ -11,15 +10,18 @@
 
     <hr class="my-2">
     
-    <div class="container col-lg-11 py-2">
+    <div class="container col-lg-10 my-3">
       <div class="card shadow-lg border-0 rounded-3 map-wrapper">
+         
+        <!-- Card Header -->
          <div class="card-header bg-dark text-white py-2 d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Instituto Tecnológico de Veracruz</h5>
             <a href="{% url 'inventario_completo' %}" class="btn btn-primary btn-sm text-white rounded-pill px-3">
                Ver Inventario Completo
             </a>
          </div>
-         <!-- Mapa SVG -->
+         
+         <!-- Card Body: Mapa SVG -->
 <svg
    class="map-svg-layer"
    version="1.1"
@@ -12162,7 +12164,8 @@
    {% endfor %}
   </g>
 </svg>
-         <!-- Mapa SVG -->
+
+        <!-- Card Footer -->
          <p class="text-center my-3">
             <i class="fas fa-hand-pointer me-1"></i> Selecciona la zona para ver su inventario
          </p>

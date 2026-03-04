@@ -2,61 +2,61 @@
 {% load static %}
 
 {% block titulo %}Evolución Satelital{% endblock titulo %}
-
 {% block contenido %}
     <h1 class="display-6 fw-bold text-primary opacity-100">
         <i class="fas fa-tree me-2"></i>Historial de la Masa Forestal
     </h1>
-    <p class="lead mb-0 text-dark mb-2">Observa la evolución de la Masa Forestal del campus.</p>
+    <p class="lead mb-0 text-dark mb-3">Observa la evolución de la Masa Forestal del campus.</p>
 
     <hr class="my-2">
 
-    <div class="container py-2">
-        <div class="row justify-content-center">
-            <div class="col-lg-11">
-                <div class="card shadow-lg border-0 rounded-3 overflow-hidden">
-                    <div class="card-header bg-dark text-white py-2 d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Instituto Tecnológico de Veracruz</h5>
-                        <span class="badge bg-primary fs-6 fw-normal" id="fechaDisplay">Cargando fecha...</span>
-                    </div>
+    <div class="container col-lg-10 my-3">
+      <div class="card shadow-lg border-0 rounded-3 map-wrapper">
 
-                    <div class="card-body p-0 bg-black">
-                        <div class="position-relative w-100" style="padding-top: 56.25%; /* Ratio 16:9 */">
-                            {% for historial in imagenes %}
-                                <a href="{{ historial.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
-                                    <img src="{{ historial.imagen.url }}" 
-                                        class="satelite-img w-100 h-100 position-absolute top-0 start-0 img-fluid {% if not forloop.first %}d-none{% endif %}"
-                                        data-fecha="{{ historial.fecha_asociada }}"
-                                        id="img-{{ forloop.counter0 }}"
-                                        alt="Imagen del {{ historial.fecha_asociada }}">
-                                </a>
-                            {% empty %}
-                                <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-                                    <i class="fas fa-image fa-3x mb-3 text-secondary"></i>
-                                    <p>No hay imágenes históricas disponibles aún.</p>
-                                </div>
-                            {% endfor %}
-                        </div>
+        <!-- Card Header -->
+         <div class="card-header bg-dark text-white py-2 d-flex flex-column flex-sm-row gap-1 justify-content-between align-items-center">
+            <h5 class="mb-0">Instituto Tecnológico de Veracruz</h5>
+            <span class="badge w-100 w-sm-auto fs-6 fw-normal" id="fechaDisplay">Cargando fecha...</span>
+         </div>
+         
+        <!-- Card Body: Imagenes Satelitales -->
+        <div class="card-body p-0 bg-black">
+            <div class="position-relative w-100" style="padding-top: 56.25%; /* Ratio 16:9 */">
+                {% for historial in imagenes %}
+                    <a href="{{ historial.imagen.url }}" class="glightbox" data-gallery="galeria-especie">
+                        <img src="{{ historial.imagen.url }}" 
+                            class="satelite-img w-100 h-100 position-absolute top-0 start-0 img-fluid {% if not forloop.first %}d-none{% endif %}"
+                            data-fecha="{{ historial.fecha_asociada }}"
+                            id="img-{{ forloop.counter0 }}"
+                            alt="Imagen del {{ historial.fecha_asociada }}">
+                    </a>
+                {% empty %}
+                    <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+                        <i class="fas fa-image fa-3x mb-3 text-secondary"></i>
+                        <p>No hay imágenes históricas disponibles aún.</p>
                     </div>
-
-                    <div class="card-footer bg-light px-4 py-2">
-                        {% if imagenes %}
-                            <label class="form-label fw-bold text-uppercase">Línea del Tiempo</label>
-                            
-                            <input type="range" class="form-range custom-range color-danger" min="0" max="{{ imagenes.count|add:'-1' }}" value="0" id="timeSlider">
-                            
-                            <div class="d-flex justify-content-between small my-1">
-                                <span><i class="fas fa-calendar-days me-1"></i> Primera: {{ imagenes.first.fecha_asociada|date:"Y" }}</span>
-                                <span>Última: {{ imagenes.last.fecha_asociada|date:"Y" }} <i class="fas fa-flag-checkered ms-1"></i></span>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <p class="text-center mt-3">
-                    <i class="fas fa-hand-pointer me-1"></i> Desliza la barra para cambiar de fecha
-                </p>
+                {% endfor %}
             </div>
+        </div>
+        
+        <!-- Card Footer -->
+        <div class="card-footer bg-light p-4">
+            {% if imagenes %}
+                <label class="form-label fw-bold text-uppercase">Línea del Tiempo</label>
+                
+                <input type="range" class="form-range custom-range color-danger my-2" min="0" max="{{ imagenes.count|add:'-1' }}" value="0" id="timeSlider">
+                
+                <div class="d-flex justify-content-between small my-1">
+                    <span><i class="fas fa-calendar-days me-1"></i> Primera: {{ imagenes.first.fecha_asociada|date:"Y" }}</span>
+                    <span>Última: {{ imagenes.last.fecha_asociada|date:"Y" }} <i class="fas fa-flag-checkered ms-1"></i></span>
+                </div>
+            {% endif %}
+        </div>
+
+        </div>
+            <p class="text-center mt-3">
+                <i class="fas fa-hand-pointer me-1"></i> Desliza la barra para cambiar de fecha
+            </p>
         </div>
     </div>
 {% endblock contenido %}

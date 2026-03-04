@@ -1,43 +1,41 @@
-<div class="card-body">
-    <form method="GET" class="row align-items-center-stretch" id="buscarForm">
-        {% if request.user.rol == "ADMIN" %}
-            <div class="col-2">
-                <select name="rol" class="form-select text-dark">
-                    <option value="" disabled {% if not rol %}selected{% endif %} hidden>
-                        Rol
-                    </option>
-                    {% for key, valor_rol in ROL_CHOICES %}
-                        <option value="{{ key }}" {% if key == rol %}selected{% endif %}>
-                            {{ valor_rol }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-        {% endif %}
-
-        <div class="col-2">
-            <select name="estado" class="form-select text-dark">
-                <option value="" disabled {% if not estado %}selected{% endif %} hidden>
-                    Estado
+<form method="GET" class="row align-items-center-stretch gap-2 m-0 w-100" id="buscarForm">
+    {% if request.user.rol == "ADMIN" %}
+        <div class="col-12 col-sm-2 p-0">
+            <select name="rol" class="form-select text-dark">
+                <option value="" disabled {% if not rol %}selected{% endif %} hidden>
+                    Rol
                 </option>
-                {% for key, valor_estado in ESTADO_CHOICES %}
-                    <option value="{{ key }}" {% if key == estado %}selected{% endif %}>
-                        {{ valor_estado }}
+                {% for key, valor_rol in ROL_CHOICES %}
+                    <option value="{{ key }}" {% if key == rol %}selected{% endif %}>
+                        {{ valor_rol }}
                     </option>
                 {% endfor %}
             </select>
         </div>
+    {% endif %}
 
-        <div class="col-2">
-            <button type="submit" class="btn btn-primary text-white w-100">Filtrar</button>            
-        </div>
+    <div class="col-12 col-sm-2 p-0">
+        <select name="estado" class="form-select text-dark">
+            <option value="" disabled {% if not estado %}selected{% endif %} hidden>
+                Estado
+            </option>
+            {% for key, valor_estado in ESTADO_CHOICES %}
+                <option value="{{ key }}" {% if key == estado %}selected{% endif %}>
+                    {{ valor_estado }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
 
-        <div class="col-1 d-flex">
-            {% if query or rol or estado %}
-                <a href="{{ request.path }}" class="btn btn-outline-secondary me-2">
-                    <i class="fas fa-circle-xmark"></i>
-                </a>
-            {% endif %}
-        </div>
-    </form>
-</div>
+    <div class="col-12 col-sm-2 p-0">
+        <button type="submit" class="btn btn-primary text-white w-100">Filtrar</button>            
+    </div>
+
+    <div class="col-12 col-sm-1 p-0">
+        {% if query or rol or estado %}
+            <a href="{{ request.path }}" class="btn btn-outline-secondary w-100 w-sm-auto">
+                <i class="fas fa-circle-xmark"></i>
+            </a>
+        {% endif %}
+    </div>
+</form>

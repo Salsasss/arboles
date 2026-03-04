@@ -7,7 +7,7 @@
 <div class="container mb-5">
     <h2 class="text-primary fw-bold m-0">
         <i class="fas fa-edit me-2"></i>
-        {% if form.instance.pk %}Editar Usuario{% else %}Crear Nuev Usuario{% endif %}
+        {% if form.instance.pk %}Editar Usuario{% else %}Crear Nuevo Usuario{% endif %}
     </h2>
 
     <hr class="my-3">
@@ -59,7 +59,7 @@
                     </div>
                 {% endif %}
 
-                <div class="d-flex gap-2 justify-content-end">
+                <div class="d-flex flex-column flex-sm-row gap-2 justify-content-end">
                     <a href="{% url 'panel' %}" class="btn btn-outline-secondary px-4 rounded-pill">
                         Cancelar
                     </a>
