@@ -17,8 +17,10 @@
         
         <div class="offcanvas-header p-2 pb-0 d-md-none">
             <h5 class="offcanvas-title d-flex align-items-center gap-2" id="sidebarMovilLabel">
-                <img src="{% static 'images/floratec_logo.svg' %}" alt="Logo FloraTec" style="height: 40px;" class="img-fluid">
-                <span class="fw-bold fs-5 text-primary">Flora<span class="text-white">Tec</span></span>
+                <a href="{% url 'home' %}" class="text-decoration-none d-flex align-items-center gap-2">
+                    <img src="{% static 'images/floratec_logo.svg' %}" alt="Logo FloraTec" style="height: 40px;" class="img-fluid">
+                    <span class="fw-bold fs-5">Flora<span class="text-white">Tec</span></span>
+                </a>
             </h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMovil" aria-label="Cerrar"></button>
         </div>
