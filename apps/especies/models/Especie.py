@@ -64,6 +64,15 @@ class Especie(models.Model):
         null=True
     )
     
+    diametro_campus = models.DecimalField(
+        max_digits=5, # Permite hasta 999.99
+        decimal_places=2,
+        verbose_name="Diámetro promedio en el campus (cm)",
+        help_text="Diámetro del tronco (DAP) promedio en centímetros.",
+        blank=True,
+        null=True
+    )
+    
     altura_maxima = models.DecimalField(
         max_digits=4, # Permite hasta 99.99 metros (suficiente para árboles)
         decimal_places=2,
