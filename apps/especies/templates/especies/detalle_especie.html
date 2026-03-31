@@ -214,6 +214,7 @@
 
         </div>
             <div class="col-lg-4">
+            
             <div class="card mb-4 shadow border-0">
                 <div class="card-header bg-white fw-bold text-primary border-bottom-0 pt-3">
                     <i class="fas fa-ruler-combined me-2"></i> <span class="fw-bold">Dimensiones Máximas</span>
@@ -231,6 +232,22 @@
                     </div>
                 </div>
             </div>
+            
+            {% if especie.diametro_campus %}
+                <div class="card mb-4 shadow border-0">
+                    <div class="card-header bg-white fw-bold text-primary border-bottom-0">
+                        <i class="fas fa-school me-2"></i> <span class="fw-bold">Diámetro Promedio en el Campus</span>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="row text-center mt-2 justify-content-center">
+                            <div class="col-6">
+                                <h3 class="text-dark mb-0">{{ especie.diametro_campus | default:'?' }} <small class="fs-6">cm</small></h3>
+                                <small class="text-uppercase" style="font-size: 0.75rem;">Diámetro</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
 
             <div class="card mb-4 shadow border-0">
                 <div class="card-header bg-success text-white">

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Secuestro y Almacenamiento de Carbono{% endblock titulo %}
+
+{% block contenido %}
+    <header>
+        <h1 class="display-6 fw-bold text-dark opacity-100">
+            El Beneficio Invisible: Captura y Almacenamiento de Carbono
+        </h1>
+        <div class="mt-xxl-0 mb-2">
+            <a href="{% url 'resultados' %}" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Volver a Resultados
+            </a>
+            <span class="badge bg-success px-3 py-2 bg-dark tracking-wide">Reducción de Contaminantes</span>
+        </div>
+        <p class="lead mb-0">
+            Frente a la preocupación global del cambio climático, los árboles de nuestro campus trabajan silenciosamente limpiando la atmósfera y resguardando toneladas de emisiones.
+        </p>
+    </header>
+
+    <hr class="my-3">
+    
+    <div class="row g-4 g-lg-5">
+        <div class="col-12 col-lg-8">
+            <div class="mb-4">
+                <div class="bg-light border rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 250px; border-style: dashed !important;">
+                    <div class="text-center">
+                        <i class="fas fa-smog fa-2x mb-2 text-secondary"></i> <i class="fas fa-arrow-right mx-2 text-success"></i> <i class="fas fa-tree fa-2x mb-2 text-success"></i>
+                        <p class="mb-0 small"><strong>[Placeholder: Fotografía del dosel arbóreo del campus o infografía del ciclo del carbono]</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <article class="text-dark" style="line-height: 1.7;">
+                <p>El cambio climático es un problema de preocupación global. Los árboles urbanos pueden ayudar a mitigar el cambio climático al secuestrar el carbono atmosférico (del dióxido de carbono) en los tejidos y al alterar el uso de la energía en los edificios, y por consiguiente alterar las emisiones de dióxido de carbono de las fuentes eléctricas de combustibles fósiles.</p>
+
+                <h4 class="fw-bold mt-4 mb-3 text-dark">Secuestro vs. Almacenamiento</h4>
+                
+                <p>Es vital entender que los árboles realizan dos funciones distintas pero complementarias respecto al carbono:</p>
+                
+                <ul>
+                    <li class="mb-2"><strong>Secuestro Anual:</strong> Los árboles reducen la cantidad de carbono en la atmósfera al secuestrar el carbono en el crecimiento nuevo cada año. La cantidad de carbono secuestrada anualmente aumenta con el tamaño y la salud de los árboles.</li>
+                    <li><strong>Almacenamiento Total:</strong> Conforme un árbol crece, almacena carbono sujetándolo en su tejido. El almacenamiento de carbono es un indicador de la cantidad de carbono que se puede liberar si se permite que los árboles mueran y se descompongan.</li>
+                </ul>
+
+                <figure class="my-2">
+                    <div class="bg-white border shadow-sm rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 350px;">
+                        <div class="text-center">
+                            <i class="fas fa-chart-area fa-3x mb-2 text-success"></i>
+                            <p class="mb-0"><strong>[Placeholder: Gráfica comparativa de las especies que más carbono secuestran y almacenan]</strong></p>
+                        </div>
+                    </div>
+                    <figcaption class="text-center text-muted mt-2 small">
+                        Figura 3. Capacidad de secuestro y almacenamiento de carbono por especie en el Instituto Tecnológico de Veracruz.
+                    </figcaption>
+                </figure>
+
+                <h4 class="fw-bold mt-4 mb-3 text-dark">La Importancia de la Conservación</h4>
+
+                <p>Mantener árboles saludables mantendrá el carbono almacenado en los árboles. Cuando el árbol muere y se descompone, libera la mayoría del carbono almacenado retornándolo a la atmósfera. Por ello, cuando un árbol muere, usar la madera en productos madereros a largo plazo, para calentar edificios o para producir energía ayudará a reducir las emisiones de carbono de la descomposición de la madera.</p>
+            </article>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="position-sticky" style="top: 2rem;">
+                
+                <h5 class="fw-bold mb-3 text-uppercase fs-6 tracking-wide">Impacto Ecológico y Económico</h5>
+
+                <div class="card border-0 shadow-sm bg-dark text-white rounded-3 p-3 mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-cubes fa-2x text-light me-3 opacity-75"></i>
+                        <div>
+                            <h2 class="display-6 fw-bold mb-0">257 <span class="fs-5 fw-normal">Ton</span></h2>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-1">Carbono Almacenado</p>
+                    <p class="small text-light opacity-75 mb-0">Valor estimado de sustitución: <strong>$83,600 MXN</strong>.</p>
+                </div>
+
+                <div class="card border-0 shadow-sm bg-success bg-opacity-10 rounded-3 p-3 mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-leaf fa-2x text-success me-3"></i>
+                        <div>
+                            <h2 class="display-6 fw-bold text-success mb-0">18.77 <span class="fs-5 fw-normal">Ton/año</span></h2>
+                        </div>
+                    </div>
+                    <p class="fw-bold text-dark mb-1">Secuestro Bruto Anual</p>
+                    <p class="small mb-0">Valor funcional anual asociado: <strong>$6,100 MXN</strong>.</p>
+                </div>
+
+                <div class="alert alert-success border-0 rounded-3 shadow-sm mb-4" role="alert">
+                    <h6 class="alert-heading fw-bold"><i class="fas fa-medal text-success me-2"></i>La Campeona del Carbono</h6>
+                    <p class="small mb-0 text-dark">
+                        De las especies muestreadas,
+                        <a href="{% url 'public:detalle_especie' slug='casuarina-equisetifolia' %}" class="text-decoration-none">
+                           <em>Casuarina equisetifolia</em></a>
+                        almacena y secuestra la mayor cantidad de carbono. Esta especie por sí sola representa aproximadamente el <strong>34.1%</strong> del total almacenado y el <strong>35.5%</strong> de todo el carbono secuestrado en el campus.
+                    </p>
+                </div>
+
+                <div class="card border-success border-opacity-50 rounded-3">
+                    <div class="card-body">
+                        <span class="small text-uppercase fw-bold d-block mb-2">Siguiente lectura</span>
+                        <a href="{% url 'resultados_hidrologicos' %}" class="text-decoration-none text-primary fw-bold d-flex align-items-center justify-content-between">
+                            Beneficios Hidrológicos <i class="fas fa-arrow-right bg-primary text-white p-2 rounded-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock contenido %}

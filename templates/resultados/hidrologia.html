@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Beneficios Hidrológicos{% endblock titulo %}
+{% block contenido %}
+    <header>
+        <h1 class="display-6 fw-bold text-dark opacity-100">
+            Escudos de Lluvia: Beneficios Hidrológicos del Campus
+        </h1>
+        <div class="mt-xxl-0 mb-2">
+            <a href="{% url 'resultados' %}" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Volver a Resultados
+            </a>
+            <span class="badge bg-success px-3 py-2 bg-primary tracking-wide">Escurrimiento Evitado</span>
+        </div>
+        <p class="lead mb-0">
+            Descubre cómo nuestra masa forestal actúa como una esponja natural, previniendo inundaciones y ahorrando recursos económicos al Instituto Tecnológico de Veracruz.
+        </p>
+    </header>    
+
+    <hr class="my-3">
+
+    <div class="row g-4 g-lg-5">
+        <div class="col-12 col-lg-8">
+            <div class="mb-4">
+                <div class="bg-light border rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 250px; border-style: dashed !important;">
+                    <div class="text-center">
+                        <i class="fas fa-cloud-showers-heavy fa-2x mb-2 text-primary"></i>
+                        <p class="mb-0 small"><strong>[Placeholder: Foto de árboles del campus durante o después de la lluvia]</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <article class="text-dark" style="line-height: 1.7;">
+                <p>El escurrimiento superficial puede ser causa de preocupación en muchas áreas urbanas ya que puede contribuir a la contaminación de arroyos, humedales, ríos, lagos y océanos. En las áreas urbanas, la gran extensión de superficies impermeables (como estacionamientos y calles) aumenta significativamente la cantidad de escurrimiento superficial. </p>
+
+                <p>Aquí es donde entran en acción nuestros árboles. Durante los eventos de precipitación, cierta cantidad de lluvia se ve interceptada por la copa de los árboles y matorrales, mientras que sus sistemas de raíces promueven la infiltración y el almacenamiento en el suelo. La cantidad de la precipitación que llega al suelo y no se logra filtrar es lo que se vuelve escurrimiento superficial.</p>
+
+                <h4 class="fw-bold mt-4 mb-3 text-primary">Las Especies Que Nos Protegen</h4>
+                
+                <p>No todos los árboles interceptan la misma cantidad de agua.
+                    <a href="{% url 'public:detalle_especie' slug='bursera-simaruba' %}" class="text-decoration-none">
+                        <em>Bursera simaruba</em></a>
+                    destaca como la especie de mayor beneficio hidrológico en el área de estudio.
+                </p>
+                <p>Le siguen en importancia la
+                    <a href="{% url 'public:detalle_especie' slug='azadirachta-indica' %}" class="text-decoration-none">
+                        <em>Azadirachta indica</em></a> y la
+                    <a href="{% url 'public:detalle_especie' slug='casuarina-equisetifolia' %}" class="text-decoration-none">
+                        <em>Casuarina equisetifolia</em></a>,
+                    las cuales evitan un escurrimiento de 64.92 m³/año y 48.20 m³/año, respectivamente.
+                </p>
+
+                <figure class="my-2">
+                    <div class="bg-white border shadow-sm rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 350px;">
+                        <div class="text-center">
+                            <i class="fas fa-chart-bar fa-3x mb-2 text-primary"></i>
+                            <p class="mb-0"><strong>[Placeholder: Gráfica de barras de las especies que más agua interceptan]</strong></p>
+                        </div>
+                    </div>
+                    <figcaption class="text-center mt-2 small">
+                        Figura 2. Top especies por volumen de escurrimiento superficial evitado anualmente.
+                    </figcaption>
+                </figure>
+
+                <h4 class="fw-bold mt-4 mb-3 text-primary">El Valor de los Árboles de Gran Porte</h4>
+
+                <p>Es importante notar que especies monumentales o de gran porte, como el
+                    <a href="{% url 'public:detalle_especie' slug='enterolobium-cyclocarpum' %}" class="text-decoration-none">
+                        <em>Enterolobium cyclocarpum</em></a>
+                    o la
+                    <a href="{% url 'public:detalle_especie' slug='ceiba-pentandra' %}" class="text-decoration-none">
+                        <em>Ceiba pentandra</em></a>,
+                    presentan tasas significativas de evapotranspiración e interceptación de agua de manera individual. Sin embargo, su impacto hidrológico total en el campus es menor debido a su baja densidad poblacional, contando con menos de 20 individuos cada una.
+                </p>
+                <p>Estos resultados evidencian que el manejo de la escorrentía y la provisión de servicios hídricos dependen fundamentalmente del volumen foliar acumulado por las especies más abundantes.</p>
+            </article>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="position-sticky" style="top: 2rem;">
+                
+                <h5 class="fw-bold mb-3 text-uppercase text-muted fs-6 tracking-wide">Impacto Anual</h5>
+
+                <div class="card border-0 shadow-sm bg-primary bg-opacity-10 rounded-3 p-3 mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-water fa-2x text-primary me-3"></i>
+                        <h2 class="display-6 fw-bold text-primary mb-0">422 <span class="fs-4">m³</span></h2>
+                    </div>
+                    <p class="fw-bold text-dark mb-1">Escurrimiento Evitado</p>
+                    <small>Agua de llubia que los árboles del campus interceptan.</small>
+                </div>
+
+                <div class="card border-0 shadow-sm bg-info bg-opacity-10 rounded-3 p-3 mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-money-bill-wave fa-2x text-info me-2"></i>
+                        <h2 class="display-6 fw-bold text-info mb-0">$19,000 <span class="fs-4">MXN</span></h2>
+                    </div>
+                    <p class="fw-bold text-dark mb-1">Ahorro Económico</p>
+                    <small>Valor funcional anual derivado de la mitigación hidrológica.</small>
+                </div>
+
+                <div class="alert alert-primary border-0 rounded-3 shadow-sm mb-4" role="alert">
+                    <h6 class="alert-heading fw-bold"><i class="fas fa-tree text-primary me-2"></i>El Campeón Hidrológico</h6>
+                    <p class="mb-0">
+                        Tan solo los 249 individuos de
+                        <a href="{% url 'public:detalle_especie' slug='bursera-simaruba' %}" class="text-decoration-none">
+                            <em>Bursera simaruba</em></a>
+                        logran evitar un escurrimiento de 129.14 m³/año, lo que representa un beneficio económico estimado en $5,799.37 MXN anuales por sí solos.
+                    </p>
+                </div>
+
+                <div class="card border-success border-opacity-50 rounded-3">
+                    <div class="card-body">
+                        <span class="small text-uppercase fw-bold d-block mb-2">Siguiente lectura</span>
+                        <a href="{% url 'resultados_diversidad' %}" class="text-decoration-none text-primary fw-bold d-flex align-items-center justify-content-between">
+                            Diversidad y Origen <i class="fas fa-arrow-right bg-primary text-white p-2 rounded-circle"></i>
+                        </a>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+
+    </div>
+{% endblock contenido %}

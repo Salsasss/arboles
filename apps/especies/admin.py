@@ -19,7 +19,7 @@ class UrlInline(admin.TabularInline):
 
 @admin.register(Especie)
 class EspecieAdmin(admin.ModelAdmin):
-    list_display = ('nombre_comun', 'nombre_cientifico', 'tipo', 'estado_conservacion', 'diametro_maximo', 'altura_maxima', 'slug', 'is_active')
+    list_display = ('nombre_comun', 'nombre_cientifico', 'tipo', 'estado_conservacion', 'diametro_maximo', 'altura_maxima', 'diametro_campus', 'slug', 'is_active')
     list_filter = ('tipo', 'estado_conservacion', 'is_active')
     search_fields = ('nombre_comun', 'nombre_cientifico')
     ordering = ('nombre_cientifico', )

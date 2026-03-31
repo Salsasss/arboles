@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Producción de Oxígeno{% endblock titulo %}
+
+{% block contenido %}
+    <header>
+        <h1 class="display-6 fw-bold text-dark opacity-100">
+            El Pulmón del Campus: Producción de Oxígeno
+        </h1>
+        <div class="mt-xxl-0 mb-2">
+            <a href="{% url 'resultados' %}" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Volver a Resultados
+            </a>
+            <span class="badge bg-success px-3 py-2 bg-info tracking-wide">Calidad del Aire</span>
+        </div>
+        <p class="lead mb-0">
+            Descubre cuánto respiramos gracias al bosque urbano del Instituto Tecnológico de Veracruz y quiénes son los verdaderos gigantes del oxígeno.
+        </p>
+    </header>
+
+    <hr class="my-3">
+
+    <div class="row g-4 g-lg-5">
+        <div class="col-12 col-lg-8">
+            <div class="mb-4">
+                <div class="bg-light border rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 250px; border-style: dashed !important;">
+                    <div class="text-center">
+                        <i class="fas fa-wind fa-3x mb-2 text-info"></i>
+                        <p class="mb-0 small"><strong>[Placeholder: Fotografía del follaje contra el cielo azul]</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <article class="text-dark" style="line-height: 1.7;">
+                <p>La producción de oxígeno es uno de los beneficios de los árboles urbanos más comúnmente citados. La producción anual de oxígeno de un árbol está directamente relacionada con la cantidad de carbono secuestrado por el mismo, la cual a su vez está vinculada con la acumulación de biomasa.</p>
+
+                <p>En conjunto, se calcula que los árboles del campus producen <strong>50.05 toneladas métricas de oxígeno al año</strong>, convirtiendo al campus en un auténtico pulmón para la zona conurbada de Veracruz.</p>
+
+                <h4 class="fw-bold mt-4 mb-3 text-info">Calidad vs. Cantidad: Un hallazgo sorprendente</h4>
+                
+                <p>Un dato fascinante que arrojan los resultados es que la producción de oxígeno y el secuestro bruto de carbono no están estrictamente relacionados con la abundancia poblacional o el área foliar total de una especie. Es decir, tener más individuos de una especie no garantiza que sea la que más oxígeno aporta.</p>
+
+                <figure class="my-2">
+                    <div class="bg-white border shadow-sm rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 350px;">
+                        <div class="text-center">
+                            <i class="fas fa-list-ol fa-3x mb-2 text-info"></i>
+                            <p class="mb-0"><strong>[Placeholder: Tabla 2 o Gráfica de las 20 principales especies productoras de O2]</strong></p>
+                        </div>
+                    </div>
+                    <figcaption class="text-center mt-2 text-muted small">
+                        Figura 4. Principales especies productoras de oxígeno en el instituto.
+                    </figcaption>
+                </figure>
+
+                <h4 class="fw-bold mt-4 mb-3 text-info">El Valor de los Árboles de Gran Porte</h4>
+
+                <p>Se destaca la contribución de especies de gran porte, pero baja frecuencia en el campus, especies como
+                    <a href="{% url 'public:detalle_especie' slug='albizia-lebbeck' %}" class="text-decoration-none">
+                        <em>Albizia lebbeck</em></a> y
+                    <a href="{% url 'public:detalle_especie' slug='enterolobium-cyclocarpum' %}" class="text-decoration-none">
+                        <em>Enterolobium cyclocarpum</em></a> 
+                    (con apenas 35 y 18 individuos respectivamente) logran posicionarse en el cuarto y quinto lugar general de producción. Esto evidencia la inmensa capacidad que tienen los ejemplares de mayores dimensiones, subrayando la importancia de conservar y cuidar los árboles más grandes y antiguos de nuestro campus.</p>
+            </article>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="card border-0 shadow-sm bg-info text-dark bg-opacity-10 rounded-3 p-3 mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-lungs fa-2x text-info me-3"></i>
+                        <div>
+                            <h2 class="display-6 fw-bold text-info mb-0">50.05 <span class="fs-5 fw-normal text-muted">Ton</span></h2>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-1">Producción Anual del Campus</p>
+                    <small>Toneladas métricas de oxígeno liberadas a la atmósfera.</small>
+                </div>
+
+                <div class="card border-0 shadow-sm bg-white rounded-3 p-3 border mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-trophy fa-2x text-warning me-3"></i>
+                        <div>
+                            <h2 class="display-6 fw-bold text-dark mb-0">17.75 <span class="fs-5 fw-normal text-muted">Ton</span></h2>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-1">Especie Más Productora</p>
+                    <small>
+                        Producidas anualmente solo por
+                        <a href="{% url 'public:detalle_especie' slug='casuarina-equisetifolia' %}" class="text-decoration-none">
+                            <em>Casuarina equisetifolia</em></a>,
+                        aun cuando no es la especie más abundante.
+                    </small>
+                </div>
+
+                <div class="alert alert-warning border-0 rounded-3 shadow-sm mb-4" role="alert">
+                    <h6 class="alert-heading fw-bold"><i class="fas fa-exclamation-triangle text-warning me-2"></i>El otro lado de la moneda</h6>
+                    <p class="small mb-0 text-dark">
+                        Los árboles también emiten compuestos orgánicos volátiles (COV). En 2026, emitieron aprox. 364.8 kg de COV (precursores de ozono), siendo
+                        <a href="{% url 'public:detalle_especie' slug='casuarina-equisetifolia' %}" class="text-decoration-none">
+                            <em>Casuarina equisetifolia</em></a> y
+                        <a href="{% url 'public:detalle_especie' slug='bursera-simaruba' %}" class="text-decoration-none">
+                            <em>Bursera simaruba</em></a>
+                        responsables del 78% de estas emisiones.
+                    </p>
+                </div>
+
+                <div class="card border-info border-opacity-50 rounded-3">
+                    <div class="card-body">
+                        <span class="small text-uppercase fw-bold d-block mb-2">Siguiente lectura</span>
+                        <a href="{% url 'resultados_carbono' %}" class="text-decoration-none text-dark fw-bold d-flex align-items-center justify-content-between">
+                            Secuestro y Almacenamiento de Carbono
+                            <i class="fas fa-arrow-right bg-dark text-white p-2 rounded-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock contenido %}

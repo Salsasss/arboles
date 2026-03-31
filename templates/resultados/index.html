@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}Resultados del Estudio{% endblock titulo %}
+{% block contenido %}
+    <header>
+        <h1 class="display-6 fw-bold text-dark opacity-100">
+            <i class="fas fa-microscope text-primary me-2"></i>Resultados del Estudio Ecológico
+        </h1>
+        <p class="lead mb-0 text-dark mb-3">Explora el impacto ambiental y los servicios ecosistémicos que brinda el bosque urbano del Instituto Tecnológico de Veracruz.</p>
+    </header>
+
+    <div class="row g-3 mb-3 justify-content-center text-center">
+        <div class="col-6 col-md-3">
+            <div class="h-100 p-3 bg-light rounded-4 border">
+                <h2 class="fw-bold text-success mb-0">1,273</h2>
+                <span class="text-muted small text-uppercase fw-bold">Árboles Totales</span>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="h-100 p-3 bg-light rounded-4 border">
+                <h2 class="fw-bold text-primary mb-0">5.257</h2>
+                <span class="text-muted small text-uppercase fw-bold">Hectáreas Cubiertas</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="p-3 bg-light rounded-4 border h-100 d-flex flex-column justify-content-center">
+                <span class="fw-bold text-dark">
+                    <a href="{% url 'public:detalle_especie' slug='bursera-simaruba' %}" class="text-decoration-none">
+                        <em>Bursera simaruba</em></a>,
+                    <a href="{% url 'public:detalle_especie' slug='casuarina-equisetifolia' %}" class="text-decoration-none">
+                        <em>Casuarina equisetifolia</em></a> y
+                    <a href="{% url 'public:detalle_especie' slug='azadirachta-indica' %}" class="text-decoration-none">
+                        <em>Azadirachta indica</em></span></a>
+                <span class="text-muted small text-uppercase fw-bold">Especies Dominantes</span>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row row-cols-1 row-cols-md-2 g-4 g-lg-5">
+        
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover-lift">
+                <div class="card-header border-0 bg-success bg-opacity-10 p-4 text-center">
+                    <i class="fas fa-globe-americas fa-4x text-success mb-2"></i>
+                </div>
+                <div class="card-body p-4">
+                    <span class="badge bg-success mb-2">Biodiversidad</span>
+                    <h4 class="card-title fw-bold">Diversidad y Origen</h4>
+                    <p class="card-text text-muted">
+                        Un análisis del estatus de origen de nuestra población arbórea. ¿Sabías que el 49.3% de los árboles del campus son nativos de México? Descubre de dónde provienen los demás.
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-0 p-4 pt-0">
+                    <a href="{% url 'resultados_diversidad' %}" class="btn btn-outline-success w-100 stretched-link fw-bold">
+                        Explorar Diversidad <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover-lift">
+                <div class="card-header border-0 bg-info bg-opacity-10 p-4 text-center">
+                    <i class="fas fa-wind fa-4x text-info mb-2"></i>
+                </div>
+                <div class="card-body p-4">
+                    <span class="badge bg-info mb-2">Calidad del Aire</span>
+                    <h4 class="card-title fw-bold">Producción de Oxígeno</h4>
+                    <p class="card-text text-muted">
+                        El bosque urbano del campus produce 50.05 toneladas métricas de oxígeno al año. Conoce el papel de los árboles de gran porte en esta importante tarea
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-0 p-4 pt-0">
+                    <a href="{% url 'resultados_oxigeno' %}" class="btn btn-outline-info text-dark w-100 stretched-link fw-bold">
+                        Explorar Producción de O₂ <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover-lift">
+                <div class="card-header border-0 bg-dark text-white p-4 text-center">
+                    <i class="fas fa-smog fa-4x text-light opacity-75 mb-2"></i>
+                </div>
+                <div class="card-body p-4">
+                    <span class="badge bg-dark mb-2">Reducción de Contaminantes</span>
+                    <h4 class="card-title fw-bold">Secuestro y Almacenamiento de Carbono</h4>
+                    <p class="card-text text-muted">
+                        Los árboles mitigan el cambio climático. El bosque urbano del campus almacena 257 toneladas de carbono y captura 18.77 toneladas extra cada año.
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-0 p-4 pt-0">
+                    <a href="{% url 'resultados_carbono' %}" class="btn btn-outline-dark w-100 stretched-link fw-bold">
+                        Explorar Carbono <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden card-hover-lift">
+                <div class="card-header border-0 bg-primary bg-opacity-10 p-4 text-center">
+                    <i class="fas fa-cloud-showers-heavy fa-4x text-primary mb-2"></i>
+                </div>
+                <div class="card-body p-4">
+                    <span class="badge bg-primary mb-2">Escurrimiento Evitado</span>
+                    <h4 class="card-title fw-bold">Beneficios Hidrológicos</h4>
+                    <p class="card-text text-muted">
+                        A través de sus copas y raíces, los árboles del campus evitan el escurrimiento de 422 m³ de agua de lluvia, actuando como barreras naturales contra inundaciones.
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-0 p-4 pt-0">
+                    <a href="{% url 'resultados_hidrologicos' %}" class="btn btn-outline-primary w-100 stretched-link fw-bold">
+                        Descubrir Beneficios <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="text-center mt-4 mb-3">
+        <p class="text-muted small">
+            <em>Datos derivados del análisis realizado mediante el software i-Tree ECO v6 sobre la estructura del bosque del Instituto Tecnológico de Veracruz.</em>
+        </p>
+    </div>
+{% endblock contenido %}

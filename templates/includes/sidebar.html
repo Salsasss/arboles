@@ -57,6 +57,12 @@
                     <i class="fa-solid fa-satellite fa-lg w-15 text-center"></i> <span>Evolución Forestal</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{% url 'resultados' %}"
+                    class="nav-link text-white d-flex align-items-center gap-3 {% if request.resolver_match.view_name == 'resultados' %}active{% endif %}">
+                    <i class="fa-solid fa-microscope fa-lg w-15 text-center"></i> <span>Resultados Estudio</span>
+                </a>
+            </li>
         </ul>
 
         <hr class="text-primary my-2 my-xxl-3">   

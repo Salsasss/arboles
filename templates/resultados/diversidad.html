@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}Diversidad y Origen de Especies{% endblock titulo %}
+{% block contenido %}
+     <header>
+        <h1 class="display-6 fw-bold text-dark opacity-100">
+            ¿Nativos o Exóticos?: El Origen de Nuestros Árboles
+        </h1>
+        <div class="mt-xxl-0 mb-2">
+            <a href="{% url 'resultados' %}" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Volver a Resultados
+            </a>
+            <span class="badge bg-success px-3 py-2 tracking-wide">Biodiversidad</span>
+        </div>
+        <p class="lead mb-0">
+            Un análisis profundo sobre la diversidad de especies que conforman el ecosistema del Instituto Tecnológico de Veracruz.
+        </p>
+    </header>
+
+    <hr class="my-3">
+
+    <div class="row g-4 g-lg-5">
+        <div class="col-12 col-lg-8">
+            <div class="mb-4">
+                <div class="bg-light border rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 250px; border-style: dashed !important;">
+                    <div class="text-center">
+                        <i class="fas fa-image fa-2x mb-2"></i>
+                        <p class="mb-0 small"><strong>[Placeholder: Foto panorámica del campus]</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <article class="text-dark" style="line-height: 1.7;">
+                <p>Los bosques urbanos están compuestos de una mezcla de especies de árboles nativos y exóticos. El aumento en la diversidad de árboles puede minimizar el impacto general o la destrucción por un insecto o enfermedad específica en una especie. también puede presentar un riesgo para las plantas nativas si algunas de las especies exóticas son plantas invasivas con el potencial de ser más competitivas y desplazar a las especies nativas.</p>
+
+                <h4 class="fw-bold mt-4 mb-3 text-primary">¿De Dónde Provienen Nuestros Árboles?</h4>
+                
+                <p>El análisis del estatus de origen del arbolado revela una composición diversa. Destaca que el 49.3% de los ejemplares se identifican como nativos de México, mientras que el 41.6% corresponde a especies con un rango de distribución que abarca tanto Norte como Sudamérica. Por otro lado, se registra una presencia significativa de especies introducidas de Asia y Oceanía (24.0%), lo cual es común en áreas verdes urbanas con fines ornamentales.</p>
+
+                <figure class="my-2">
+                    <div class="bg-white border shadow-sm rounded-3 d-flex align-items-center justify-content-center text-secondary" style="height: 350px;">
+                        <div class="text-center">
+                            <i class="fas fa-chart-pie fa-3x mb-2 text-primary"></i>
+                            <p class="mb-0"><strong>[Placeholder: Gráfica de pastel de orígenes]</strong></p>
+                        </div>
+                    </div>
+                    <figcaption class="text-center text-muted mt-2 small">
+                        Figura 1. Distribución porcentual del estatus de origen de la población arbórea del campus.
+                    </figcaption>
+                </figure>
+
+                <h4 class="fw-bold mt-4 mb-3 text-primary">Los Dueños del Paisaje</h4>
+
+                <p>En el campus, las especies más dominante en términos del área de las hojas son
+                    <a href="{% url 'public:detalle_especie' slug='bursera-simaruba' %}" class="text-decoration-none">
+                        <em>Bursera simaruba</em></a>,
+                    <a href="{% url 'public:detalle_especie' slug='azadirachta-indica' %}" class="text-decoration-none">
+                        <em>Azadirachta indica</em></a>, y
+                    <a href="{% url 'public:detalle_especie' slug='casuarina-equisetifolia' %}" class="text-decoration-none">
+                        <em>Casuarina equisetifolia</em></a>.
+                    Los valores de importancia se calculan como la suma del porcentaje de la población y porcentaje del área de las hojas. </p>
+                <p>Los valores de importancia altos no quieren decir que los árboles deben procurarse necesariamente a futuro; sino que dichas especies dominan actualmente la estructura del bosque urbano.</p>
+            </article>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="card border-0 shadow-sm bg-success bg-opacity-10 rounded-3 p-3 mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-leaf fa-2x text-success me-3"></i>
+                        <h2 class="display-6 fw-bold text-success mb-0">49.3%</h2>
+                    </div>
+                    <p class="fw-bold mb-1">Nativos de México</p>
+                    <small>La mayor parte del arbolado pertenece a nuestra región.</small>
+                </div>
+
+                <div class="card border-0 shadow-sm bg-warning bg-opacity-10 rounded-3 p-3 mb-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-globe-asia fa-2x text-warning me-3"></i>
+                        <h2 class="display-6 fw-bold text-warning mb-0">24.0%</h2>
+                    </div>
+                    <p class="fw-bold mb-1">Asia y Oceanía</p>
+                    <small>Especies introducidas, comúnmente usadas con fines ornamentales.</small>
+                </div>
+
+                <div class="alert alert-secondary border-0 rounded-3 shadow-sm mb-4" role="alert">
+                    <h6 class="alert-heading fw-bold"><i class="fas fa-circle-info text-danger me-2"></i>Nota sobre rangos</h6>
+                    <p class="small mb-0">
+                        Es importante precisar que estos porcentajes no son aditivos, ya que una misma especie puede estar catalogada en diversos rangos de forma simultánea (por ejemplo, una especie nativa de Veracruz como la
+                        <a href="{% url 'public:detalle_especie' slug='zamia-furfuracea' %}" class="text-decoration-none">
+                            <em>Zamia furfuracea</em>
+                        </a>
+                        se registra dentro de las categorías de México y Norteamérica).
+                    </p>
+                </div>
+
+                <div class="card border-success border-opacity-50 rounded-3">
+                    <div class="card-body">
+                        <span class="small text-uppercase fw-bold d-block mb-2">Siguiente lectura</span>
+                        <a href="{% url 'resultados_oxigeno' %}" class="text-decoration-none text-info fw-bold d-flex align-items-center justify-content-between">
+                            Producción de Oxígeno <i class="fas fa-arrow-right bg-info text-white p-2 rounded-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock contenido %}

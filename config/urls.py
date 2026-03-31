@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
+from django.views.generic import TemplateView
 from apps.perfiles.views.auth import redirect_home, CustomLoginView, RegisterCreateView, CustomPasswordChangeView, CustomPasswordResetView, CustomPasswordResetConfirmView, CustomPasswordResetDoneView, CustomPasswordResetCompleteView
 
 urlpatterns = [
@@ -41,6 +42,12 @@ urlpatterns = [
     path('perfiles/', include('apps.perfiles.urls')),
     # Para que funcione CKEditor
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    # Blog de los Resultados
+    path('resultados/', TemplateView.as_view(template_name='resultados/index.html'), name='resultados'),
+    path('resultados/produccion-oxigeno/', TemplateView.as_view(template_name='resultados/oxigeno.html'), name='resultados_oxigeno'),
+    path('resultados/almacenamiento-carbono/', TemplateView.as_view(template_name='resultados/carbono.html'), name='resultados_carbono'),
+    path('resultados/beneficios-hidrologicos/', TemplateView.as_view(template_name='resultados/hidrologia.html'), name='resultados_hidrologicos'),
+    path('resultados/diversidad-especies/', TemplateView.as_view(template_name='resultados/diversidad.html'), name='resultados_diversidad'),
 ]
 
 if settings.DEBUG:
