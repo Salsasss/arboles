@@ -15,7 +15,6 @@ __pycache__/
 
 # Dump de la DB
 data*.json
-*.sql
 
 # Archivos de logs
 *.log
