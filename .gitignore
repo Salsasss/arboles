@@ -14,7 +14,6 @@ __pycache__/
 *.env
 
 # Dump de la DB
-data*.json
 
 # Archivos de logs
 *.log
