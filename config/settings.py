@@ -37,7 +37,6 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "arboles-cedw.onrender.com",
     "https://arboles-cedw.onrender.com",
     "https://www.arboles-cedw.onrender.com"
 ]
