@@ -31,14 +31,14 @@ SECRET_KEY = 'django-insecure-c6)75+pon-cualquier-cosa-larga-y-rara-aqui-tempora
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "arboles-cedw.onrender.com"
-    "https://arboles-cedw.onrender.com"
+    "arboles-cedw.onrender.com",
+    "https://arboles-cedw.onrender.com",
     "https://www.arboles-cedw.onrender.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "arboles-cedw.onrender.com"
-    "https://arboles-cedw.onrender.com"
+    "arboles-cedw.onrender.com",
+    "https://arboles-cedw.onrender.com",
     "https://www.arboles-cedw.onrender.com"
 ]
 
