@@ -36,10 +36,10 @@ class UsuarioListView(StaffRequireMixin, ListView):
         # Buscador
         if self.query:
             queryset = queryset.filter(
-                Q(username__icontains=self.query) |
-                Q(first_name__icontains=self.query) |
-                Q(last_name__icontains=self.query) |
-                Q(email__icontains=self.query)
+                Q(username__unaccent__icontains=self.query) |
+                Q(first_name__unaccent__icontains=self.query) |
+                Q(last_name__unaccent__icontains=self.query) |
+                Q(email__unaccent__icontains=self.query)
             )
             
         # Filtros

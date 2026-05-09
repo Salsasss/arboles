@@ -21,10 +21,10 @@ class EspecieListView(ListView):
         # Buscador
         if self.query:            
             queryset = queryset.filter(
-                Q(nombre_comun__icontains=self.query) |
-                Q(nombre_cientifico__icontains=self.query) |
-                Q(taxonomia__familia__icontains=self.query) |
-                Q(taxonomia__genero__icontains=self.query)
+                Q(nombre_comun__unaccent__icontains=self.query) |
+                Q(nombre_cientifico__unaccent__icontains=self.query) |
+                Q(taxonomia__familia__unaccent__icontains=self.query) |
+                Q(taxonomia__genero__unaccent__icontains=self.query)
             )
             
         #Filtros
@@ -98,10 +98,10 @@ class GaleriaListView(ListView):
         # Buscador
         if self.query:
             queryset = queryset.filter(
-                Q(especie__nombre_comun__icontains=self.query) |
-                Q(especie__nombre_cientifico__icontains=self.query) |
-                Q(especie__taxonomia__familia__icontains=self.query) |
-                Q(especie__taxonomia__genero__icontains=self.query)
+                Q(especie__nombre_comun__unaccent__icontains=self.query) |
+                Q(especie__nombre_cientifico__unaccent__icontains=self.query) |
+                Q(especie__taxonomia__familia__unaccent__icontains=self.query) |
+                Q(especie__taxonomia__genero__unaccent__icontains=self.query)
             )
     
         #Filtros
