@@ -30,7 +30,17 @@ SECRET_KEY = 'django-insecure-c6)75+pon-cualquier-cosa-larga-y-rara-aqui-tempora
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "arboles-cedw.onrender.com"
+    "https://arboles-cedw.onrender.com"
+    "https://www.arboles-cedw.onrender.com"
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "arboles-cedw.onrender.com"
+    "https://arboles-cedw.onrender.com"
+    "https://www.arboles-cedw.onrender.com"
+]
 
 # Application definition
 
