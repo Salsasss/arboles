@@ -49,12 +49,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
     'crispy_bootstrap5',
+    'cloudinary',
     'apps.especies',
     'apps.mapa',
     'apps.perfiles',
@@ -191,3 +193,13 @@ EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", "false").lower() == "true"
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "no-reply@arboles.com")
 SUPPORT_INBOX = os.getenv("SUPPORT_INBOX")
 EMAIL_TIMEOUT = 20
+
+# Configuración de Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+
+# Definir el almacenamiento por defecto para archivos subidos (Media)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
