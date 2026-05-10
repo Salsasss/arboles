@@ -6265,7 +6265,7 @@
     "pk": 4,
     "fields": {
         "nombre": "A",
-        "descripcion": "Campos de F˙tbol",
+        "descripcion": "Campos de F√∫tbol",
         "vector_path": "M 540.18722,110.4406 H 161.20164 l 0.14106,474.72439 46.70063,-0.0773 142.02159,-203.24517 64.80859,45.14844 55.82942,-82.34882 -30.64866,-21.78773 69.99893,-100.13689 -21.6726,-15.20989 z",
         "slug": "a"
     }
@@ -6295,7 +6295,7 @@
     "pk": 7,
     "fields": {
         "nombre": "D",
-        "descripcion": "Edificios y ·reas verdes",
+        "descripcion": "Edificios y √°reas verdes",
         "vector_path": "m 687.24619,296.50072 h -75.02543 l -33.48525,48.28193 8.01583,5.35859 -15.67229,22.7935 -4.672,-3.31201 -29.12787,42.17434 v 95.89902 h 123.01773 v -7.2365 h 26.93707 z",
         "slug": "d"
     }
@@ -6305,7 +6305,7 @@
     "pk": 8,
     "fields": {
         "nombre": "E",
-        "descripcion": "Campo BÈisbol y Edificios",
+        "descripcion": "Campo B√©isbol y Edificios",
         "vector_path": "M 797.22543,296.52582 V 110.44625 H 540.19211 l -51.93033,97.03888 123.98437,86.5625 v 2.4375 z",
         "slug": "e"
     }
@@ -6315,7 +6315,7 @@
     "pk": 9,
     "fields": {
         "nombre": "F",
-        "descripcion": "CafeterÌa y ·reas verdes",
+        "descripcion": "Cafeter√≠a y √°reas verdes",
         "vector_path": "m 687.23053,296.50075 h 109.9949 V 482.532 h -81.8918 l -25.98618,17.92783 h -2.11692 z",
         "slug": "f"
     }
@@ -6345,7 +6345,7 @@
     "pk": 12,
     "fields": {
         "nombre": "I",
-        "descripcion": "CÌrculos",
+        "descripcion": "C√≠rculos",
         "vector_path": "m 797.33026,196.4963 h 13.83148 v 95.01357 H 973.25091 V 110.45168 H 796.88835 Z",
         "slug": "i"
     }
@@ -6355,7 +6355,7 @@
     "pk": 13,
     "fields": {
         "nombre": "J",
-        "descripcion": "Calle Raz y Guzm·n",
+        "descripcion": "Calle Raz y Guzm√°n",
         "vector_path": "m 161.33762,585.34867 -0.0133,10.15091 771.23437,-0.002 0.008,-10.3779 z",
         "slug": "j"
     }
@@ -6375,7 +6375,7 @@
     "pk": 15,
     "fields": {
         "nombre": "L",
-        "descripcion": "Frente y Miguel ¡ngel de Quevedo",
+        "descripcion": "Frente y Miguel √Ångel de Quevedo",
         "vector_path": "m 932.56094,595.49556 77.76326,0.008 0.059,-495.802651 -37.13046,-0.0099 -9e-5,213.431111 3.89062,0.13908 0.0586,225.25781 -44.64063,46.71875 z",
         "slug": "l"
     }
@@ -6385,7 +6385,7 @@
     "pk": 16,
     "fields": {
         "nombre": "Campus",
-        "descripcion": "Instituto TecnolÛgico de Veracruz",
+        "descripcion": "Instituto Tecnol√≥gico de Veracruz",
         "vector_path": "[]",
         "slug": "campus"
     }
@@ -14938,7 +14938,7 @@
         "last_login": "2026-05-10T16:16:19.945Z",
         "is_superuser": true,
         "username": "aaron",
-        "first_name": "AarÛn",
+        "first_name": "Aar√≥n",
         "last_name": "Salas",
         "email": "aaronsalasn@gmail.com",
         "is_staff": true,
@@ -21273,7 +21273,7 @@
     "model": "especies.especie",
     "pk": 5,
     "fields": {
-        "nombre_comun": "Solim·n",
+        "nombre_comun": "Solim√°n",
         "nombre_cientifico": "Cascabela thevetia",
         "tipo": "ARBOL",
         "estado_conservacion": "LC",
@@ -21311,7 +21311,7 @@
     "model": "especies.especie",
     "pk": 7,
     "fields": {
-        "nombre_comun": "CÛpite",
+        "nombre_comun": "C√≥pite",
         "nombre_cientifico": "Cordia dodecandra",
         "tipo": "ARBOL",
         "estado_conservacion": "LC",
@@ -21387,7 +21387,7 @@
     "model": "especies.especie",
     "pk": 11,
     "fields": {
-        "nombre_comun": "S˙chil",
+        "nombre_comun": "S√∫chil",
         "nombre_cientifico": "Plumeria rubra",
         "tipo": "ARBOL",
         "estado_conservacion": "LC",
@@ -21596,8 +21596,8 @@
     "model": "especies.especie",
     "pk": 22,
     "fields": {
-        "nombre_comun": "Pl·tano",
-        "nombre_cientifico": "Musa ◊ paradisiaca",
+        "nombre_comun": "Pl√°tano",
+        "nombre_cientifico": "Musa √ó paradisiaca",
         "tipo": "ARBOL",
         "estado_conservacion": "NE",
         "diametro_maximo": "30.00",
@@ -21653,7 +21653,7 @@
     "model": "especies.especie",
     "pk": 25,
     "fields": {
-        "nombre_comun": "PiÒÛn de Tempate",
+        "nombre_comun": "Pi√±√≥n de Tempate",
         "nombre_cientifico": "Jatropha curcas",
         "tipo": "ARBOL",
         "estado_conservacion": "LC",
@@ -21710,7 +21710,7 @@
     "model": "especies.especie",
     "pk": 34,
     "fields": {
-        "nombre_comun": "JÌcaro",
+        "nombre_comun": "J√≠caro",
         "nombre_cientifico": "Crescentia alata",
         "tipo": "ARBOL",
         "estado_conservacion": "LC",
@@ -21824,7 +21824,7 @@
     "model": "especies.especie",
     "pk": 40,
     "fields": {
-        "nombre_comun": "Tulip·n Africano",
+        "nombre_comun": "Tulip√°n Africano",
         "nombre_cientifico": "Spathodea campanulata",
         "tipo": "ARBOL",
         "estado_conservacion": "LC",
@@ -22090,7 +22090,7 @@
     "model": "especies.especie",
     "pk": 54,
     "fields": {
-        "nombre_comun": "Gu·samo",
+        "nombre_comun": "Gu√°samo",
         "nombre_cientifico": "Guazuma ulmifolia",
         "tipo": "ARBOL",
         "estado_conservacion": "LC",
@@ -22185,7 +22185,7 @@
     "model": "especies.especie",
     "pk": 59,
     "fields": {
-        "nombre_comun": "CamarÛn Amarillo",
+        "nombre_comun": "Camar√≥n Amarillo",
         "nombre_cientifico": "Pachystachys lutea",
         "tipo": "ARBOL",
         "estado_conservacion": "NE",
@@ -22262,7 +22262,7 @@
     "pk": 63,
     "fields": {
         "nombre_comun": "Limonero Persa",
-        "nombre_cientifico": "Citrus ◊ latifolia",
+        "nombre_cientifico": "Citrus √ó latifolia",
         "tipo": "ARBOL",
         "estado_conservacion": "NE",
         "diametro_maximo": null,
@@ -23115,7 +23115,7 @@
             "especie"
         ],
         "object_id": "5",
-        "object_repr": "Cascabela thevetia - Solim·n",
+        "object_repr": "Cascabela thevetia - Solim√°n",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Cascabela thevetia - Solim\\u00e1n\"}}]"
     }
@@ -23133,7 +23133,7 @@
             "especie"
         ],
         "object_id": "5",
-        "object_repr": "Cascabela thevetia - Solim·n",
+        "object_repr": "Cascabela thevetia - Solim√°n",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro M\\u00e1ximo (cm)\"]}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Cascabela thevetia - Solim\\u00e1n\"}}]"
     }
@@ -23259,7 +23259,7 @@
             "especie"
         ],
         "object_id": "5",
-        "object_repr": "Cascabela thevetia - Solim·n",
+        "object_repr": "Cascabela thevetia - Solim√°n",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro M\\u00e1ximo (cm)\"]}}, {\"changed\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Cascabela thevetia - Solim\\u00e1n\", \"fields\": [\"Descripci\\u00f3n de la Corteza\", \"Descripci\\u00f3n de la Biogeograf\\u00eda\", \"Descripci\\u00f3n de la Importancia\"]}}]"
     }
@@ -23403,7 +23403,7 @@
             "especie"
         ],
         "object_id": "7",
-        "object_repr": "Cordia dodecandra - CÛpite",
+        "object_repr": "Cordia dodecandra - C√≥pite",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Cordia dodecandra - C\\u00f3pite\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Cordia dodecandra - C\\u00f3pite\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Cordia dodecandra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Cordia dodecandra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Cordia dodecandra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Cordia dodecandra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Cordia dodecandra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Cordia dodecandra)\"}}]"
     }
@@ -23475,7 +23475,7 @@
             "especie"
         ],
         "object_id": "11",
-        "object_repr": "Plumeria rubra - S˙chil",
+        "object_repr": "Plumeria rubra - S√∫chil",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Plumeria rubra - S\\u00fachil\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Plumeria rubra - S\\u00fachil\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Plumeria rubra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Plumeria rubra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Plumeria rubra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Plumeria rubra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Plumeria rubra)\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: None - (Plumeria rubra)\"}}]"
     }
@@ -23709,7 +23709,7 @@
             "especie"
         ],
         "object_id": "22",
-        "object_repr": "Musa ◊ paradisiaca - Banano",
+        "object_repr": "Musa √ó paradisiaca - Banano",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Musa \\u00d7 paradisiaca - Banano\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Musa \\u00d7 paradisiaca - Banano\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Musa \\u00d7 paradisiaca\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Musa \\u00d7 paradisiaca\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Musa \\u00d7 paradisiaca\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Musa \\u00d7 paradisiaca\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Musa \\u00d7 paradisiaca\"}}]"
     }
@@ -23763,7 +23763,7 @@
             "especie"
         ],
         "object_id": "25",
-        "object_repr": "Jatropha curcas - PiÒÛn de Tempate",
+        "object_repr": "Jatropha curcas - Pi√±√≥n de Tempate",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Jatropha curcas - Pi\\u00f1\\u00f3n de Tempate\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Jatropha curcas - Pi\\u00f1\\u00f3n de Tempate\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Jatropha curcas\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Jatropha curcas\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Jatropha curcas\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Jatropha curcas\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Jatropha curcas\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL: Jatropha curcas\"}}]"
     }
@@ -23907,7 +23907,7 @@
             "especie"
         ],
         "object_id": "22",
-        "object_repr": "Musa ◊ paradisiaca - Pl·tano",
+        "object_repr": "Musa √ó paradisiaca - Pl√°tano",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Nombre Com\\u00fan\"]}}]"
     }
@@ -25977,7 +25977,7 @@
             "zona"
         ],
         "object_id": "1",
-        "object_repr": "A - Campo de FutbÛl",
+        "object_repr": "A - Campo de Futb√≥l",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"inventario\", \"object\": \"A - Campo de Futb\\u00f3l - Bougainvillea glabra - Bugambilia: 43\"}}]"
     }
@@ -26193,7 +26193,7 @@
             "zona"
         ],
         "object_id": "1",
-        "object_repr": "A - Campo de FutbÛl",
+        "object_repr": "A - Campo de Futb√≥l",
         "action_flag": 3,
         "change_message": ""
     }
@@ -26823,7 +26823,7 @@
             "especie"
         ],
         "object_id": "34",
-        "object_repr": "Crescentia alata - JÌcaro",
+        "object_repr": "Crescentia alata - J√≠caro",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Crescentia alata - J\\u00edcaro\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Crescentia alata - J\\u00edcaro\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Kew: Crescentia alata - J\\u00edcaro\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - IUCN: Crescentia alata - J\\u00edcaro\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - CONABIO: Crescentia alata - J\\u00edcaro\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - GBIF: Crescentia alata - J\\u00edcaro\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - iNat: Crescentia alata - J\\u00edcaro\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Wiki: Crescentia alata - J\\u00edcaro\"}}]"
     }
@@ -26931,7 +26931,7 @@
             "especie"
         ],
         "object_id": "40",
-        "object_repr": "Spathodea campanulata - Tulip·n Africano",
+        "object_repr": "Spathodea campanulata - Tulip√°n Africano",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Spathodea campanulata - Tulip\\u00e1n Africano\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Spathodea campanulata - Tulip\\u00e1n Africano\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Kew: Spathodea campanulata - Tulip\\u00e1n Africano\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - IUCN: Spathodea campanulata - Tulip\\u00e1n Africano\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - CONABIO: Spathodea campanulata - Tulip\\u00e1n Africano\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - GBIF: Spathodea campanulata - Tulip\\u00e1n Africano\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - iNat: Spathodea campanulata - Tulip\\u00e1n Africano\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Wiki: Spathodea campanulata - Tulip\\u00e1n Africano\"}}]"
     }
@@ -27201,7 +27201,7 @@
             "especie"
         ],
         "object_id": "54",
-        "object_repr": "Guazuma ulmifolia - Gu·samo",
+        "object_repr": "Guazuma ulmifolia - Gu√°samo",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Guazuma ulmifolia - Gu\\u00e1samo\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Guazuma ulmifolia - Gu\\u00e1samo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Kew: Guazuma ulmifolia - Gu\\u00e1samo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - IUCN: Guazuma ulmifolia - Gu\\u00e1samo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - CONABIO: Guazuma ulmifolia - Gu\\u00e1samo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - GBIF: Guazuma ulmifolia - Gu\\u00e1samo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - iNat: Guazuma ulmifolia - Gu\\u00e1samo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Wiki: Guazuma ulmifolia - Gu\\u00e1samo\"}}]"
     }
@@ -27291,7 +27291,7 @@
             "especie"
         ],
         "object_id": "59",
-        "object_repr": "Pachystachys lutea - CamarÛn Amarillo",
+        "object_repr": "Pachystachys lutea - Camar√≥n Amarillo",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Pachystachys lutea - Camar\\u00f3n Amarillo\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Pachystachys lutea - Camar\\u00f3n Amarillo\"}}]"
     }
@@ -27309,7 +27309,7 @@
             "especie"
         ],
         "object_id": "59",
-        "object_repr": "Pachystachys lutea - CamarÛn Amarillo",
+        "object_repr": "Pachystachys lutea - Camar√≥n Amarillo",
         "action_flag": 2,
         "change_message": "[{\"added\": {\"name\": \"URL\", \"object\": \"URL - Kew: Pachystachys lutea - Camar\\u00f3n Amarillo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - CONABIO: Pachystachys lutea - Camar\\u00f3n Amarillo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - GBIF: Pachystachys lutea - Camar\\u00f3n Amarillo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - iNat: Pachystachys lutea - Camar\\u00f3n Amarillo\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Wiki: Pachystachys lutea - Camar\\u00f3n Amarillo\"}}]"
     }
@@ -27381,7 +27381,7 @@
             "especie"
         ],
         "object_id": "63",
-        "object_repr": "Citrus ◊ latifolia - Limonero Persa",
+        "object_repr": "Citrus √ó latifolia - Limonero Persa",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"Clasificaci\\u00f3n Taxon\\u00f3mica\", \"object\": \"Taxonom\\u00eda de Citrus \\u00d7 latifolia - Limonero Persa\"}}, {\"added\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Citrus \\u00d7 latifolia - Limonero Persa\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Kew: Citrus \\u00d7 latifolia - Limonero Persa\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - CONABIO: Citrus \\u00d7 latifolia - Limonero Persa\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - GBIF: Citrus \\u00d7 latifolia - Limonero Persa\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - iNat: Citrus \\u00d7 latifolia - Limonero Persa\"}}, {\"added\": {\"name\": \"URL\", \"object\": \"URL - Wiki: Citrus \\u00d7 latifolia - Limonero Persa\"}}]"
     }
@@ -27705,7 +27705,7 @@
             "zona"
         ],
         "object_id": "4",
-        "object_repr": "A - Campos de F˙tbol",
+        "object_repr": "A - Campos de F√∫tbol",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
@@ -27723,7 +27723,7 @@
             "zona"
         ],
         "object_id": "4",
-        "object_repr": "A - Campos de F˙tbol",
+        "object_repr": "A - Campos de F√∫tbol",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - ???????? - Borrego: 8\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - ======= - Roble: 3\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Annona muricata - Guanabano: 1\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Azadirachta indica - Neem: 20\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Bursera simaruba - Palo Mulato: 49\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Casuarina equisetifolia - Pino Casuarina: 2\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Citrus \\u00d7 latifolia - Limonero Persa: 5\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Coccoloba uvifera - Uvero: 2\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Ficus carica - Higuera: 2\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - hghghghg - Higuera Mata Palo: 1\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Musa \\u00d7 paradisiaca - Pl\\u00e1tano: 2\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Psidium guajava - Guayabo: 1\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Terminalia catappa - Almendro: 4\", \"fields\": [\"Cantidad\"]}}, {\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Yucca gigantea - Izote: 8\", \"fields\": [\"Cantidad\"]}}]"
     }
@@ -28209,7 +28209,7 @@
             "zona"
         ],
         "object_id": "4",
-        "object_repr": "A - Campos de F˙tbol",
+        "object_repr": "A - Campos de F√∫tbol",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"name\": \"inventario\", \"object\": \"A - Campos de F\\u00fatbol - Cocos nucifera - Palmera Cocotera: 20\", \"fields\": [\"Cantidad\"]}}]"
     }
@@ -28407,7 +28407,7 @@
             "zona"
         ],
         "object_id": "13",
-        "object_repr": "J - Calle Raz y Guzm·n",
+        "object_repr": "J - Calle Raz y Guzm√°n",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Descripcion\"]}}]"
     }
@@ -28713,7 +28713,7 @@
             "zona"
         ],
         "object_id": "9",
-        "object_repr": "F - CafeterÌa y ·reas verdes",
+        "object_repr": "F - Cafeter√≠a y √°reas verdes",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Descripcion\"]}}]"
     }
@@ -28749,7 +28749,7 @@
             "zona"
         ],
         "object_id": "7",
-        "object_repr": "D - Edificios y ·reas verdes",
+        "object_repr": "D - Edificios y √°reas verdes",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Descripcion\"]}}]"
     }
@@ -28767,7 +28767,7 @@
             "zona"
         ],
         "object_id": "4",
-        "object_repr": "A - Campos de F˙tbol",
+        "object_repr": "A - Campos de F√∫tbol",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -28821,7 +28821,7 @@
             "zona"
         ],
         "object_id": "13",
-        "object_repr": "J - Calle Raz y Guzm·n",
+        "object_repr": "J - Calle Raz y Guzm√°n",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -28857,7 +28857,7 @@
             "zona"
         ],
         "object_id": "9",
-        "object_repr": "F - CafeterÌa y ·reas verdes",
+        "object_repr": "F - Cafeter√≠a y √°reas verdes",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -28929,7 +28929,7 @@
             "zona"
         ],
         "object_id": "7",
-        "object_repr": "D - Edificios y ·reas verdes",
+        "object_repr": "D - Edificios y √°reas verdes",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -29001,7 +29001,7 @@
             "zona"
         ],
         "object_id": "4",
-        "object_repr": "A - Campos de F˙tbol",
+        "object_repr": "A - Campos de F√∫tbol",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -29055,7 +29055,7 @@
             "zona"
         ],
         "object_id": "7",
-        "object_repr": "D - Edificios y ·reas verdes",
+        "object_repr": "D - Edificios y √°reas verdes",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -29091,7 +29091,7 @@
             "zona"
         ],
         "object_id": "9",
-        "object_repr": "F - CafeterÌa y ·reas verdes",
+        "object_repr": "F - Cafeter√≠a y √°reas verdes",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -29163,7 +29163,7 @@
             "zona"
         ],
         "object_id": "13",
-        "object_repr": "J - Calle Raz y Guzm·n",
+        "object_repr": "J - Calle Raz y Guzm√°n",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Vector path\"]}}]"
     }
@@ -29217,7 +29217,7 @@
             "zona"
         ],
         "object_id": "16",
-        "object_repr": "Campus - Instituto TecnolÛgico de Veracruz",
+        "object_repr": "Campus - Instituto Tecnol√≥gico de Veracruz",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
@@ -31125,7 +31125,7 @@
             "especie"
         ],
         "object_id": "5",
-        "object_repr": "Cascabela thevetia - Solim·n",
+        "object_repr": "Cascabela thevetia - Solim√°n",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"name\": \"Detalle Bot\\u00e1nico\", \"object\": \"Detalles de: Cascabela thevetia - Solim\\u00e1n\", \"fields\": [\"Descripci\\u00f3n de las Flores\", \"Descripci\\u00f3n de los Frutos\"]}}]"
     }
@@ -34257,7 +34257,7 @@
             "zona"
         ],
         "object_id": "8",
-        "object_repr": "E - Campo BÈisbol y Edificios",
+        "object_repr": "E - Campo B√©isbol y Edificios",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Descripcion\"]}}]"
     }
@@ -34275,7 +34275,7 @@
             "zona"
         ],
         "object_id": "12",
-        "object_repr": "I - CÌrculos",
+        "object_repr": "I - C√≠rculos",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Descripcion\"]}}]"
     }
@@ -34293,7 +34293,7 @@
             "zona"
         ],
         "object_id": "12",
-        "object_repr": "I - CÌrculos",
+        "object_repr": "I - C√≠rculos",
         "action_flag": 2,
         "change_message": "[]"
     }
@@ -34329,7 +34329,7 @@
             "zona"
         ],
         "object_id": "15",
-        "object_repr": "L - Frente y Miguel ¡ngel de Quevedo",
+        "object_repr": "L - Frente y Miguel √Ångel de Quevedo",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Descripcion\"]}}]"
     }
@@ -34455,7 +34455,7 @@
             "especie"
         ],
         "object_id": "5",
-        "object_repr": "Cascabela thevetia - Solim·n",
+        "object_repr": "Cascabela thevetia - Solim√°n",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -34509,7 +34509,7 @@
             "especie"
         ],
         "object_id": "7",
-        "object_repr": "Cordia dodecandra - CÛpite",
+        "object_repr": "Cordia dodecandra - C√≥pite",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -34563,7 +34563,7 @@
             "especie"
         ],
         "object_id": "11",
-        "object_repr": "Plumeria rubra - S˙chil",
+        "object_repr": "Plumeria rubra - S√∫chil",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -34599,7 +34599,7 @@
             "especie"
         ],
         "object_id": "63",
-        "object_repr": "Citrus ◊ latifolia - Limonero Persa",
+        "object_repr": "Citrus √ó latifolia - Limonero Persa",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -34815,7 +34815,7 @@
             "especie"
         ],
         "object_id": "22",
-        "object_repr": "Musa ◊ paradisiaca - Pl·tano",
+        "object_repr": "Musa √ó paradisiaca - Pl√°tano",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -34869,7 +34869,7 @@
             "especie"
         ],
         "object_id": "25",
-        "object_repr": "Jatropha curcas - PiÒÛn de Tempate",
+        "object_repr": "Jatropha curcas - Pi√±√≥n de Tempate",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -34959,7 +34959,7 @@
             "especie"
         ],
         "object_id": "34",
-        "object_repr": "Crescentia alata - JÌcaro",
+        "object_repr": "Crescentia alata - J√≠caro",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -35067,7 +35067,7 @@
             "especie"
         ],
         "object_id": "40",
-        "object_repr": "Spathodea campanulata - Tulip·n Africano",
+        "object_repr": "Spathodea campanulata - Tulip√°n Africano",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -35337,7 +35337,7 @@
             "especie"
         ],
         "object_id": "54",
-        "object_repr": "Guazuma ulmifolia - Gu·samo",
+        "object_repr": "Guazuma ulmifolia - Gu√°samo",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Di\\u00e1metro promedio en el campus (cm)\"]}}]"
     }
@@ -35571,7 +35571,7 @@
             "especiedetalle"
         ],
         "object_id": "40",
-        "object_repr": "Detalles de: Spathodea campanulata - Tulip·n Africano",
+        "object_repr": "Detalles de: Spathodea campanulata - Tulip√°n Africano",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Descripci\\u00f3n de la Importancia\"]}}]"
     }
